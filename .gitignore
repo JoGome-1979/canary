@@ -422,4 +422,7 @@ compile_commands.json
 canary-debug
 
 # Discord
-/home/canary/discord-config/discord-access.json
+discord-config/discord-access.json
+
+# BACKUPS
+backups/*
