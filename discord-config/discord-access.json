@@ -1,15 +1,15 @@
 {
     "enabled": true,
-    "serverId": "1556407799091691600",
-    "requiredRoleId": "1556407799091691601",
-    "inviteUrl": "https://discord.gg/p55CbkCdEm",
+    "serverId": "",
+    "requiredRoleId": "",
+    "inviteUrl": "https://discord.gg",
     "accountUrl": "https://crystalgames.com.br/?subtopic=accountmanagement",
     "deniedMessage": "Para entrar no jogo, voce precisa participar da nossa comunidade no Discord e possuir o cargo necessario.",
     "linkCodeTtlSeconds": 600,
     "authorizationTtlSeconds": 120,
     "syncIntervalSeconds": 30,
     "requireDesktopIdentity": false,
-    "applicationId": "1543952827292852304",
-    "clientSecret": "Nmn5VSGcDznH8OD4YmHI-xSilr_H85VG",
+    "applicationId": "",
+    "clientSecret": "",
     "redirectUri": "https://127.0.0.1"
 }
