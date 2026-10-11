@@ -20,13 +20,13 @@ function dawnportAdvance.onAdvance(player, skill, oldLevel, newLevel)
 			-- Notify min level to leave dawnport
 			if newLevel == 8 then
 				player:sendTextMessage(
-					MESSAGE_EVENT_ADVANCE,
-					"Congratulations! \z
-					You may now choose your vocation and leave Dawnport. Talk to Oressa in the temple."
+    				MESSAGE_EVENT_ADVANCE,
+    				"Parabéns! \z
+    				Agora você pode escolher sua vocação e deixar Dawnport. Fale com Oressa no templo."
 				)
 				-- Notify max level to stay in dawnport
 			elseif newLevel >= 20 then
-				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have reached the limit level and have to choose your vocation and leave Dawnport.")
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você atingiu o nível máximo permitido em Dawnport. Agora deve escolher sua vocação e deixar a ilha.")
 				if not dawnportEvents[player:getId()] then
 					-- Adds the event that teleports the player to the temple in five minutes after reaching level 20
 					dawnportEvents[player:getId()] = addEvent(teleportToDawnportTemple, 5 * 60 * 1000, player:getId())
@@ -37,14 +37,14 @@ function dawnportAdvance.onAdvance(player, skill, oldLevel, newLevel)
 			if skill == SKILL_MAGLEVEL then
 				player:sendTextMessage(
 					MESSAGE_EVENT_ADVANCE,
-					"You cannot train your magic level any further. \z
-					If you want to improve it further, you must go to the mainland."
+					"Você não pode treinar seu nível mágico mais. \z
+					Se você quiser melhorá-lo mais, você deve ir para o continente."
 				)
 			else
 				player:sendTextMessage(
-					MESSAGE_EVENT_ADVANCE,
-					"You cannot train your skill level any further. \z
-					If you want to improve it further, you must go to the mainland."
+    				MESSAGE_EVENT_ADVANCE,
+    				"Você não pode mais aumentar o nível de suas habilidades. \z
+    				Se deseja continuar aprimorando-as, deverá ir para o continente."
 				)
 			end
 		end

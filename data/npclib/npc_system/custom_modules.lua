@@ -1,6 +1,6 @@
 -- Custom modules used by the NPC system
 function registerHealKeyword(keywordHandler, npcHandler, text, condition, effect, minimumHealth)
-	keywordHandler:addKeyword({ "heal" }, StdModule.say, { npcHandler = npcHandler, text = text }, function(player)
+	keywordHandler:addKeyword({ "heal", "curar", "cura", callback = FocusModule.messageMatcher }, StdModule.say, { npcHandler = npcHandler, text = text }, function(player)
 		return player:getCondition(condition) ~= nil
 	end, function(player)
 		if minimumHealth then
@@ -50,7 +50,7 @@ function StdModule.kick(npc, player, message, keywords, parameters, node)
 	end
 
 	npcHandler:removeInteraction(npc, player)
-	npcHandler:say(parameters.text or "Off with you!", npc, player)
+	npcHandler:say(parameters.text or "Retirai-vos!", npc, player)
 
 	local destination = parameters.destination
 	if type(destination) == "table" then
@@ -127,7 +127,7 @@ function KeywordHandler:addSpellKeyword(keys, parameters)
 
 	local spellKeyword = self:addKeyword(localKeys, StdModule.say, {
 		npcHandler = npcHandler,
-		text = string.format("Do you want to learn the spell '%s' for %s?\z ", spellName, price > 0 and price .. " gold" or "free"),
+		text = string.format("Desejais aprender a magia '%s' por %s?\z ", spellName, price > 0 and price .. " moedas de ouro" or "nenhum custo"),
 	}, function(player)
 		-- This will register for all client id vocations
 		local vocationClientId = player:getVocation():getBaseId()
@@ -138,77 +138,53 @@ function KeywordHandler:addSpellKeyword(keys, parameters)
 		end
 	end)
 
-	spellKeyword:addChildKeyword({ "yes" }, StdModule.learnSpell, {
+	spellKeyword:addChildKeyword({ "yes", "sim", callback = FocusModule.messageMatcher }, StdModule.learnSpell, {
 		npcHandler = npcHandler,
 		spellName = spellName,
 		level = parameters.level,
 		price = price,
 	})
-	spellKeyword:addChildKeyword({ "no" }, StdModule.say, {
+	spellKeyword:addChildKeyword({ "no", "não", "nao", callback = FocusModule.messageMatcher }, StdModule.say, {
 		npcHandler = npcHandler,
-		text = "Maybe next time.",
+		text = "Talvez em outra ocasião.",
 		reset = true,
 	})
 end
 
 local hints = {
-	[-1] = "If you don't know the meaning of an icon on the right side, move the mouse cursor on it and wait a moment.",
-	[0] = "Send private messages to other players by right-clicking on the player or the player's name and \z
-               select 'Message to ....'. You can also open a 'private message channel' \z
-               and type in the name of the player.",
-	[1] = "Use the shortcuts 'SHIFT' to look, 'CTRL' for use and 'ALT' \z
-               for attack when clicking on an object or player.",
-	[2] = "If you already know where you want to go, click on the automap and your character will walk there \z
-               automatically if the location is reachable and not too far away.",
-	[3] = "To open or close skills, battle or VIP list, click on the corresponding button to the right.",
-	[4] = "'Capacity' restricts the amount of things you can carry with you. It raises with each level.",
-	[5] = "Always have a look on your health bar. If you see that you do not regenerate \z
-               health points anymore, eat something.",
-	[6] = "Always eat as much food as possible. This way, you'll regenerate health points for a longer period of time.",
-	[7] = "After you have killed a monster, you have 10 seconds in which the corpse \z
-                is not movable and no one else but you can loot it.",
-	[8] = "Be careful when you approach three or more monsters because you only can block the attacks of two. \z
-                In such a situation even a few rats can do severe damage or even kill you.",
-	[9] = "There are many ways to gather food. Many creatures drop food but you can also pick blueberries or bake \z
-                your own bread. If you have a fishing rod and worms in your inventory, you can also try to catch a fish.",
-	[10] = {
-		"Baking bread is rather complex. First of all you need a scythe to harvest wheat. \z
-                    Then you use the wheat with a millstone to get flour. ...",
-		"This can be be used on water to get dough, which can be used on an oven to bake bread. \z
-                    Use milk instead of water to get cake dough.",
-	},
-	[11] = "Dying hurts! Better run away than risk your life. \z
-                You are going to lose experience and skill points when you die.",
-	[12] = "When you switch to 'Offensive Fighting', you deal out more damage but you also get hurt more easily.",
-	[13] = "When you are on low health and need to run away from a monster, switch to \z
-                'Defensive Fighting' and the monster will hit you less severely.",
-	[14] = "Many creatures try to run away from you. Select 'Chase Opponent' to follow them.",
-	[15] = "The deeper you enter a dungeon, the more dangerous it will be. \z
-                Approach every dungeon with utmost care or an unexpected creature might kill you. \z
-	            This will result in losing experience and skill points.",
-	[16] = "Due to the perspective, some objects in Tibia are not located at the spot they seem to \z
-                appear (ladders, windows, lamps). Try clicking on the floor tile the object would lie on.",
-	[17] = "If you want to trade an item with another player, right-click on the item and select 'Trade with ...', \z
-                then click on the player with whom you want to trade.",
-	[18] = "Stairs, ladders and dungeon entrances are marked as yellow dots on the automap.",
-	[19] = "You can get food by killing animals or monsters. You can also pick blueberries or bake your own bread. \z
-                If you are too lazy or own too much money, you can also buy food.",
-	[20] = "Quest containers can be recognised easily. \z
-                They don't open up regularly but display a message 'You have found ....'. \z
-                They can only be opened once.",
-	[21] = "Better run away than risk to die. You'll lose experience and skill points each time you die.",
-	[22] = "You can form a party by right-clicking on a player and selecting 'Invite to Party'. \z
-                The party leader can also enable 'Shared Experience' by right-clicking on him- or herself.",
-	[23] = "You can assign spells, the use of items, or random text to 'hotkeys'. You find them under 'Options'.",
-	[24] = "You can also follow other players. Just right-click on the player and select 'Follow'.",
-	[25] = "You can found a party with your friends by right-clicking on a player and selecting 'Invite to Party'. \z
-                If you are invited to a party, right-click on yourself and select 'Join Party'.",
-	[26] = "Only found parties with people you trust. You can attack people in your party without getting a skull. \z
-                This is helpful for training your skills, but can be abused to kill people without \z
-                having to fear negative consequences.",
-	[27] = "The leader of a party has the option to distribute gathered experience among all players in the party. \z
-                If you are the leader, right-click on yourself and select 'Enable Shared Experience'.",
-	[28] = "There is nothing more I can tell you. If you are still in need of some {hints}, I can repeat them for you.",
+    [-1] = "Se não souberdes o significado de um ícone à direita, colocai o cursor sobre ele e aguardai um instante.",
+    [0] = "Para enviar uma mensagem privada, clicai com o botão direito sobre um aventureiro ou seu nome e escolhei a opção de mensagem. Também podeis abrir um canal privado e informar o nome do destinatário.",
+    [1] = "Ao clicar num objeto ou aventureiro, usai SHIFT para olhar, CTRL para usar e ALT para atacar, conforme os controles de vosso cliente.",
+    [2] = "Clicai no mapa para caminhar automaticamente até um local, desde que seja acessível e não esteja demasiado distante.",
+    [3] = "Para abrir ou fechar os painéis de habilidades, batalha ou amigos, clicai nos respectivos botões de vosso cliente.",
+    [4] = "Vossa capacidade limita o peso que podeis carregar. Ela aumenta a cada nível.",
+    [5] = "Vigiai vossa barra de vida. Se deixardes de recuperar vida, comei algo.",
+    [6] = "Mantende-vos bem alimentado para recuperar vida por mais tempo.",
+    [7] = "Após derrotar uma criatura, procurai os despojos em seu corpo. As regras de proteção do saque dependem do combate e do servidor.",
+    [8] = "Cuidado ao enfrentar várias criaturas ao mesmo tempo! Até pequenos inimigos podem tornar-se uma ameaça quando vos cercam.",
+    [9] = "Podeis obter comida de criaturas, colher mirtilos ou preparar pão. Com uma vara de pesca e minhocas, também podeis pescar.",
+    [10] = {
+        "Para preparar pão, colhei trigo com uma foice e usai-o numa pedra de moinho para obter farinha. ...",
+        "Usai a farinha com água para preparar massa e depois levai-a ao forno. Com leite em vez de água, podeis preparar massa de bolo.",
+    },
+    [11] = "Preservai vossa vida! Recuar é mais prudente do que morrer. A morte pode custar experiência e habilidades, conforme vossas proteções.",
+    [12] = "No modo de combate ofensivo, causais mais dano, mas também ficais mais vulnerável.",
+    [13] = "Se estiverdes ferido e precisardes recuar, o modo de combate defensivo pode reduzir os golpes recebidos.",
+    [14] = "Algumas criaturas fogem. Ativai a opção de perseguir o oponente para segui-las.",
+    [15] = "Quanto mais fundo numa masmorra, maiores podem ser os perigos. Avançai com cautela, pois a morte pode custar experiência e habilidades.",
+    [16] = "Devido à perspectiva, alguns objetos em Crystal, como escadas, janelas e lampiões, parecem ocupar outro lugar. Tentai clicar no piso onde sua base se encontra.",
+    [17] = "Para negociar com outro aventureiro, clicai com o botão direito no item, escolhei a opção de troca e depois clicai no destinatário.",
+    [18] = "Escadas e entradas de masmorras aparecem como pontos amarelos no mapa.",
+    [19] = "Podeis conseguir comida caçando, colhendo mirtilos ou preparando pão. Também podeis comprá-la de um mercador.",
+    [20] = "Recipientes de missões costumam anunciar o que encontrastes em vez de abrir como um recipiente comum. Muitos concedem sua recompensa apenas uma vez.",
+    [21] = "Recuai antes de arriscar vossa vida. A morte pode reduzir vossa experiência e habilidades.",
+    [22] = "Para formar um grupo, clicai com o botão direito num aventureiro e escolhei a opção de convite. O líder pode ativar a experiência compartilhada no menu de seu próprio personagem.",
+    [23] = "Podeis configurar atalhos para magias, itens e mensagens nas opções de vosso cliente.",
+    [24] = "Para seguir outro aventureiro, clicai nele com o botão direito e escolhei a opção de seguir.",
+    [25] = "Convidai vossos amigos para um grupo pelo menu do botão direito. Se receberdes um convite, abri o menu de vosso personagem e escolhei entrar no grupo.",
+    [26] = "Formai grupos com aventureiros em quem confiais. Conhecei as regras de combate de vosso mundo antes de treinar contra companheiros.",
+    [27] = "O líder pode ativar a experiência compartilhada pelo menu de seu personagem. O grupo deve cumprir os requisitos desse recurso.",
+    [28] = "Não tenho mais conselhos por ora. Se desejardes ouvir minhas {dicas} novamente, basta pedir.",
 }
 
 function StdModule.rookgaardHints(npc, player, message, keywords, parameters, node)

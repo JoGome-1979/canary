@@ -2,14 +2,14 @@
 
 if Modules == nil then
 	-- default words for greeting and ungreeting the npc. Should be a table containing all such words.
-	FOCUS_GREETWORDS = { "hi", "hello" }
-	FOCUS_FAREWELLWORDS = { "bye", "farewell" }
+	FOCUS_GREETWORDS = { "hi", "hello", "oi", "ola", "olá" }
+	FOCUS_FAREWELLWORDS = { "bye", "farewell", "tchau", "adeus" }
 
-	FOCUS_TRADE_MESSAGE = { "trade", "offers" }
+	FOCUS_TRADE_MESSAGE = { "trade", "offers", "ofertas", "loja" }
 
 	-- The word for accepting/declining an offer. CAN ONLY CONTAIN ONE FIELD! Should be a table with a single string value.
-	SHOP_YESWORD = { "yes" }
-	SHOP_NOWORD = { "no" }
+	SHOP_YESWORD = { "yes", "sim" }
+	SHOP_NOWORD = { "no", "não", "nao" }
 
 	StdModule = {}
 
@@ -23,7 +23,7 @@ if Modules == nil then
 		StdModule.say,
 		{
 			npcHandler = npcHandler,
-			text = "I sell many powerful melee weapons."
+			text = "Tenho à venda poderosas armas para o combate corpo a corpo."
 		}
 	)
 	]]
@@ -46,15 +46,15 @@ if Modules == nil then
 			return false
 		end
 
-		local cost, costMessage = (IsTravelFree() and 0) or parameters.cost, "%d gold"
+		local cost, costMessage = (IsTravelFree() and 0) or parameters.cost, "%d moedas de ouro"
 		if cost and cost > 0 then
 			if parameters.discount then
 				cost = cost - StdModule.travelDiscount(npc, player, parameters.discount)
 			end
 
-			costMessage = cost > 0 and string.format(costMessage, cost) or "free"
+			costMessage = cost > 0 and string.format(costMessage, cost) or "gratuita"
 		else
-			costMessage = "free"
+			costMessage = "gratuita"
 		end
 
 		local parseInfo = {
@@ -107,11 +107,11 @@ if Modules == nil then
 			local promotion = player:getVocation():getPromotion()
 			local hasPromotion = player:kv():get("promoted")
 			if not promotion or hasPromotion then
-				npcHandler:say("You are already promoted!", npc, player)
+				npcHandler:say("Já recebestes vossa promoção!", npc, player)
 			elseif player:getLevel() < parameters.level then
-				npcHandler:say(string.format("I am sorry, but I can only promote you once you have reached level %d.", parameters.level), npc, player)
+				npcHandler:say(string.format("Lamento, aventureiro, mas só poderei promover-vos quando alcançardes o nível %d.", parameters.level), npc, player)
 			elseif not player:removeMoneyBank(parameters.cost) then
-				npcHandler:say("You do not have enough money!", npc, player)
+				npcHandler:say("Não tendes ouro suficiente!", npc, player)
 			else
 				npcHandler:say(parameters.text, npc, player)
 				player:setVocation(promotion)
@@ -119,7 +119,7 @@ if Modules == nil then
 				player:kv():set("promoted", true)
 			end
 		else
-			npcHandler:say("You need a premium account in order to get promoted.", npc, player)
+			npcHandler:say("Precisais de uma conta premium para receber vossa promoção.", npc, player)
 		end
 		npcHandler:resetNpc(npc, player)
 		return true
@@ -137,17 +137,17 @@ if Modules == nil then
 
 		if player:isPremium() or not parameters.premium then
 			if player:hasLearnedSpell(parameters.spellName) then
-				npcHandler:say("You already know this spell.", npc, player)
+				npcHandler:say("Já conheceis esta magia.", npc, player)
 			elseif not player:canLearnSpell(parameters.spellName) then
-				npcHandler:say("You cannot learn this spell.", npc, player)
+				npcHandler:say("Ainda não estais apto a aprender esta magia.", npc, player)
 			elseif not player:removeMoneyBank(parameters.price) then
-				npcHandler:say(string.format("You do not have enough money, this spell costs %s gold.", parameters.price), npc, player)
+				npcHandler:say(string.format("Não tendes ouro suficiente. Esta magia custa %s moedas de ouro.", parameters.price), npc, player)
 			else
-				npcHandler:say(string.format("You have learned '%s'.", parameters.spellName), npc, player)
+				npcHandler:say(string.format("Aprendestes a magia '%s'.", parameters.spellName), npc, player)
 				player:learnSpell(parameters.spellName)
 			end
 		else
-			npcHandler:say(string.format("You need a premium account in order to buy '%s'.", parameters.spellName), npc, player)
+			npcHandler:say(string.format("Precisais de uma conta premium para aprender '%s'.", parameters.spellName), npc, player)
 		end
 
 		npcHandler:resetNpc(npc, player)
@@ -169,21 +169,21 @@ if Modules == nil then
 			[TAG_PVPBLESSCOST] = Blessings.getPvpBlessingCost(player:getLevel(), false),
 		}
 		if player:hasBlessing(parameters.bless) then
-			npcHandler:say("You already possess this blessing.", npc, player)
+			npcHandler:say("Já possuís esta bênção.", npc, player)
 		elseif parameters.bless == 3 and player:getStorageValue(Storage.KawillBlessing) ~= 1 then
-			npcHandler:say("You need the blessing of the great geomancer first.", npc, player)
+			npcHandler:say("Primeiro, deveis receber a bênção do grande geomante.", npc, player)
 		elseif parameters.bless == 1 and #player:getBlessings() == 0 and not player:getItemById(3057, true) then
 			npcHandler:say(
-				"You don't have any of the other blessings nor an amulet of loss, \z
-                           so it wouldn't make sense to bestow this protection on you now. \z
-                           Remember that it can only protect you from the loss of those!",
+				"Não possuís nenhuma das outras bênçãos, tampouco um Amulet of Loss, \z
+                           portanto, não há razão para conceder-vos esta proteção agora. \z
+                           Lembrai-vos: ela protege apenas contra a perda dessas bênçãos e desse amuleto!",
 				npc,
 				player
 			)
 		elseif not player:removeMoneyBank(type(parameters.cost) == "string" and tonumber(npcHandler:parseMessage(parameters.cost, parseInfo)) or parameters.cost) then
-			npcHandler:say("Oh. You do not have enough money.", npc, player)
+			npcHandler:say("Ora, não tendes ouro suficiente.", npc, player)
 		else
-			npcHandler:say(parameters.text or "You have been blessed by one of the seven gods!", npc, player)
+			npcHandler:say(parameters.text or "Recebestes a bênção de um dos sete deuses!", npc, player)
 			if parameters.bless == 3 then
 				player:setStorageValue(Storage.KawillBlessing, 0)
 			end
@@ -221,21 +221,21 @@ if Modules == nil then
 		local playerPosition = player:getPosition()
 
 		if parameters.premium and not player:isPremium() then
-			npcHandler:say("I'm sorry, but you need a premium account in order to travel onboard our ships.", npc, player)
+			npcHandler:say("Lamento, viajante, mas precisais de uma conta premium para embarcar em nossos navios.", npc, player)
 		elseif parameters.level and player:getLevel() < parameters.level then
-			npcHandler:say("You must reach level " .. parameters.level .. " before I can let you go there.", npc, player)
+			npcHandler:say("Deveis alcançar o nível " .. parameters.level .. " antes que eu possa permitir vossa viagem até lá.", npc, player)
 		elseif player:isPzLocked() then
-			npcHandler:say("First get rid of those blood stains! You are not going to ruin my vehicle!", npc, player)
+			npcHandler:say("Primeiro, livrai-vos dessas marcas de sangue! Não havereis de manchar meu transporte!", npc, player)
 		elseif not player:removeMoneyBank(cost) then
-			npcHandler:say("You don't have enough money.", npc, player)
+			npcHandler:say("Não tendes ouro suficiente.", npc, player)
 		else
 			local hasExhaustion = player:kv():get("npc-exhaustion") or 0
 			if hasExhaustion > os.time() then
-				npcHandler:say("Sorry, but you need to wait three seconds before travel again.", player)
+				npcHandler:say("Aguardai três segundos antes de viajar novamente, aventureiro.", player)
 				playerPosition:sendMagicEffect(CONST_ME_POFF)
 			else
 				npcHandler:removeInteraction(npc, player)
-				npcHandler:say(parameters.text or "Set the sails!", npc, player)
+				npcHandler:say(parameters.text or "Içai as velas!", npc, player)
 
 				local destination = parameters.destination
 				if type(destination) == "function" then
@@ -442,11 +442,15 @@ if Modules == nil then
 	end
 
 	function TravelModule:init(handler)
-		self.npcHandler = handler
-		self.yesNode = KeywordNode:new(SHOP_YESWORD, TravelModule.onConfirm, { module = self })
-		self.noNode = KeywordNode:new(SHOP_NOWORD, TravelModule.onDecline, { module = self })
-		self.destinations = {}
-		return true
+    	self.npcHandler = handler
+
+    	SHOP_YESWORD.callback = FocusModule.messageMatcher
+    	SHOP_NOWORD.callback = FocusModule.messageMatcher
+
+    	self.yesNode = KeywordNode:new(SHOP_YESWORD, TravelModule.onConfirm, { module = self })
+    	self.noNode = KeywordNode:new(SHOP_NOWORD, TravelModule.onDecline, { module = self })
+    	self.destinations = {}
+    	return true
 	end
 
 	function TravelModule:parseDestinations(npc, data)
@@ -509,11 +513,13 @@ if Modules == nil then
 		keywords2[#keywords2 + 1] = "bring me to " .. name
 		local node = self.npcHandler.keywordHandler:addKeyword(keywords, TravelModule.travel, parameters)
 		self.npcHandler.keywordHandler:addKeyword(keywords2, TravelModule.bringMeTo, parameters)
+		self.npcHandler.keywordHandler:addKeyword({ "leve-me para " .. name }, TravelModule.bringMeTo, parameters)
+		self.npcHandler.keywordHandler:addKeyword({ "me leve para " .. name }, TravelModule.bringMeTo, parameters)
 		node:addChildKeywordNode(self.yesNode)
 		node:addChildKeywordNode(self.noNode)
 
-		self.npcHandler.keywordHandler:addKeyword({ "yes" }, TravelModule.onConfirm, { module = self })
-		self.npcHandler.keywordHandler:addKeyword({ "no" }, TravelModule.onDecline, { module = self })
+		self.npcHandler.keywordHandler:addKeyword(SHOP_YESWORD, TravelModule.onConfirm, { module = self })
+		self.npcHandler.keywordHandler:addKeyword(SHOP_NOWORD, TravelModule.onDecline, { module = self })
 	end
 
 	-- TODO(Eduardo): Need fix this function, is not ok
@@ -525,7 +531,7 @@ if Modules == nil then
 
 		local cost = (IsTravelFree() and 0) or parameters.cost
 
-		module.npcHandler:say(string.format("Do you want to travel to '%s' for '%d' gold coins?", keywords[1], cost), npc, player)
+		module.npcHandler:say(string.format("Desejais viajar para '%s' por %d moedas de ouro?", keywords[1], cost), npc, player)
 		return true
 	end
 
@@ -543,11 +549,11 @@ if Modules == nil then
 
 		if player:isPremium() or not premium then
 			if not player:removeMoneyBank(cost) then
-				npcHandler:say("You do not have enough money!", npc, player)
+				npcHandler:say("Não tendes ouro suficiente!", npc, player)
 			elseif player:isPzLocked(player) then
-				npcHandler:say("Get out of there with this blood.", npc, player)
+				npcHandler:say("Livrai-vos dessas marcas de sangue antes de embarcar.", npc, player)
 			else
-				npcHandler:say("It was a pleasure doing business with you.", npc, player)
+				npcHandler:say("Foi uma honra negociar convosco. Que tenhais uma boa viagem!", npc, player)
 				npcHandler:removeInteraction(npc, player)
 
 				local position = player:getPosition()
@@ -557,7 +563,7 @@ if Modules == nil then
 				destination:sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		else
-			npcHandler:say("I can only allow premium players to travel there.", npc, player)
+			npcHandler:say("Somente aventureiros com uma conta premium podem viajar até lá.", npc, player)
 		end
 
 		npcHandler:resetNpc(npc, player)
@@ -606,13 +612,13 @@ if Modules == nil then
 			return false
 		end
 
-		local msg = "I can bring you to "
+		local msg = "Posso levar-vos a "
 		--local i = 1
 		local maxn = #module.destinations
 		for i, destination in pairs(module.destinations) do
 			msg = msg .. destination
 			if i == maxn - 1 then
-				msg = msg .. " and "
+				msg = msg .. " e "
 			elseif i == maxn then
 				msg = msg .. "."
 			else

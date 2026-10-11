@@ -8,6 +8,7 @@
  */
 
 #include "io/iologindata.hpp"
+#include "utils/tools.hpp"
 
 #include "account/account.hpp"
 #include "config/configmanager.hpp"
@@ -20,6 +21,78 @@
 #include "lib/metrics/metrics.hpp"
 #include "enums/account_type.hpp"
 #include "enums/account_errors.hpp"
+
+#ifndef USE_PRECOMPILED_HEADERS
+	#include <nlohmann/json.hpp>
+	#include <fstream>
+	#include <exception>
+#endif
+
+std::string IOLoginData::getDiscordAccessError(uint32_t accountId) {
+	try {
+		std::ifstream input("discord-access.json");
+		if (!input.is_open()) {
+			return "A verificacao da comunidade Discord esta indisponivel. Contate a equipe.";
+		}
+		const auto config = nlohmann::json::parse(input);
+		if (!config.at("enabled").get<bool>()) {
+			return {};
+		}
+		const auto guildId = config.at("serverId").get<std::string>();
+		const auto roleId = config.at("requiredRoleId").get<std::string>();
+		const auto isSnowflake = [](const std::string &value) {
+			return value.size() >= 17 && value.size() <= 20 && value.find_first_not_of("0123456789") == std::string::npos;
+		};
+		const auto message = config.at("deniedMessage").get<std::string>();
+		const auto invite = config.at("inviteUrl").get<std::string>();
+		const auto accountUrl = config.at("accountUrl").get<std::string>();
+		if (!isSnowflake(guildId) || !isSnowflake(roleId) || message.size() > 1000 || invite.size() > 200 || accountUrl.size() > 200) {
+			return "O acesso pela comunidade Discord ainda nao foi configurado. Contate a equipe.";
+		}
+		const auto result = Database::getInstance().storeQuery("SELECT a.discord_id, d.discord_id AS verified_discord_id, d.allowed_until, d.guild_id, d.role_id, UNIX_TIMESTAMP() AS now_time FROM accounts a LEFT JOIN discord_game_access d ON d.account_id = a.id WHERE a.id = " + std::to_string(accountId));
+		if (result && !result->getString("discord_id").empty()) {
+			if (result->getString("discord_id") == result->getString("verified_discord_id") && result->getString("guild_id") == guildId && result->getString("role_id") == roleId && result->getNumber<uint64_t>("allowed_until") > result->getNumber<uint64_t>("now_time")) {
+				return {};
+			}
+			return message + "\n" + invite + "\nSe voce ja tem o cargo, aguarde a verificacao do bot e tente novamente.";
+		}
+		return message + "\n" + invite + "\nAcesse sua conta no site, copie o token e cole no painel Liberar ID do nosso Discord.\n" + accountUrl;
+	} catch (const std::exception &) {
+		g_logger().error("Discord game access validation unavailable; login refused.");
+		return "A verificacao da comunidade Discord esta indisponivel. Tente novamente mais tarde.";
+	}
+}
+
+
+bool IOLoginData::requiresDiscordIdentity() {
+    try {
+        std::ifstream input("discord-access.json");
+        const auto config = nlohmann::json::parse(input);
+        return config.at("enabled").get<bool>() && config.value("requireDesktopIdentity", false);
+    } catch (const std::exception &) {
+        return true; // An unreadable policy must never disable the identity gate.
+    }
+}
+
+bool IOLoginData::authenticateDiscordLoginTicket(const std::string &ticket, const std::string &characterName, uint32_t &accountId, bool consume) {
+    if (!requiresDiscordIdentity() || ticket.size() != 32 || ticket.find_first_not_of("0123456789abcdef") != std::string::npos) {
+        return false;
+    }
+    auto &db = Database::getInstance();
+    const auto hash = db.escapeString(transformToSHA256(ticket));
+    uint32_t verifiedAccount = 0;
+    const bool ok = DBTransaction::executeWithinTransactionRollbackOnFailure([&] {
+        const auto result = db.storeQuery("SELECT t.account_id FROM discord_login_tickets t JOIN accounts a ON a.id = t.account_id AND a.discord_id = t.discord_id WHERE t.ticket_hash = " + hash + " AND t.expires_at > UNIX_TIMESTAMP() FOR UPDATE");
+        if (!result) return false;
+        verifiedAccount = result->getNumber<uint32_t>("account_id");
+        if (!g_accountRepository().getCharacterByAccountIdAndName(verifiedAccount, characterName) || !getDiscordAccessError(verifiedAccount).empty()) {
+            return false;
+        }
+        return !consume || db.executeQuery("DELETE FROM discord_login_tickets WHERE ticket_hash = " + hash);
+    });
+    if (ok) accountId = verifiedAccount;
+    return ok;
+}
 
 bool IOLoginData::gameWorldAuthentication(const std::string &accountDescriptor, const std::string &password, std::string &characterName, uint32_t &accountId, bool oldProtocol, const uint32_t ip) {
 	Account account(accountDescriptor);

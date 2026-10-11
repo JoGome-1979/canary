@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "serverId": "1556407799091691600",
+  "requiredRoleId": "1556407799091691601",
+  "inviteUrl": "https://discord.gg/p55CbkCdEm",
+  "accountUrl": "https://crystalgames.com.br/?subtopic=accountmanagement",
+  "deniedMessage": "Para entrar no jogo, voce precisa participar da nossa comunidade no Discord e possuir o cargo necessario.",
+  "linkCodeTtlSeconds": 600,
+  "authorizationTtlSeconds": 120,
+  "syncIntervalSeconds": 30
+}

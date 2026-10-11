@@ -54,6 +54,12 @@ void ProtocolLogin::getCharacterList(const std::string &accountDescriptor, const
 		return;
 	}
 
+	const auto discordAccessError = IOLoginData::getDiscordAccessError(account.getID());
+	if (!discordAccessError.empty()) {
+		disconnectClient(discordAccessError);
+		return;
+	}
+
 	auto output = OutputMessagePool::getOutputMessage();
 	const std::string sessionKey = accountDescriptor + "\n" + password;
 	const std::string &motd = g_configManager().getString(SERVER_MOTD);

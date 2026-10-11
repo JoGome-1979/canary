@@ -1347,9 +1347,10 @@
 	<npc centerx="32665" centery="31717" centerz="7" radius="1">
 		<npc name="Ceiron" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+<!-- Desabilitado temporariamente 
 	<npc centerx="31953" centery="31718" centerz="7" radius="1">
 		<npc name="Ruprecht" x="0" y="0" z="7" spawntime="60" />
-	</npc>
+	</npc> -->
 	<npc centerx="33304" centery="31720" centerz="7" radius="1">
 		<npc name="Cornell" x="0" y="0" z="7" spawntime="60" />
 	</npc>

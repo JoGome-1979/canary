@@ -932,8 +932,19 @@ void ProtocolGame::release() {
 	Protocol::release();
 }
 
-void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingSystem_t operatingSystem) {
+void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingSystem_t operatingSystem, const std::string &discordTicket) {
+    const auto admitDiscord = [&] {
+        if (discordTicket.empty()) return !IOLoginData::requiresDiscordIdentity();
+        uint32_t verified = 0;
+        return IOLoginData::authenticateDiscordLoginTicket(discordTicket, name, verified, true) && verified == accountId;
+    };
 	sendClientLoginPreamble(operatingSystem);
+
+	const auto discordAccessError = IOLoginData::getDiscordAccessError(accountId);
+	if (!discordAccessError.empty()) {
+		disconnectClient(discordAccessError);
+		return;
+	}
 
 	g_logger().debug("Player logging in in version '{}' and oldProtocol '{}'", getVersion(), oldProtocol);
 
@@ -1020,6 +1031,11 @@ void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingS
 			return;
 		}
 
+
+        if (!admitDiscord()) {
+            disconnectClient("Autorizacao Discord expirada. Entre novamente na sua conta.");
+            return;
+        }
 		if (!IOLoginData::loadPlayerById(player, player->getGUID(), false)) {
 			disconnectClient("Your character could not be loaded, please contact an adminstrator.");
 			return;
@@ -1066,6 +1082,11 @@ void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingS
 		player->loginProtectionTime = OTSYS_TIME() + g_configManager().getNumber(LOGIN_PROTECTION_TIME);
 		acceptPackets = true;
 	} else {
+
+        if (!admitDiscord()) {
+            disconnectClient("Autorizacao Discord expirada. Entre novamente na sua conta.");
+            return;
+        }
 		if (eventConnect != 0 || !g_configManager().getBoolean(REPLACE_KICK_ON_LOGIN)) {
 			// Already trying to connect
 			disconnectClient("You are already logged in.");
@@ -1287,7 +1308,9 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		accountDescriptor = sessionKey;
 	}
 
-	if (gameLoginLayout->authenticationLayout == GameLoginAuthenticationLayout::SessionKey && authType != "session") {
+    const bool discordTicket = gameLoginLayout->authenticationLayout == GameLoginAuthenticationLayout::SessionKey
+        && sessionKey.starts_with("@discord:");
+	if (gameLoginLayout->authenticationLayout == GameLoginAuthenticationLayout::SessionKey && !discordTicket && authType != "session") {
 		size_t pos = sessionKey.find('\n');
 		if (pos == std::string::npos) {
 			ss << "You must enter your " << (oldProtocol ? "username" : "email") << ".";
@@ -1339,29 +1362,6 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 	}
 	sessionHintLease.reset();
 
-	const auto &onlinePlayer = g_game().getPlayerByName(characterName);
-	const auto &foundPlayer = !onlinePlayer ? g_game().getDeadPlayer(characterName) : onlinePlayer;
-	if (foundPlayer && foundPlayer->client && accountDescriptor != "@livestream") {
-		if (foundPlayer->isDead()) {
-			disconnectClient("You are already logged in.");
-			return;
-		}
-
-		const auto* existingProfile = foundPlayer->client->getProtocolProfile();
-		const bool sameProtocolProfile = existingProfile && protocolProfile && existingProfile->id == protocolProfile->id;
-		const bool sameLegacyContract = !existingProfile && !protocolProfile && foundPlayer->getProtocolVersion() == getVersion() && foundPlayer->isOldProtocol() == oldProtocol;
-		if (!sameProtocolProfile && !sameLegacyContract) {
-			const auto formatClientVersion = [](uint32_t clientVersion) {
-				return fmt::format("{}.{:02d}", clientVersion / 100, clientVersion % 100);
-			};
-			disconnectClient(fmt::format("This character is already online using client version {}. Please log out from that client before switching to version {}.", formatClientVersion(foundPlayer->getProtocolVersion()), formatClientVersion(getVersion())));
-			return;
-		}
-
-		if (!foundPlayer->client->isSessionEnding()) {
-			foundPlayer->client->disconnectClient("You are already connected through another client. Please use only one client at a time!");
-		}
-	}
 
 	if (gameLoginLayout->hasChallengeResponse) {
 		auto timeStamp = msg.get<uint32_t>();
@@ -1408,6 +1408,10 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		return;
 	}
 
+    if (accountDescriptor == "@livestream" && IOLoginData::requiresDiscordIdentity()) {
+        disconnectClient("A visualizacao publica esta indisponivel enquanto a identidade Discord e obrigatoria.");
+        return;
+    }
 	if (accountDescriptor == "@livestream") {
 		// dispatchProtocolTask force-closes the connection when admission fails.
 		(void)dispatchProtocolTask([self = getThis(), characterName, password, operatingSystem] {
@@ -1418,10 +1422,19 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 	}
 
 	uint32_t accountId;
-	if (!IOLoginData::gameWorldAuthentication(accountDescriptor, password, characterName, accountId, oldProtocol, getIP())) {
+    if (!discordTicket && IOLoginData::requiresDiscordIdentity()) {
+        disconnectClient("Abra o Discord e use o cliente atualizado para autenticar sua conta antes de entrar.");
+        return;
+    }
+    const bool authenticated = discordTicket
+        ? IOLoginData::authenticateDiscordLoginTicket(sessionKey.substr(9), characterName, accountId)
+        : IOLoginData::gameWorldAuthentication(accountDescriptor, password, characterName, accountId, oldProtocol, getIP());
+    if (!authenticated) {
 		ss.str(std::string());
-		if (authType == "session") {
-			ss << "Your session has expired. Please log in again.";
+        if (discordTicket) {
+            ss << "Sua autorizacao Discord expirou, ja foi usada ou nao corresponde a esta conta. Entre novamente.";
+        } else if (authType == "session") {
+            ss << "Your session has expired. Please log in again.";
 		} else { // authType == "password"
 			ss << "Your " << (oldProtocol ? "username" : "email") << " or password is not correct.";
 		}
@@ -1436,7 +1449,32 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		return;
 	}
 
-	dispatchProtocolTask([self = getThis(), characterName, accountId, operatingSystem] { self->login(characterName, accountId, operatingSystem); }, __FUNCTION__);
+	const auto &onlinePlayer = g_game().getPlayerByName(characterName);
+	const auto &foundPlayer = !onlinePlayer ? g_game().getDeadPlayer(characterName) : onlinePlayer;
+	if (foundPlayer && foundPlayer->client && accountDescriptor != "@livestream") {
+		if (foundPlayer->isDead()) {
+			disconnectClient("You are already logged in.");
+			return;
+		}
+
+		const auto* existingProfile = foundPlayer->client->getProtocolProfile();
+		const bool sameProtocolProfile = existingProfile && protocolProfile && existingProfile->id == protocolProfile->id;
+		const bool sameLegacyContract = !existingProfile && !protocolProfile && foundPlayer->getProtocolVersion() == getVersion() && foundPlayer->isOldProtocol() == oldProtocol;
+		if (!sameProtocolProfile && !sameLegacyContract) {
+			const auto formatClientVersion = [](uint32_t clientVersion) {
+				return fmt::format("{}.{:02d}", clientVersion / 100, clientVersion % 100);
+			};
+			disconnectClient(fmt::format("This character is already online using client version {}. Please log out from that client before switching to version {}.", formatClientVersion(foundPlayer->getProtocolVersion()), formatClientVersion(getVersion())));
+			return;
+		}
+
+		if (!foundPlayer->client->isSessionEnding()) {
+			foundPlayer->client->disconnectClient("You are already connected through another client. Please use only one client at a time!");
+		}
+	}
+
+
+	dispatchProtocolTask([self = getThis(), characterName, accountId, operatingSystem, discordTicket = discordTicket ? sessionKey.substr(9) : std::string{}] { self->login(characterName, accountId, operatingSystem, discordTicket); }, __FUNCTION__);
 }
 
 void ProtocolGame::sendLoginChallenge() {

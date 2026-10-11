@@ -28,16 +28,16 @@ npcConfig.speechBubble = SPEECHBUBBLE_TRADE
 npcConfig.voices = {
 	interval = 15000,
 	chance = 50,
-	{ text = "That's the spirit!" },
-	{ text = "Potions! Wands! Runes! Get them here!" },
-	{ text = "You levelled up but your wand is old? Come and buy a new one here!" },
-	{ text = "Ran out of mana or a little kablooie? Come to me to resupply!" },
-	{ text = "Low on magic and need a little extra? Get yourself a rune!" },
-	{ text = "Pack of monsters give you trouble? Throw an area rune at them!" },
-	{ text = "Health potions to refill your health in combat!" },
-	{ text = "Taking back empty potion flasks! Get your deposit back here!" },
-	{ text = "Careful with that! That's a highly reactive potion you have there!" },
-	{ text = "Mana potions to refill your magic power!" },
+	{ text = "Esse é o espírito!" },
+	{ text = "Poções, varinhas e runas! Preparai vossa bolsa!" },
+	{ text = "Subistes de nível? Conferi os requisitos de vossa varinha antes de comprar." },
+	{ text = "Mana acabando? Pedi {pocoes} e preparai-vos!" },
+	{ text = "Precisais de magia extra? Conferi as runas disponíveis." },
+	{ text = "Contra vários monstros, usai recursos adequados e evitai ser cercado." },
+	{ text = "Poções de vida ajudam durante a luta!" },
+	{ text = "Conferi os serviços disponíveis para frascos e suprimentos na {loja}." },
+	{ text = "Cuidado com minhas misturas! Escolhei {pocoes}, {varinhas} ou {runas}." },
+	{ text = "Poções de mana para vossas magias!" },
 }
 
 local itemsTable = {
@@ -69,6 +69,82 @@ end
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
+-- Local tutorial helpers: aliases never rewrite player or recipient names.
+local dawnAliases = {
+    yes = { "sim" }, no = { "não", "nao" }, name = { "nome" }, job = { "trabalho" },
+    help = { "ajuda" }, trade = { "loja", "comercio", "comércio", "troca" }, offer = { "ofertas" },
+    quest = { "missao", "missão", "missoes", "missões" }, mission = { "missao", "missão" },
+    fetch = { "buscas", "buscar" }, kill = { "cacadas", "caçadas", "cacar", "caçar" },
+    amulet = { "amuleto" }, ["log book"] = { "diario", "diário" }, herbs = { "ervas", "erva" },
+    key = { "chave" }, precious = { "tesouro" }, reward = { "recompensa" }, minotaur = { "minotauros" },
+    ready = { "pronto" }, heal = { "cura", "curar" }, healing = { "cura", "curar" }, healer = { "curadora" },
+    vocation = { "vocacao", "vocação", "vocacoes", "vocações" }, choosing = { "escolher" }, choose = { "escolher" },
+    decided = { "decidido" }, distance = { "distancia", "distância" }, close = { "perto" },
+    bow = { "arco" }, spear = { "lanca", "lança" }, magic = { "magia", "magias" }, death = { "morte" },
+    doors = { "portas" }, temple = { "templo" }, spells = { "magias" },
+    ["healing spells"] = { "cura" }, ["support spells"] = { "suporte" },
+    ["attack spells"] = { "ataque" }, ["conjure spells"] = { "conjuracao", "conjuração" },
+    invitation = { "convite" }, seeker = { "buscador" }, pilgrimage = { "peregrinacao", "peregrinação" },
+    serenity = { "serenidade" }, ["three-fold path"] = { "caminho triplice", "caminho tríplice" },
+    balance = { "saldo" }, deposit = { "depositar", "deposito", "depósito" }, withdraw = { "sacar", "saque" },
+    all = { "tudo" }, ["bank account"] = { "conta bancaria", "conta bancária" }, bank = { "banco" },
+    basic = { "basicos", "básicos" }, advanced = { "avancados", "avançados" }, money = { "dinheiro", "ouro" },
+    ["change gold"] = { "trocar ouro" }, ["change platinum"] = { "trocar platina" },
+    ["change crystal"] = { "trocar cristal" }, gold = { "ouro" }, crystal = { "cristal" },
+    sail = { "viajar" }, passage = { "passagem" }, travel = { "viajar" }, city = { "cidade" }, cities = { "cidades" },
+    donate = { "doar" }, ship = { "navio" }, mainland = { "continente" }, tibia = { "crystal" },
+    containers = { "recipientes" }, food = { "comida" }, equipment = { "equipamentos" }, others = { "outros" },
+    potions = { "pocoes", "poções" }, wands = { "varinhas" }, runes = { "runas" },
+    rope = { "corda" }, tools = { "ferramentas" },
+}
+local function dawnContains(message, keyword)
+    if MsgContains(message, keyword) then return true end
+    for _, alias in ipairs(dawnAliases[keyword:lower()] or {}) do
+        if MsgContains(message, alias) then return true end
+    end
+    return false
+end
+local function dawnKeys(keys)
+    if #keys ~= 1 or keys.callback then return keys end
+    local aliases = dawnAliases[keys[1]:lower()]
+    if not aliases then return keys end
+    local out = { keys[1], callback = FocusModule.messageMatcher }
+    for _, alias in ipairs(aliases) do out[#out + 1] = alias end
+    return out
+end
+local function dawnMark(player, text)
+    local locations = {
+        { "inigo", 32070, 31900, 5, "Inigo - primeiros passos" },
+        { "richard", 32056, 31881, 5, "Richard - comida e ferramentas" },
+        { "hamish", 32057, 31900, 5, "Hamish - poções" },
+        { "garamond", 32059, 31882, 4, "Garamond - magias" },
+        { "tybald", 32071, 31882, 4, "Ser Tybald - magias" },
+        { "morris", 32071, 31897, 4, "Mr Morris - missões" },
+        { "oressa", 32064, 31892, 6, "Oressa - templo" },
+        { "dreadnought", 32031, 31872, 6, "Captain Dreadnought - embarque" },
+        { "plunderpurse", 32071, 31882, 5, "Plunderpurse - banco" },
+        { "woblin", 31987, 31883, 8, "Woblin - chave" },
+    }
+    local lower = text:lower()
+    for _, d in ipairs(locations) do
+        if lower:find(d[1], 1, true) then
+            player:addMapMark({ x = d[2], y = d[3], z = d[4] }, MAPMARK_FLAG, d[5])
+        end
+    end
+    if lower:find("32099", 1, true) then
+        player:addMapMark({ x = 32099, y = 31933, z = 7 }, MAPMARK_FLAG, "Amuleto - usar pá na areia")
+    end
+    if lower:find("32059, 31800", 1, true) then
+        player:addMapMark({ x = 32059, y = 31800, z = 10 }, MAPMARK_FLAG, "Diário - recipiente na caverna")
+    end
+    if lower:find("santu", 1, true) then
+        for _, pos in ipairs({ {32046,31861,5}, {32082,31879,5}, {32048,31888,6}, {32067,31915,6} }) do
+            player:addMapMark({ x=pos[1], y=pos[2], z=pos[3] }, MAPMARK_FLAG, "Santuário de Monk - usar")
+        end
+    end
+end
+
+
 npcType.onThink = function(npc, interval)
 	npcHandler:onThink(npc, interval)
 end
@@ -93,37 +169,36 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "Hamish MacGuffin, at your disposal." })
-keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "I craft highly efficient runes, wands and potions - always handy when you're in a fight against monsters! Ask me for a trade to browse through my stock." })
-keywordHandler:addKeyword({ "rookgaard" }, StdModule.say, { npcHandler = npcHandler, text = "Nope. Doesn't sound familiar." })
-keywordHandler:addKeyword({ "coltrayne" }, StdModule.say, { npcHandler = npcHandler, text = "Never asked about his past. Seems it's a pretty gloomy one. But he's an excellent blacksmith and seems content enough with his work here." })
-keywordHandler:addKeyword({ "inigo" }, StdModule.say, { npcHandler = npcHandler, text = "Inigo taught me a trick or two since I joined Mr Morris' little crowd. Quite a nice old chap who's seen much of the world and knows his way around here. You should definitely ask him if you need help." })
-keywordHandler:addKeyword({ "garamond" }, StdModule.say, { npcHandler = npcHandler, text = "Can be quite feisty if you doubt his seniorship. <snorts> Knows a thing or two about spells, though. Useful knowledge." })
-keywordHandler:addKeyword({ "wentworth" }, StdModule.say, { npcHandler = npcHandler, text = "Keeran? He's a bit like Plunderpurse's shadow, isn't he? Loves numbers, but I believe underneath it all he always wanted to break out of his boring little job in the city." })
-keywordHandler:addKeyword({ "richard" }, StdModule.say, { npcHandler = npcHandler, text = "Seems good-natured enough a guy. Nimble with his hands, be it cooking or carpentering. Seems to want to keep his mind off something, so he's always busy fixing stuff or cooking something up." })
-keywordHandler:addKeyword({ "mr morris" }, StdModule.say, { npcHandler = npcHandler, text = "If it wasn't for Mr Morris, maybe none of us would be alive. Or at least, none of us would be here. He's been everywhere and gathered some adventurers around him to investigate the secrets of Dawnport." })
-keywordHandler:addKeyword({ "oressa" }, StdModule.say, { npcHandler = npcHandler, text = "Our druid, down in the temple. Just appeared out of the blue one day. Keeps to herself. She must have some reason to stay with us rather than roam the bigger Mainland. Well, we all have our reasons." })
-keywordHandler:addKeyword({ "plunderpurse" }, StdModule.say, { npcHandler = npcHandler, text = "Now there's someone who has lived life to the full! Don't know though whether I should really believe that he's a clerk now." })
-keywordHandler:addKeyword({ "ser tybald" }, StdModule.say, { npcHandler = npcHandler, text = "I wish I had thought of changing my name to that of a hero. Would have smoothed my way no end! Anyway, whatever he was before he joined, Tybald now fits the bill of the legendary hero. He even has a crush on lady Oressa. Cute. <chuckles>" })
-keywordHandler:addKeyword({ "menesto" }, StdModule.say, { npcHandler = npcHandler, text = "Hah, I told him he should take a potion or two! But nooo, he's always so sure of himself. Huh. Well, you'd better tell {Oressa} to patch him up, then." })
-keywordHandler:addKeyword({ "potions" }, StdModule.say, { npcHandler = npcHandler, text = "Of course, just browse through my wares. You can also look at {wands} or {runes}." })
-keywordHandler:addKeyword({ "wands" }, StdModule.say, { npcHandler = npcHandler, text = "Of course, just browse through my wares. You can also look at {potions} or {runes}." })
-keywordHandler:addKeyword({ "runes" }, StdModule.say, { npcHandler = npcHandler, text = "Of course, just browse through my wares. You can also look at {potions} or {wands}." })
-keywordHandler:addKeyword(
-	{ "dawnport" },
+keywordHandler:addKeyword(dawnKeys({ "name" }), StdModule.say, { npcHandler = npcHandler, text = "Hamish MacGuffin, alquimista a vosso serviço!" })
+keywordHandler:addKeyword(dawnKeys({ "job" }), StdModule.say, { npcHandler = npcHandler, text = "Preparo poções e equipamento mágico. Dizei {loja} e conferi preço, nível e vocação antes de comprar." })
+keywordHandler:addKeyword(dawnKeys({ "rookgaard" }), StdModule.say, { npcHandler = npcHandler, text = "Rookgaard? Não conheço. Inigo vos orientará." })
+keywordHandler:addKeyword(dawnKeys({ "coltrayne" }), StdModule.say, { npcHandler = npcHandler, text = "Coltrayne é reservado, mas forja bom equipamento." })
+keywordHandler:addKeyword(dawnKeys({ "inigo" }), StdModule.say, { npcHandler = npcHandler, text = "Inigo conhece a ilha e ensina os primeiros passos. Perguntai-lhe por {ajuda}." })
+keywordHandler:addKeyword(dawnKeys({ "garamond" }), StdModule.say, { npcHandler = npcHandler, text = "Garamond é exigente, mas conhece muitas magias." })
+keywordHandler:addKeyword(dawnKeys({ "wentworth" }), StdModule.say, { npcHandler = npcHandler, text = "Wentworth aprecia números; para o banco daqui, procurai Plunderpurse." })
+keywordHandler:addKeyword(dawnKeys({ "richard" }), StdModule.say, { npcHandler = npcHandler, text = "Richard cuida de comida e ferramentas. É bom ter provisões antes da caçada." })
+keywordHandler:addKeyword(dawnKeys({ "mr morris" }), StdModule.say, { npcHandler = npcHandler, text = "Morris reuniu nossa expedição e oferece tarefas para investigar Dawnport." })
+keywordHandler:addKeyword(dawnKeys({ "oressa" }), StdModule.say, { npcHandler = npcHandler, text = "Oressa fica no templo. Ela cuida da cura e da escolha de vocação." })
+keywordHandler:addKeyword(dawnKeys({ "plunderpurse" }), StdModule.say, { npcHandler = npcHandler, text = "Plunderpurse guarda vosso ouro. Não precisais carregá-lo todo numa caçada." })
+keywordHandler:addKeyword(dawnKeys({ "ser tybald" }), StdModule.say, { npcHandler = npcHandler, text = "Ser Tybald ensina magias de Knight e Paladin." })
+keywordHandler:addKeyword(dawnKeys({ "menesto" }), StdModule.say, { npcHandler = npcHandler, text = "Menesto guarda a caverna. Se precisardes de cura, procurai {Oressa}." })
+keywordHandler:addKeyword(dawnKeys({ "potions" }), StdModule.say, { npcHandler = npcHandler, text = "Conferi as poções. Também podeis pedir {varinhas} ou {runas}." })
+keywordHandler:addKeyword(dawnKeys({ "wands" }), StdModule.say, { npcHandler = npcHandler, text = "Conferi as varinhas. Também podeis pedir {pocoes} ou {runas}." })
+keywordHandler:addKeyword(dawnKeys({ "runes" }), StdModule.say, { npcHandler = npcHandler, text = "Conferi as runas. Também podeis pedir {pocoes} ou {varinhas}." })
+keywordHandler:addKeyword(dawnKeys({ "dawnport" }),
 	StdModule.say,
-	{ npcHandler = npcHandler, text = "Small and deceptively friendly-looking island. Well, I used to study the plants and herbs here for my potions. Nowadays, I leave that to Oressa, she has a better way with that horrible wildlife here. I prefer to distil potions in the quiet of my lab. If you need some potions, runes or other magic equipment, ask for a trade." }
+	{ npcHandler = npcHandler, text = "Dawnport oferece treinamento, mas os monstros exigem cuidado. Preparai comida, cura e mana antes de explorar. Pedi {loja} para consultar meus suprimentos." }
 )
-keywordHandler:addKeyword({ "main" }, StdModule.say, {
+keywordHandler:addKeyword(dawnKeys({ "main" }), StdModule.say, {
 	npcHandler = npcHandler,
-	text = "Dawnport is not far off from the coast of the Tibian Mainland. Lots of cities, monsters, bandits, brigands, mean folk and people of low understanding with no sense of respect towards alchemical genius. <mutters to himself> Ahem. Once you're level 8, you should be experienced enough to choose your definite vocation and leave Dawnport for Main - and Tibia definitely needs more skilled adventurers to keep those monsters in check which roam our lands!",
+	text = "Ao nível 8, escolhei a vocação definitiva e preparai a partida para o continente de Crystal. Antes disso, treinai e experimentai as vocações.",
 })
-keywordHandler:addKeyword({ "key" }, StdModule.say, { npcHandler = npcHandler, text = "I've seen Mr Morris leaving the key here and there on several occasions. He really should have put it somewhere safe." })
+keywordHandler:addKeyword(dawnKeys({ "key" }), StdModule.say, { npcHandler = npcHandler, text = "A chave? Perguntai a Morris sobre a missão e a Inigo sobre Woblin." })
 
-npcHandler:setMessage(MESSAGE_GREET, "Hi there, fellow adventurer. What's your need? Say {trade} and we'll soon get you fixed up. Or ask me about {potions}, {wands}, or {runes}.")
-npcHandler:setMessage(MESSAGE_FAREWELL, "Use your runes wisely!")
-npcHandler:setMessage(MESSAGE_WALKAWAY, "Use your runes wisely!")
-npcHandler:setMessage(MESSAGE_SENDTRADE, "Take your pick! Or maybe you want to look only at {potions}, {wands} or {runes}?")
+npcHandler:setMessage(MESSAGE_GREET, "Saudações! Minha alquimia está a vosso serviço. Escolhei {loja}, {pocoes}, {varinhas} ou {runas}.")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Usai vossas runas com prudência!")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Usai vossas runas com prudência!")
+npcHandler:setMessage(MESSAGE_SENDTRADE, "Escolhei com cuidado: {pocoes}, {varinhas} ou {runas}.")
 
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
@@ -132,9 +207,102 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Vendestes %ix %s por %i moedas de ouro.", amount, name, totalCost))
 end
 
 npcType.onCheckItem = function(npc, player, clientId, subType) end
+
+
+-- Each NPC owns its return memory and lesson pages; quest state stays authoritative.
+local dawnMenu = "Escolhei {loja}, {pocoes}, {varinhas} ou {runas}."
+local dawnPersonality = "Hamish, alquimista entusiasmado"
+local dawnRawSay = npcHandler.say
+local function dawnState(player)
+    return player:kv():scoped("crystal-dawnport-" .. internalNpcName:lower():gsub(" ", "-"))
+end
+local function dawnPage(npc, player, index)
+    local kv = dawnState(player)
+    local total = kv:get("page-count") or 0
+    if total < 1 then dawnRawSay(npcHandler, dawnMenu, npc, player); return end
+    index = math.max(1, math.min(index, total))
+    kv:set("page-index", index)
+    local text = kv:get("page-" .. index) or dawnMenu
+    dawnMark(player, text)
+    dawnRawSay(npcHandler, "[" .. index .. "/" .. total .. "] " .. text ..
+        (index < total and " Dizei {proximo} para continuar ou {ajuda} para voltar ao menu." or " Dizei {repetir} para rever ou {ajuda} para o menu."), npc, player)
+end
+function npcHandler:say(message, npc, creature, delay, textType)
+    local player = Player(creature)
+    if not player then return end
+    local kv = dawnState(player)
+    -- Greeting must not discard the explanation saved from a previous visit.
+    local greeting = self:getMessage(MESSAGE_GREET)
+    if type(message) == "string" and greeting and message == greeting:gsub("|PLAYERNAME|", function() return player:getName() end) then
+        dawnRawSay(self, message, npc, player, delay, textType)
+        return
+    end
+    if type(message) == "table" and #message > 1 then
+        kv:set("page-count", #message)
+        for i, text in ipairs(message) do kv:set("page-" .. i, text) end
+        dawnPage(npc, player, 1)
+    else
+        kv:set("page-count", 0)
+        local text = type(message) == "table" and message[1] or message
+        if text then dawnMark(player, text); dawnRawSay(self, text, npc, player, delay, textType) end
+    end
+end
+local dawnOriginalGreet = npcHandler:getCallback(CALLBACK_GREET)
+npcHandler:setCallback(CALLBACK_GREET, function(npc, creature, message)
+    local player = Player(creature)
+    local kv = dawnState(player)
+    local returning = kv:get("met")
+    if dawnOriginalGreet and dawnOriginalGreet(npc, creature, message) == false then return false end
+    keywordHandler:reset(player)
+    npcHandler:setTopic(player:getId(), 0)
+    local greeting
+    -- Preserve original greet side effects while requiring fresh transaction confirmation.
+    if returning then
+        greeting = "Bem-vindo de volta, |PLAYERNAME|! " .. dawnMenu
+    else
+        greeting = "Saudações, |PLAYERNAME|! Sou " .. dawnPersonality .. ". " .. dawnMenu
+    end
+    if (kv:get("page-count") or 0) > 0 then
+        greeting = greeting .. " Dizei {continuar} para rever vossa explicação. Qualquer operação exige nova confirmação nesta conversa."
+    end
+    kv:set("met", true)
+    npcHandler:setMessage(MESSAGE_GREET, greeting)
+    return true
+end)
+local function dawnOriginalOnSay(npc, creature, speechType, message)
+    return npcHandler:onSay(npc, creature, speechType, message)
+end
+npcType.onSay = function(npc, creature, type, message)
+    local player = Player(creature)
+    if not player or not npcHandler:checkInteraction(npc, creature) then
+        return dawnOriginalOnSay(npc, creature, type, message)
+    end
+    local kv = dawnState(player)
+    local id = player:getId()
+    if dawnContains(message, "help") or MsgContains(message, "menu") then
+        keywordHandler:reset(player)
+        npcHandler:setTopic(id, 0)
+        dawnRawSay(npcHandler, dawnMenu .. " Usai {proximo}, {anterior}, {repetir} ou {continuar} durante as explicações.", npc, player)
+        return
+    end
+    if MsgContains(message, "proximo") or MsgContains(message, "próximo") then
+        dawnPage(npc, player, (kv:get("page-index") or 1) + 1); return
+    elseif MsgContains(message, "anterior") then
+        dawnPage(npc, player, (kv:get("page-index") or 1) - 1); return
+    elseif MsgContains(message, "continuar") or MsgContains(message, "repetir") then
+        dawnPage(npc, player, kv:get("page-index") or 1); return
+    end
+    if dawnContains(message, "yes") and (kv:get("page-index") or 0) < (kv:get("page-count") or 0) then
+        dawnRawSay(npcHandler, "Antes de confirmar, lede a orientação completa. Dizei {proximo}.", npc, player)
+        return
+    end
+    if dawnContains(message, "no") then kv:set("page-count", 0) end
+    
+    return dawnOriginalOnSay(npc, creature, type, message)
+end
 
 npcType:register(npcConfig)

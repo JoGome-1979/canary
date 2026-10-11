@@ -648,11 +648,17 @@ return function(api)
 		local state = api.state.ensure(player, false)
 		local activeTask = state.bounty.tasks[1]
 		local bestiaryUnlocked = false
-		if type(player.isMonsterBestiaryUnlocked) == "function" then
-			local checked, unlocked = pcall(player.isMonsterBestiaryUnlocked, player, tonumber(raceId))
+		local normalizedRaceId = tonumber(raceId)
+		local validBestiaryRace = normalizedRaceId
+			and normalizedRaceId == math.floor(normalizedRaceId)
+			and normalizedRaceId > 0
+			and normalizedRaceId <= 0xFFFF
+			and MonsterType(normalizedRaceId) ~= nil
+		if validBestiaryRace and type(player.isMonsterBestiaryUnlocked) == "function" then
+			local checked, unlocked = pcall(player.isMonsterBestiaryUnlocked, player, normalizedRaceId)
 			bestiaryUnlocked = checked and unlocked == true
 		end
-		if not bestiaryUnlocked and activeTask and activeTask.state == api.taskState.selected and activeTask.raceId == tonumber(raceId) and hasEquippedTalisman(player) and type(player.addBestiaryKill) == "function" then
+		if validBestiaryRace and not bestiaryUnlocked and activeTask and activeTask.state == api.taskState.selected and activeTask.raceId == tonumber(raceId) and hasEquippedTalisman(player) and type(player.addBestiaryKill) == "function" then
 			local chance = talismanDoubleBestiaryChance(state.upgrades.doubleBestiary)
 			if chance > 0 and math.random(1, 100) <= chance then
 				local entry = api.catalog.get(raceId)

@@ -4,7 +4,7 @@ function rookgaardAdvance.onAdvance(player, skill, oldLevel, newLevel)
 		return true
 	end
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Congratulations! You are ready to leave this island and choose a vocation now. Go see the Oracle over the academy in Rookgaard before you advance to level 10!")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Parabéns! Você está pronto para deixar esta ilha e escolher sua vocação. Procure o Oráculo, localizado acima da academia em Rookgaard, antes de alcançar o nível 10!")
 	return true
 end
 

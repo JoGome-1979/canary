@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
     `name` varchar(32) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `email` varchar(255) NOT NULL DEFAULT '',
+    `discord_id` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
     `premdays` int(11) NOT NULL DEFAULT '0',
     `premdays_purchased` int(11) NOT NULL DEFAULT '0',
     `lastday` int(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -882,3 +883,22 @@ INSERT INTO `players`
 (5, 'Knight Sample', 1, 1, 8, 4, 185, 185, 4200, 113, 115, 95, 39, 129, 0, 90, 90, 0, 8, '', 470, 1, 10, 0, 10, 0, 10, 0, 10, 0),
 (6, 'Monk Sample', 1, 1, 8, 9, 185, 185, 4200, 113, 115, 95, 39, 129, 0, 90, 90, 0, 8, '', 470, 1, 10, 0, 10, 0, 10, 0, 10, 0),
 (7, 'GOD', 6, 1, 2, 0, 155, 155, 100, 113, 115, 95, 39, 75, 0, 60, 60, 0, 8, '', 410, 1, 10, 0, 10, 0, 10, 0, 10, 0);
+
+-- Crystal Discord account linking and temporary game authorization
+CREATE TABLE IF NOT EXISTS `discord_game_access` (
+  `account_id` INT UNSIGNED NOT NULL,
+  `discord_id` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `guild_id` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL DEFAULT '',
+  `role_id` VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL DEFAULT '',
+  `allowed_until` BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`account_id`),
+  KEY `linked_discord_user` (`discord_id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `discord_account_tokens` (
+  `account_id` INT UNSIGNED NOT NULL,
+  `token_hash` CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `expires_at` BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (`account_id`),
+  UNIQUE KEY `unique_token_hash` (`token_hash`)
+) ENGINE=InnoDB;

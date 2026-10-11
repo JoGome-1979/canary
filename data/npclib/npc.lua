@@ -33,7 +33,7 @@ function GetFormattedShopCategoryNames(itemsTable)
 
 	if #formattedCategoryNames > 1 then
 		local lastCategory = table.remove(formattedCategoryNames)
-		return table.concat(formattedCategoryNames, ", ") .. " and " .. lastCategory
+		return table.concat(formattedCategoryNames, ", ") .. " e " .. lastCategory
 	else
 		return formattedCategoryNames[1] or ""
 	end
@@ -46,7 +46,7 @@ function Npc:getRemainingShopCategories(selectedCategory, itemsTable)
 			table.insert(remainingCategories, "{" .. categoryName .. "}")
 		end
 	end
-	return table.concat(remainingCategories, " or ")
+	return table.concat(remainingCategories, " ou ")
 end
 
 -- Npc talk

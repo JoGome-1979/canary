@@ -85,21 +85,21 @@ if NpcHandler == nil then
 		messages = {
 			-- These are the default replies of all npcs. They can/should be changed individually for each npc.
 			-- Leave empty for no send message
-			[MESSAGE_GREET] = "Greetings, |PLAYERNAME|.",
-			[MESSAGE_FAREWELL] = "Good bye, |PLAYERNAME|.",
-			[MESSAGE_BUY] = "Do you want to buy |ITEMCOUNT| |ITEMNAME| for |TOTALCOST| gold coins?",
-			[MESSAGE_MISSINGMONEY] = "You don't have enough money.",
-			[MESSAGE_NEEDMONEY] = "You don't have enough money.",
-			[MESSAGE_MISSINGITEM] = "You don't have so many.",
-			[MESSAGE_NEEDITEM] = "You do not have this object.",
-			[MESSAGE_NEEDSPACE] = "There is not enought room.",
-			[MESSAGE_NEEDMORESPACE] = "You do not have enough capacity for all items.",
-			[MESSAGE_WALKAWAY] = "Good bye.",
-			[MESSAGE_DECLINE] = "Then not.",
-			[MESSAGE_SENDTRADE] = "Of course, just browse through my wares.",
-			[MESSAGE_NOSHOP] = "Sorry, I'm not offering anything.",
-			[MESSAGE_ONCLOSESHOP] = "Thank you, come back whenever you're in need of something else.",
-			[MESSAGE_ALREADYFOCUSED] = "|PLAYERNAME|, I am already talking to you.",
+			[MESSAGE_GREET] = "Saudações, |PLAYERNAME|.",
+			[MESSAGE_FAREWELL] = "Adeus, |PLAYERNAME|.",
+			[MESSAGE_BUY] = "Desejais comprar |ITEMCOUNT| |ITEMNAME| por |TOTALCOST| moedas de ouro?",
+			[MESSAGE_MISSINGMONEY] = "Não possuís moedas suficientes.",
+			[MESSAGE_NEEDMONEY] = "Não possuís moedas suficientes.",
+			[MESSAGE_MISSINGITEM] = "Não possuís tal quantidade.",
+			[MESSAGE_NEEDITEM] = "Não possuís este objeto.",
+			[MESSAGE_NEEDSPACE] = "Não há espaço suficiente em vossa mochila.",
+			[MESSAGE_NEEDMORESPACE] = "Não tendes capacidade suficiente para carregar todos os itens.",
+			[MESSAGE_WALKAWAY] = "Ide em paz.",
+			[MESSAGE_DECLINE] = "Que assim seja, então.",
+			[MESSAGE_SENDTRADE] = "Pois bem, apreciai minhas mercadorias.",
+			[MESSAGE_NOSHOP] = "Perdão, mas nada tenho a oferecer no momento.",
+			[MESSAGE_ONCLOSESHOP] = "Agradeço vossa preferência. Voltai sempre que precisardes de algo.",
+			[MESSAGE_ALREADYFOCUSED] = "|PLAYERNAME|, já estou a conversar convosco.",
 			[MESSAGE_WALKAWAY_MALE] = "",
 			[MESSAGE_WALKAWAY_FEMALE] = "",
 		},
@@ -443,7 +443,8 @@ if NpcHandler == nil then
 	-- Handles onSay events. If you with to handle this yourself, please use the CALLBACK_ON_SAY callback.
 	function NpcHandler:onSay(npc, player, msgtype, msg)
 		local playerId = player:getId()
-		if type(msg) == "string" and msg:lower() == "hi" and NpcDialogProfessionByName then
+		local greeting = type(msg) == "string" and msg:lower() or nil
+		if (greeting == "hi" or greeting == "hello" or greeting == "oi" or greeting == "ola" or greeting == "olá") and NpcDialogProfessionByName then
 			local profession = NpcDialogProfessionByName[npc:getName():lower()]
 			if profession == "king" then
 				msg = "hail king"

@@ -9,91 +9,91 @@ BookDocumentTable = {
 		itemId = 2828,
 		position = { x = 32063, y = 31884, z = 4 },
 		text = [[
-MONSTERS AND FOES OF DAWNPORT I
+MONSTROS E INIMIGOS DE DAWNPORT I
 
-Intelligent monsters
+Monstros Inteligentes
 
-The troll - Though intelligent in a limited way, usually trolls do not pose a major threat to our outpost, though they are scouting the outskirts of our grounds and attack passersby. They are able to create and use some basic equipment, and are tough to lesser weapons and unskilled fighters.
+O Troll - Embora possuam uma inteligência limitada, os trolls geralmente não representam uma grande ameaça ao nosso posto avançado. No entanto, costumam explorar os arredores de nosso território e atacar viajantes desavisados. São capazes de fabricar e utilizar equipamentos básicos, além de serem resistentes a armas simples e combatentes inexperientes.
 
-The orc - The green-skinned orc is intelligent and able to use weapons and armor. They are warriors of some power and very dangerous in greater numbers. Luckily enough, there are not many of their more skilled fighters around, like the berserker or warrior. Still, a handful of them is enough to get an adventurer into dire straits.
+O Orc - De pele verde, os orcs são criaturas inteligentes, capazes de utilizar armas e armaduras. São guerreiros poderosos e extremamente perigosos quando estão em grande número. Felizmente, não existem muitos de seus combatentes mais experientes nas proximidades, como os Berserkers e Warriors. Ainda assim, apenas alguns deles são suficientes para colocar um aventureiro em sérios apuros.
 
-The goblin - sneaky and devious, goblins steal everything that is not nailed down. Though small and relatively easy to fight, they don't shirk from attacking humans when they feel superior in numbers. They normally stay in their hideouts underground, where they hoard their loot.
+O Goblin - Furtivos e traiçoeiros, os goblins roubam tudo o que não estiver bem protegido. Embora sejam pequenos e relativamente fáceis de enfrentar, não hesitam em atacar humanos quando possuem vantagem numérica. Normalmente, permanecem escondidos em seus refúgios subterrâneos, onde acumulam os tesouros roubados.
 
-The minotaur - a dreaded beast and fearsome fighter, the minotaur is a formidable foe for a young adventurer. Particular caution should be exercised when going to their lair underground, as they have some skilled archers and even some mages that may kill you very, very quickly.
+O Minotauro - Uma criatura temida e um guerreiro assustador, o minotauro representa um adversário formidável para qualquer jovem aventureiro. É necessário ter extremo cuidado ao explorar seus covis subterrâneos, pois entre eles existem arqueiros habilidosos e até mesmo magos capazes de acabar com sua vida em questão de segundos.
 
-Other beasts - It is certain that other beasts live in the dungeons of our isle. But they are not numerous enough to be recognised yet. If you encounter any unknown beast it is certainly dangerous and a potential lethal enemy. Don't underestimate them.
-		]],
+Outras Criaturas - É certo que outras criaturas habitam as masmorras de nossa ilha. Entretanto, seus números ainda são pequenos demais para que sejam devidamente identificadas. Caso encontre alguma criatura desconhecida, considere-a extremamente perigosa e potencialmente mortal. Jamais subestime um inimigo desconhecido.
+]],
 	},
 	[2] = {
 		containerId = 2435,
 		itemId = 2828,
 		position = { x = 32063, y = 31884, z = 4 },
 		text = [[
-MONSTERS AND FOES OF DAWNPORT II
+MONSTROS E INIMIGOS DE DAWNPORT II
 
-Underground and undead beasts
+Criaturas Subterrâneas e Mortos-Vivos
 
-The rotworm - A creature of decay that lives underground like its small cousin, the earthworm. Its toothed maw is a formidable weapon, and rotworms have torn more than one adventurer to pieces. A horde of them could kill anyone, so great caution is advised when encountering them.
+O Rotworm - Uma criatura da decomposição que vive no subsolo, assim como sua pequena parente, a minhoca. Sua mandíbula repleta de dentes é uma arma formidável, e os rotworms já despedaçaram mais de um aventureiro. Uma horda dessas criaturas pode matar qualquer pessoa, portanto, recomenda-se extrema cautela ao encontrá-las.
 
-The carrion worm - They seem to be no species of their own but indeed just older, bigger and meaner rotworms. They are usually accompanied by a host of smaller worms which makes them even more dangerous. Carrion worms have some sort of tusks that can easily penetrate a good armor.
+O Carrion Worm - Essas criaturas não parecem pertencer a uma espécie diferente, mas são, na verdade, rotworms mais velhos, maiores e muito mais agressivos. Geralmente são acompanhados por diversos vermes menores, tornando-os ainda mais perigosos. Os carrion worms possuem uma espécie de presas capazes de perfurar facilmente até mesmo uma boa armadura.
 
-The skeletons - Skeletons are living undead, rumoured to be the bodies of dead adventurers which have been revived by some evil power. Cropping up in packs and occasionally accompanied by other undead creatures like ghouls or mummies, they are quite nasty opponents, particularly because they are able to drain the life energy of their opponents.
+Os Esqueletos - Esqueletos são mortos-vivos que, segundo rumores, seriam os restos mortais de aventureiros ressuscitados por algum poder maligno. Costumam surgir em grupos e, ocasionalmente, são acompanhados por outras criaturas mortas-vivas, como ghouls e múmias. São adversários bastante perigosos, especialmente por sua capacidade de drenar a energia vital de seus oponentes.
 
-The bat - Often encountered in caves and ruins, along with other creatures, sometimes undead. Being little stronger than a rat, bats are rather a nuisance than a threat to an experienced adventurer. Their attacks on humans mainly happen out of self-defence. Bats often form a large swarm which is slightly more dangerous to face than a single specimen. Bats can be found almost everywhere as long as there is some close-by dark place where they can breed and sleep.
+O Morcego - Frequentemente encontrado em cavernas e ruínas, o morcego costuma habitar locais ocupados por outras criaturas, incluindo mortos-vivos. Sendo pouco mais forte que um rato, representa mais um incômodo do que uma verdadeira ameaça para aventureiros experientes. Seus ataques contra humanos geralmente acontecem por instinto de defesa. Morcegos costumam formar grandes enxames, tornando-se um pouco mais perigosos do que quando encontrados isoladamente. Podem ser encontrados praticamente em qualquer lugar onde existam ambientes escuros próximos, adequados para descansar e se reproduzir.
 
-The rat - Whether humans brought this pest with them on the isle or whether rats are indigenous to every dark place in Tibia is anyone's guess. However, rats on Dawnport normally prefer to live underground and are mostly harmless, tending to destroy food supplies in cellars. They can become dangerous in greater numbers, though, to any badly equipped adventurer they corner.
-		]],
+O Rato - Ninguém sabe ao certo se os humanos trouxeram essa praga para a ilha ou se os ratos são criaturas nativas de todos os lugares sombrios de Tibia. Entretanto, os ratos de Dawnport normalmente preferem viver no subsolo e são, em sua maioria, inofensivos, embora tenham o hábito de destruir os estoques de alimentos armazenados em porões. Ainda assim, quando encontrados em grande número, podem representar um perigo considerável para aventureiros mal equipados que acabem encurralados.
+]],
 	},
 	[3] = {
 		containerId = 2435,
 		itemId = 2828,
 		position = { x = 32063, y = 31884, z = 4 },
 		text = [[
-MONSTERS AND FOES OF DAWNPORT III
+MONSTROS E INIMIGOS DE DAWNPORT III
 
-Poisonous beasts
+Criaturas Venenosas
 
-The salamander - A common creature of the swamp and warm earth of the marshes, the salamander relies on stealth and a little poison to ward off attackers. Normally living on a diet of insects, it seems that here on Dawnport some salamanders have developed a taste for the rare dawnfire herb. Those salamanders have often been sighted in the company of trolls and it is supposed that the trolls keep them as a sort of pet, though to what reason, nobody knows yet. Though relatively harmless, the poison of the troll-trained salamanders is not to be underestimated and can seriously injure or kill inexperienced adventurers.
+A Salamandra - Uma criatura comum dos pântanos e das terras quentes e úmidas, a salamandra utiliza sua capacidade de se esconder e uma pequena quantidade de veneno para afastar seus atacantes. Normalmente, alimenta-se de insetos, mas algumas salamandras de Dawnport parecem ter desenvolvido um gosto especial pela rara erva Dawnfire. Essas salamandras são frequentemente avistadas na companhia de trolls, levando à suspeita de que sejam mantidas como animais de estimação, embora ninguém saiba exatamente por qual motivo. Apesar de serem relativamente inofensivas, o veneno das salamandras treinadas pelos trolls não deve ser subestimado, pois pode causar ferimentos graves ou até mesmo matar aventureiros inexperientes.
 
-The wasp - fast and deadly to the inexperienced, wasps will follow their enemy for quite a while, and their speed makes them dangerous, even more so in high numbers. Their sting hurts and can poison you, so make sure to finish a wasp off quickly when you encounter it. They can be found in warm areas such as woodlands, jungles or deserts; and if there is a heat source, in underground stone caves.
+A Vespa - Rápidas e mortais para os inexperientes, as vespas são criaturas que perseguem seus inimigos por longas distâncias. Sua velocidade as torna extremamente perigosas, especialmente quando estão em grande número. Suas ferroadas são dolorosas e podem envenenar suas vítimas, portanto, ao encontrar uma vespa, procure eliminá-la rapidamente. Elas podem ser encontradas em regiões quentes, como florestas, selvas e desertos. Também podem habitar cavernas subterrâneas, desde que exista alguma fonte de calor nas proximidades.
 
-The poison spider - Though only slightly tougher than an ordinary spider, this one can poison you. Try to avoid being bitten by one, as they usually live far from our base and you might not make it to our local healer in time.
-		]],
+A Aranha Venenosa - Embora seja apenas um pouco mais resistente do que uma aranha comum, essa criatura possui a perigosa capacidade de envenenar suas vítimas. Evite ser mordido a qualquer custo, pois essas aranhas geralmente vivem longe de nossa base. Caso seja envenenado, talvez não consiga retornar a tempo para receber os cuidados de nosso curandeiro local.
+]],
 	},
 	[4] = {
 		containerId = 2436,
 		itemId = 2828,
 		position = { x = 32064, y = 31884, z = 4 },
 		text = [[
-MONSTERS AND FOES OF DAWNPORT IV
+MONSTROS E INIMIGOS DE DAWNPORT IV
 
-Creatures of the meadows and marshes
+Criaturas dos Prados e Pântanos
 
-The dawnfly - A close relative of the emerald damselfly found in the swamps of Venore, it is supposed the creature may have found its way over the seas to Dawnport and adapted to the isle. Like the damselfly, their diet consists of plant matter and smaller insects though they too attack passersby, supposedly to guard their territory. Their bite is slightly poisonous, but poses a threat only to the wounded or completely unprepared wanderer.
+A Dawnfly - Parente próxima da Emerald Damselfly encontrada nos pântanos de Venore, acredita-se que essa criatura tenha atravessado os mares até Dawnport, onde conseguiu se adaptar ao ambiente da ilha. Assim como sua parente, alimenta-se principalmente de vegetais e pequenos insetos. Entretanto, também costuma atacar viajantes que atravessam seu território, provavelmente para proteger seu habitat. Sua mordida é levemente venenosa, mas representa uma ameaça significativa apenas para aventureiros feridos ou completamente despreparados.
 
-The woodling - The woodlings could be the missing link between the swamplings and the haunted treelings. Half plant and half animal and at least partially intelligent, treelings love to ambush their prey and make use of the surroundings to drive it into a corner. Looking deceptively tree-like, a woodling will make a grab at any human that passes; supposedly to spice up its diet of rotting leaves and plants with something more juicy. Woodlings can slow down their enemies and are quite tough, which is why any inexperienced adventurer would do well to know the way back to the outpost in a hurry if venturing down to the woody plains.
+O Woodling - Os woodlings podem representar o elo perdido entre os Swamplings e os Haunted Treelings. Metade planta, metade animal e dotados de certo grau de inteligência, essas criaturas adoram preparar emboscadas para suas presas, utilizando o ambiente ao redor para encurralá-las. Sua aparência semelhante à de uma árvore pode facilmente enganar os desavisados. Um woodling não hesitará em agarrar qualquer humano que passe por perto, provavelmente na tentativa de complementar sua alimentação de folhas e vegetais em decomposição com algo mais suculento. Os woodlings possuem a capacidade de reduzir a velocidade de seus inimigos e são bastante resistentes. Por esse motivo, aventureiros inexperientes que pretendam explorar as planícies arborizadas devem conhecer muito bem o caminho de volta ao posto avançado, caso precisem fugir rapidamente.
 
-The Meadow strider - A giant bird that stalks the marshes and meadows, the meadow strider usually feeds on small insects and amphibians. Being very territorial but short-sighted, it will attack any supposed rival of its own size, which includes humans, and peck at them. Though they are nearly as tough as woodlings, there's good eating on a meadow strider, and they often contain swallowed gold coins and other useful stuff.
-		]],
+O Meadow Strider - Uma ave gigantesca que percorre os pântanos e prados, o Meadow Strider normalmente se alimenta de pequenos insetos e anfíbios. Extremamente territorialista, mas com uma visão limitada, essa criatura costuma atacar qualquer ser que considere um rival de tamanho semelhante, incluindo humanos, utilizando seu poderoso bico para desferir golpes. Embora seja quase tão resistente quanto um Woodling, sua carne é bastante apreciada como alimento. Além disso, essas aves frequentemente carregam em seus estômagos moedas de ouro e outros objetos úteis que acabaram engolindo.
+]],
 	},
 	[5] = {
 		containerId = 2436,
 		itemId = 2828,
 		position = { x = 32064, y = 31884, z = 4 },
 		text = [[
-MONSTERS AND FOES OF DAWNPORT V
+MONSTROS E INIMIGOS DE DAWNPORT V
 
-Creatures of the woods
+Criaturas das Florestas
 
-The wolf - There are some loner wolves roaming this isle. Wolves are fast, tough and dangerous. Often they are the hunters and not the hunted. It is a good decision to engage them in combat only with decent equipment and to fight a wolf one on one. If there's nothing else, you can always eat a hunch of wolf, and sell its fur.
+O Lobo - Alguns lobos solitários vagam por esta ilha. São criaturas rápidas, resistentes e perigosas. Frequentemente, são os caçadores, e não as presas. É aconselhável enfrentá-los apenas quando estiver devidamente equipado e, de preferência, combater um lobo por vez. Após derrotá-los, sua carne pode servir de alimento, enquanto sua pele pode ser vendida por algumas moedas de ouro.
 
-The bear - Bears are hard to beat! Keep that in mind before challenging one. If you are inexperienced and don't have good equipment, retreat is the tactic of choice. Best kill bears in small hunting parties and use terrain to your advantage.
+O Urso - Ursos são adversários extremamente difíceis de derrotar! Tenha isso em mente antes de desafiar um deles. Se você for inexperiente e não possuir bons equipamentos, a melhor estratégia será recuar. O ideal é caçar ursos em pequenos grupos, utilizando o terreno ao seu favor para aumentar suas chances de sobrevivência.
 
-The deer - Deers are a fine supply for food and are non-agressive animals and try to flee on sight. It might be difficult to catch them and you might easily enter the territory of a local predator while chasing them.
+O Cervo - Os cervos são uma excelente fonte de alimento. São animais pacíficos que não apresentam comportamento agressivo e geralmente fogem assim que percebem a presença de alguém. Capturá-los pode ser uma tarefa difícil, e persegui-los sem cautela pode levar um aventureiro diretamente ao território de algum predador perigoso.
 
-The hare - Like deers, hares will flee upon sight and are an excellent source of food for any passing adventurer. They are a common sight in the meadows and forests of Tibia, though larger predators are never very far.
+A Lebre - Assim como os cervos, as lebres fogem imediatamente ao perceber qualquer ameaça. São uma excelente fonte de alimento para aventureiros que atravessam a região. Podem ser encontradas com frequência nos prados e florestas de Tibia. Entretanto, é importante permanecer atento, pois predadores maiores raramente estão muito distantes.
 
-The squirrel - Swift and impish, squirrels will run from any human they see. Hunters avoid preying on squirrels, as there is a legend that says that the giant immortal Squirrels who ate nuts from Crunor's blessed tree take bloody revenge on each and every killer of their descendants. Squirrels are found in woody areas all over Tibia.
+O Esquilo - Ágeis e travessos, os esquilos fogem rapidamente ao avistar qualquer humano. Muitos caçadores evitam atacá-los devido a uma antiga lenda que afirma que esquilos gigantes e imortais, após se alimentarem das nozes da árvore abençoada de Crunor, passaram a buscar uma vingança sangrenta contra todos aqueles que matassem seus descendentes. Os esquilos podem ser encontrados em regiões arborizadas por todo o mundo de Tibia.
 ]],
 	},
 	--The isle of the kings (need position)
@@ -102,9 +102,19 @@ The squirrel - Swift and impish, squirrels will run from any human they see. Hun
 		itemId = 2821,
 		--position = {x = xxxxx, y = xxxxx, z = x},
 		text = [[
-Kazordoon, the hidden city
-In the blocklike Mountain, known as the big old one, the hidden city of kazordoon is nestled. Its the last refuge of the ancient race of dwarves. Hidden and heavily fortified it was the last stand of dwarvenhood in the wars of creation and the last hope of that race to adapt to and survive the new ages. The famous giant statue, known as colossus guards its entry, alhough the narrow valley makes it difficult to see that fortress-statue and admire its beauty. Kazordoon is known for its safety and masterful smithery throughout the lands.
-Since some generations the dwarven city (whose ruler claims a title that might be translated as 'emperor') is allied with the thaian kingdom.
+KAZORDOON, A CIDADE OCULTA
+
+Nas profundezas da imponente montanha conhecida como a Grande Anciã, encontra-se a cidade oculta de Kazordoon. Este é o último refúgio da antiga raça dos anões.
+
+Escondida e fortemente fortificada, Kazordoon foi o último bastião dos anões durante as Guerras da Criação e a última esperança de sua raça para se adaptar e sobreviver às novas eras.
+
+A famosa estátua gigantesca, conhecida como Colosso, protege a entrada da cidade. Entretanto, o estreito vale que conduz até ela dificulta a visão dessa magnífica fortaleza esculpida em pedra, impedindo muitos viajantes de admirar toda a sua grandiosidade.
+
+Kazordoon é conhecida em todas as terras por sua segurança, suas poderosas fortificações e pela extraordinária habilidade de seus mestres ferreiros, cujas obras são admiradas por todo o reino.
+
+Há várias gerações, a cidade dos anões, cujo governante ostenta um título que pode ser traduzido como "Imperador", mantém uma aliança com o Reino de Thais.
+
+Essa união representa um importante pacto entre humanos e anões, fortalecendo os laços entre dois dos mais antigos povos destas terras.
 ]],
 	},
 	[7] = {
@@ -112,52 +122,223 @@ Since some generations the dwarven city (whose ruler claims a title that might b
 		itemId = 2825,
 		position = { x = 32065, y = 31884, z = 4 },
 		text = [[
-Kazordoon, the hidden city
-In the blocklike Mountain, known as the big old one, the hidden city of kazordoon is nestled. Its the last refuge of the ancient race of dwarves. Hidden and heavily fortified it was the last stand of dwarvenhood in the wars of creation and the last hope of that race to adapt to and survive the new ages. The famous giant statue, known as colossus guards its entry, alhough the narrow valley makes it difficult to see that fortress-statue and admire its beauty. Kazordoon is known for its safety and masterful smithery throughout the lands.
-Since some generations the dwarven city (whose ruler claims a title that might be translated as 'emperor') is allied with the thaian kingdom.
-		]],
+KAZORDOON, A CIDADE OCULTA
+
+Nas profundezas da imponente montanha conhecida como a Grande Anciã, encontra-se a cidade oculta de Kazordoon. Este é o último refúgio da antiga raça dos anões.
+
+Escondida e fortemente fortificada, Kazordoon foi o último bastião dos anões durante as Guerras da Criação e a última esperança de sua raça para se adaptar e sobreviver às novas eras.
+
+A famosa estátua gigantesca, conhecida como Colosso, protege a entrada da cidade. Entretanto, o estreito vale que conduz até ela dificulta a visão dessa magnífica fortaleza esculpida em pedra, impedindo muitos viajantes de admirar toda a sua grandiosidade.
+
+Kazordoon é conhecida em todas as terras por sua segurança, suas poderosas fortificações e pela extraordinária habilidade de seus mestres ferreiros, cujas obras são admiradas por todo o reino.
+
+Há várias gerações, a cidade dos anões, cujo governante ostenta um título que pode ser traduzido como "Imperador", mantém uma aliança com o Reino de Thais.
+
+Essa união representa um importante pacto entre humanos e anões, fortalecendo os laços entre dois dos mais antigos povos destas terras.
+]],
 	},
 	[8] = {
 		containerId = 2437,
 		itemId = 2831,
 		position = { x = 32066, y = 31884, z = 4 },
 		text = [[
-Genesis I. The Awakening of the Gods
+GÊNESE I. O DESPERTAR DOS DEUSES
 
-In the beginning there was only a big, gaping void. It was everywhere and nowhere.
+No princípio, existia apenas um imenso vazio, profundo e infinito. Ele estava em todos os lugares e, ao mesmo tempo, em lugar algum.
 
-In this emptiness two powerful entities appeared who were eventually known as the elder gods: Fardos the Creator and Uman Zathroth who combined in himself two unequal halves. One of these halves was Uman the Wise, a benign god who was gifted with divine intellect, while Zathroth the Destroyer was the other, darker half. These were the two halves of one single enigmatical entity, and even though either of them was perfectly capable of acting on his own just as if he had been fully independent, independent they were not. They were bound together by an eternal bond that could not be broken, and their destiny was one.
+Em meio a essa imensidão, surgiram duas entidades poderosas que, mais tarde, seriam conhecidas como os Deuses Anciões: Fardos, o Criador, e Uman Zathroth, uma entidade que reunia em si duas metades distintas e desiguais.
 
-Nobody knows where the elder gods came from, or whether they had always existed and eventually awoke from the slumber of infinity. But somewhere along the way they decided to create a universe. Surely Fardos was the initiator, for he was driven by the need to create and give life. He was overflowing with creative power and impatient to release it, so he stepped into existence and began to unleash his powers. However, none of his attempts to create were successful. All of his creations were swallowed by the void before they were completed, and none survived.
+Uma dessas metades era Uman, o Sábio, um deus benevolente dotado de uma inteligência divina extraordinária. A outra era Zathroth, o Destruidor, sua metade sombria e maligna.
 
-Uman Zathroth regarded Fardos's undertakings thoughtfully. Uman was sagacious and held awesome magical powers. Most importantly, however, he was driven by an insatiable hunger for knowledge and enlightenment. In his essence he resembled Fardos, but where Fardos worked openly and logically, Uman's domain was the realm of mystery. Still, he shared Fardos's interest in creation, whereas his dark half Zathroth was essentially corruptive. Zathroth was a vain god who was painfully aware that his own creative powers were poor. Because of this he looked at Fardos's work of creation with jealousy, and from the very beginning he was determined to prevent or at least corrupt it in any way he could. Fardos, who did not suspect this, asked him for assistance because he had accepted the fact that he could not achieve creation on his own, but of course Zathroth denied. Uman, however, agreed to help. And from that he and Fardos worked together on the great project that was creation.
+Embora fossem duas partes de uma única entidade enigmática, cada uma possuía a capacidade de agir por conta própria, como se fosse completamente independente. Entretanto, essa independência era apenas aparente. Ambos estavam unidos por um vínculo eterno e inquebrável, compartilhando um único destino.
 
-Unfortunately, their combined efforts were hardly more successful. Just like before, everything Fardos and Uman created was swallowed by the void as soon as it came into existence, and the two gods sadly saw their creation run through their fingers like water through a sieve. On the other hand, Zathroth, who had been watching their efforts with suspicion, rejoiced. He ridiculed their efforts. However, his glee changed into surprise and anger when he found that something strange happened, something which perhaps Uman and Fardos did not expect themselves. To this day, nobody knows precisely what it was that caused it. Perhaps the power that had been spent lured another entity out of the void, or it might be that it simply awoke another divine entity from its slumber. Some even claim that in some mysterious way the power that had been spent by Uman and Fardos actually created a new entity. Whatever the truth may be, a new goddess stepped out of the void like a new-born mermaid from her shell. The amazed elder gods watched her divine beauty in awed admiration, for everything in her was perfect harmony. They agreed to call her Tibiasula. Zathroth, however, stood by and fumed with silent hate. But cunning as he was, he hid his resentment well and feigned to share the joy of the other elder gods.
-		]],
+Ninguém sabe de onde vieram os Deuses Anciões, nem se sempre existiram e apenas despertaram de um sono que perdurava desde a eternidade. Contudo, em algum momento, decidiram criar um universo.
+
+Certamente, Fardos foi quem tomou a iniciativa, pois sua própria essência era movida pela necessidade de criar e conceder vida. Transbordando de poder criativo e impaciente para libertá-lo, ele manifestou sua existência e começou a utilizar suas habilidades divinas.
+
+Entretanto, nenhuma de suas tentativas de criação obteve sucesso. Tudo aquilo que Fardos tentava criar era engolido pelo vazio antes mesmo de estar completo. Nenhuma de suas obras conseguia sobreviver.
+
+Uman Zathroth observava atentamente os esforços de Fardos.
+
+Uman era extremamente sábio e possuía poderes mágicos extraordinários. Acima de tudo, porém, era movido por uma sede insaciável de conhecimento e iluminação.
+
+Em sua essência, Uman se assemelhava a Fardos. Entretanto, enquanto Fardos agia de maneira aberta e lógica, o domínio de Uman pertencia ao reino dos mistérios.
+
+Ainda assim, ambos compartilhavam o mesmo interesse pela criação.
+
+Sua metade sombria, Zathroth, por outro lado, possuía uma natureza essencialmente corruptora. Era um deus vaidoso, profundamente consciente de que seus próprios poderes criativos eram limitados.
+
+Por esse motivo, observava as obras de Fardos com inveja e ressentimento. Desde o princípio, estava determinado a impedir a criação ou, pelo menos, corrompê-la de todas as maneiras possíveis.
+
+Fardos, desconhecendo as verdadeiras intenções de Zathroth, pediu sua ajuda, pois já havia compreendido que não conseguiria realizar a criação sozinho.
+
+Naturalmente, Zathroth recusou.
+
+Uman, entretanto, aceitou ajudá-lo.
+
+Assim, Fardos e Uman passaram a trabalhar juntos no grandioso projeto da criação do universo.
+
+Infelizmente, nem mesmo seus esforços combinados trouxeram resultados satisfatórios.
+
+Assim como antes, tudo aquilo que Fardos e Uman criavam era imediatamente consumido pelo vazio. Os dois deuses observavam com tristeza suas obras desaparecerem diante de seus olhos, como água escorrendo por entre os dedos.
+
+Enquanto isso, Zathroth, que acompanhava seus esforços com desconfiança, alegrava-se com cada fracasso e zombava das tentativas dos dois deuses.
+
+Entretanto, sua satisfação logo se transformou em surpresa e fúria quando algo extraordinário aconteceu.
+
+Um acontecimento tão inesperado que talvez nem mesmo Fardos e Uman pudessem tê-lo previsto.
+
+Até os dias atuais, ninguém sabe exatamente o que provocou aquele fenômeno.
+
+Talvez a imensa energia divina utilizada pelos dois deuses tenha atraído outra entidade das profundezas do vazio.
+
+Ou talvez essa energia tenha simplesmente despertado uma divindade que permanecia adormecida desde o princípio dos tempos.
+
+Alguns chegam a afirmar que, de alguma maneira misteriosa, o poder empregado por Fardos e Uman acabou criando uma entidade inteiramente nova.
+
+Seja qual for a verdade, uma nova deusa emergiu do vazio, como uma sereia recém-nascida que abandona sua concha pela primeira vez.
+
+Os Deuses Anciões contemplaram sua beleza divina com profunda admiração e espanto, pois tudo nela representava a mais perfeita harmonia.
+
+Diante de tamanha perfeição, concordaram em chamá-la de Tibiasula.
+
+Zathroth, entretanto, permaneceu afastado, consumido por um ódio silencioso.
+
+Mas, astuto como sempre, conseguiu esconder seu ressentimento e fingiu compartilhar da alegria dos demais Deuses Anciões.
+]],
 	},
 	[9] = {
 		containerId = 2437,
 		itemId = 2831,
 		position = { x = 32066, y = 31884, z = 4 },
 		text = [[
-Genesis IV. The First Creatures
+GÊNESE IV. AS PRIMEIRAS CRIATURAS
 
-Zathroth watched the progress of creation with wrath and disgust. If he had had his way, he would have obliterated creation then and there. However, he knew that he lacked the power to do that, especially since Fardos and Uman were now well aware of his intentions and watched him carefully. He would have to resort to other means to bring ruin to creation. It was for this reason that he watched the concept of life with great interest, because he foresaw quite clearly that a lot of mischief could be done with it. Much as he loathed most of the gods that had been created, there was one who had caught his attention. Fafnar's base instincts and her destructive powers did not fail to impress him, and so a plan came to his mind. He flattered her with compliments and before long he succeeded in seducing her. Thus Brog the Raging Titan was conceived. An exceedingly ugly abomination that had only one eye in its huge head, Brog had inherited little of his father's cunning and none of his caution, yet he was strong and fierce, and his mother's furious heat burned wildly inside him.
+Zathroth observava o progresso da criação com ira e repugnância. Se dependesse de sua vontade, teria destruído toda a existência naquele mesmo instante.
 
-As he grew up, Brog was pained by the fire burning inside him, until one day when it grew unbearable he summoned all his magical powers and released as much of the painful flame into the world as he could. The searing fire mixed with his rage, and from it rose Garsharak, the very first dragon, who later sired a whole race of intelligent, giant lizards, a race that would eventually bring terror and chaos into Tibia. Brog watched the terrible creature he had created rather accidentally, and he rejoiced when he saw just how fierce and powerful it was. Though he was rather stupid he, too, had the gift to create life, which in an act of vanity he next used to create the cyclopes in his own image.
+Entretanto, sabia que não possuía poder suficiente para realizar tal feito, especialmente agora que Fardos e Uman conheciam suas verdadeiras intenções e o vigiavam atentamente.
 
-Zathroth watched Brog's experiments with great interest. So far he had not held his son in high esteem, but here was something for which he himself admittedly had little talent for. Since he did not understand the laws of life himself he knew that Brog's gift could prove to be a great asset. He called his son to him and told him to go on with his experiments, urging him to create something more terrifying and destructive than cyclopes. Even though these giants were ferocious and strong, they were not quite as destructive as he wanted them to be. In fact, due to their love of mining and smithing the cyclopes were a creative rather than a destructive race. Worse, they were not propagating fast enough to make them a real threat to creation. For this reason Brog went on to create trolls and goblins, races that were weaker than the cyclopes, but propagated much faster. However, his undisputed masterpiece were the orcs, a race of fearsome, single-minded warriors who lived only to expand and conquer. Soon they had spread all over Tibia, and they were the scourge of all that was alive.
-		]],
+Seria necessário encontrar outros meios para levar a criação à ruína.
+
+Foi por esse motivo que Zathroth passou a observar o conceito da vida com grande interesse, pois compreendeu que, através dela, poderia provocar incontáveis desgraças.
+
+Embora desprezasse a maioria dos deuses que haviam surgido, uma divindade em particular despertou sua atenção.
+
+Os instintos primitivos de Fafnar e seus poderes destrutivos impressionaram profundamente o deus sombrio, fazendo surgir em sua mente um plano perverso.
+
+Zathroth aproximou-se dela, envolvendo-a em elogios e palavras sedutoras. Não demorou muito para que conseguisse conquistá-la.
+
+Dessa união nasceu Brog, o Titã Furioso.
+
+Brog era uma abominação de aparência extremamente repulsiva, possuindo apenas um olho em sua gigantesca cabeça.
+
+Herdara muito pouco da astúcia de seu pai e absolutamente nada de sua prudência. Entretanto, era incrivelmente forte e feroz, enquanto o calor devastador de sua mãe ardia descontroladamente em seu interior.
+
+Conforme crescia, Brog sofria cada vez mais com as chamas que queimavam dentro de seu corpo.
+
+Até que, certo dia, a dor se tornou insuportável.
+
+Desesperado, o titã reuniu todos os seus poderes mágicos e libertou no mundo a maior quantidade possível daquele fogo abrasador.
+
+As chamas devastadoras misturaram-se à sua fúria e, dessa combinação, surgiu Garsharak, o primeiro dragão.
+
+Mais tarde, Garsharak daria origem a toda uma raça de lagartos gigantescos e inteligentes, criaturas que, com o passar das eras, espalhariam terror e caos por Tibia.
+
+Brog contemplou a terrível criatura que havia criado quase por acidente e sentiu uma imensa satisfação ao perceber sua ferocidade e seu poder.
+
+Embora fosse pouco inteligente, também possuía o dom divino de criar vida.
+
+Movido pela vaidade, decidiu utilizar novamente essa habilidade e criou os ciclopes à sua própria imagem.
+
+Zathroth acompanhava os experimentos de Brog com enorme interesse.
+
+Até então, nunca havia considerado seu filho particularmente importante. Entretanto, agora percebia que Brog possuía um talento que ele próprio reconhecia não dominar.
+
+Como Zathroth desconhecia as leis que governavam a vida, compreendeu que o dom de seu filho poderia se tornar uma arma extremamente valiosa.
+
+Assim, convocou Brog à sua presença e ordenou que continuasse seus experimentos, incentivando-o a criar criaturas ainda mais aterrorizantes e destrutivas do que os ciclopes.
+
+Apesar de serem gigantes ferozes e poderosos, os ciclopes não eram tão devastadores quanto Zathroth desejava.
+
+Na verdade, devido à sua paixão pela mineração e pela metalurgia, os ciclopes demonstravam ser uma raça mais criativa do que destrutiva.
+
+Para piorar, reproduziam-se lentamente demais para representar uma verdadeira ameaça à criação.
+
+Por esse motivo, Brog prosseguiu com seus experimentos e deu origem aos trolls e aos goblins.
+
+Embora fossem fisicamente mais fracos do que os ciclopes, essas novas raças possuíam uma capacidade de reprodução muito maior, permitindo que suas populações crescessem rapidamente.
+
+Entretanto, a obra-prima indiscutível de Brog ainda estava por surgir.
+
+Foi então que ele criou os orcs.
+
+Uma raça de guerreiros temíveis, brutais e obstinados, cuja existência era dedicada exclusivamente à expansão de seus territórios e à conquista de novas terras.
+
+Os orcs não conheciam a piedade e viviam para a guerra, impulsionados por uma sede insaciável de dominação.
+
+Em pouco tempo, espalharam-se por todas as regiões de Tibia, deixando um rastro de destruição por onde passavam.
+
+Assim, os orcs se tornaram uma verdadeira calamidade para todos os seres vivos, representando uma das maiores ameaças à criação.
+]],
 	},
 	[10] = {
 		containerId = 2435,
 		itemId = 2821,
 		--position = (isle of the kings),
 		text = [[
-The Minotaurs by Iregarn Pt. 1
-The minotaurs claimed that they were once the marshals and favoured people of Blog, the raging one. In the wars over creation they were one of the most successful races. But as the war grew more and more fierce it were the wild and raging minotaurs that had to pay the worst blood toll. The berserker rage inherent to their race made them a formidable opponent but also very vulnerable.
-Though victorious in most battles, in the end the berserking warriors had to surrender to their wounds or were left crippled and executed and fed to Blogs lesser followers. Even worse, the raging minotaurs knew neither friend nor enemy. Brother slew brother, fathers slaughtered their sons in their rage. Then, one day a minotaur, named Tha'kull conquered his rage. He withdrew from battle and became a hermit. In his travels he met Akkor, the blind one. This minotaur was by fate not subjected to the rage inherent to the minotauren race and had aquired a tranquility and wisdom, unknown to his kind so far. Tha'Kull thaught the blind one how to improve his body and fortitude and Akkor in return teached the warrior how to improve his soul.
-He looked upon the world and for the first time in aeons a minotaurean warrior saw the world without hatred. He saw the beauty in things, simple and complex. He saw the harmony in creation and the place the living had in it. He also saw the place that was meant to be taken by the sentient beings among the living. And he went back to his people to teach. Never a warrior of the minotaurs had neglected his rage and even though he was cautious the angry berserker warlords would not allow the words he spoke to be heard by their people.
+OS MINOTAUROS, POR IREGARN - PARTE I
+
+Os minotauros afirmavam que, em tempos antigos, haviam sido os comandantes dos exércitos e o povo favorito de Blog, o Furioso.
+
+Durante as Guerras da Criação, foram uma das raças mais bem-sucedidas nos campos de batalha. Entretanto, conforme os conflitos se tornavam cada vez mais violentos, foram os próprios minotauros, dominados por sua fúria selvagem, que pagaram o maior preço em sangue.
+
+A ira devastadora que habitava naturalmente sua raça os transformava em adversários formidáveis, mas também os tornava extremamente vulneráveis.
+
+Embora conquistassem a vitória na maioria das batalhas, seus guerreiros enfurecidos frequentemente acabavam sucumbindo aos próprios ferimentos.
+
+Aqueles que sobreviviam, mas ficavam gravemente mutilados, eram executados e oferecidos como alimento aos seguidores inferiores de Blog.
+
+Ainda pior era o fato de que, quando dominados pela fúria, os minotauros já não conseguiam distinguir amigos de inimigos.
+
+Irmãos assassinavam irmãos, enquanto pais, cegos pela própria ira, massacravam seus filhos.
+
+A violência havia se tornado parte inseparável de sua existência.
+
+Até que, certo dia, um minotauro chamado Tha'kull conseguiu dominar a própria fúria.
+
+Abandonando os campos de batalha, afastou-se de seu povo e passou a viver como um eremita.
+
+Durante suas jornadas, encontrou Akkor, conhecido como o Cego.
+
+Por uma peculiaridade do destino, Akkor não havia sido afetado pela fúria que dominava naturalmente a raça dos minotauros.
+
+Livre desse tormento, desenvolvera uma serenidade e uma sabedoria até então desconhecidas entre os seus semelhantes.
+
+Tha'kull ensinou ao minotauro cego como fortalecer seu corpo, aprimorar sua resistência e desenvolver sua força física.
+
+Em troca, Akkor ensinou ao antigo guerreiro como fortalecer seu espírito e aperfeiçoar sua alma.
+
+Através desses ensinamentos, Tha'kull passou a enxergar a existência de uma maneira completamente diferente.
+
+Pela primeira vez em incontáveis eras, um guerreiro minotauro contemplava o mundo sem ódio em seu coração.
+
+Ele descobriu a beleza presente nas coisas mais simples e também nas mais complexas.
+
+Percebeu a harmonia que existia em toda a criação e compreendeu o lugar que cada criatura viva ocupava dentro dela.
+
+Também reconheceu o papel que os seres dotados de inteligência e consciência deveriam desempenhar no equilíbrio da existência.
+
+Com essa nova compreensão, Tha'kull decidiu retornar ao seu povo para compartilhar os conhecimentos que havia adquirido.
+
+Seu desejo era ensinar aos demais minotauros que existia um caminho além da violência, da destruição e da fúria.
+
+Entretanto, jamais um guerreiro daquela raça havia renunciado à própria ira.
+
+Mesmo agindo com cautela, Tha'kull encontrou uma resistência feroz.
+
+Os senhores da guerra, dominados pela fúria e pelo orgulho, recusavam-se a permitir que suas palavras fossem ouvidas pelo povo.
+
+Para aqueles líderes enfurecidos, os ensinamentos de Tha'kull representavam uma ameaça à própria natureza guerreira dos minotauros.
 ]],
 	},
 	[11] = {
@@ -165,10 +346,45 @@ He looked upon the world and for the first time in aeons a minotaurean warrior s
 		itemId = 2825,
 		position = { x = 32061, y = 31889, z = 4 },
 		text = [[
-The Minotaurs by Iregarn Pt. 1
-The minotaurs claimed that they were once the marshals and favoured people of Blog, the raging one. In the wars over creation they were one of the most successful races. But as the war grew more and more fierce it were the wild and raging minotaurs that had to pay the worst blood toll. The berserker rage inherent to their race made them a formidable opponent but also very vulnerable.
-Though victorious in most battles, in the end the berserking warriors had to surrender to their wounds or were left crippled and executed and fed to Blogs lesser followers. Even worse, the raging minotaurs knew neither friend nor enemy. Brother slew brother, fathers slaughtered their sons in their rage. Then, one day a minotaur, named Tha'kull conquered his rage. He withdrew from battle and became a hermit. In his travels he met Akkor, the blind one. This minotaur was by fate not subjected to the rage inherent to the minotauren race and had aquired a tranquility and wisdom, unknown to his kind so far. Tha'Kull thaught the blind one how to improve his body and fortitude and Akkor in return teached the warrior how to improve his soul.
-He looked upon the world and for the first time in aeons a minotaurean warrior saw the world without hatred. He saw the beauty in things, simple and complex. He saw the harmony in creation and the place the living had in it. He also saw the place that was meant to be taken by the sentient beings among the living. And he went back to his people to teach. Never a warrior of the minotaurs had neglected his rage and even though he was cautious the angry berserker warlords would not allow the words he spoke to be heard by their people.
+OS MINOTAUROS, POR IREGARN - PARTE I
+
+Os minotauros afirmam que, em tempos antigos, foram os comandantes dos exércitos e o povo favorito de Blog, o Furioso.
+
+Durante as Guerras da Criação, os minotauros foram uma das raças mais bem-sucedidas nos campos de batalha. Entretanto, conforme os conflitos se tornavam cada vez mais violentos, foram esses guerreiros selvagens e enfurecidos que pagaram o maior preço em sangue.
+
+A fúria incontrolável, característica de sua raça, transformava-os em adversários formidáveis, mas também os tornava extremamente vulneráveis.
+
+Embora conquistassem a vitória na maioria das batalhas, muitos guerreiros acabavam sucumbindo aos próprios ferimentos. Aqueles que sobreviviam gravemente mutilados eram executados e oferecidos como alimento aos seguidores inferiores de Blog.
+
+Ainda pior era o fato de que, quando dominados pela fúria, os minotauros não conseguiam distinguir amigos de inimigos. Irmãos assassinavam irmãos, enquanto pais, cegos pela própria ira, massacravam seus filhos.
+
+Até que, certo dia, um minotauro chamado Tha'kull conseguiu dominar sua fúria.
+
+Ele abandonou os campos de batalha, afastou-se de seu povo e passou a viver como um eremita.
+
+Durante suas jornadas, encontrou Akkor, conhecido como o Cego.
+
+Por uma peculiaridade do destino, Akkor não sofria da fúria que dominava naturalmente a raça dos minotauros. Livre desse tormento, havia desenvolvido uma serenidade e uma sabedoria até então desconhecidas entre seus semelhantes.
+
+Tha'kull ensinou ao minotauro cego como fortalecer seu corpo, aprimorar sua resistência e desenvolver sua força física. Em troca, Akkor ensinou ao antigo guerreiro como fortalecer seu espírito e aperfeiçoar sua alma.
+
+Através desses ensinamentos, Tha'kull passou a enxergar a existência de uma maneira completamente diferente.
+
+Pela primeira vez em incontáveis eras, um guerreiro minotauro contemplava o mundo sem ódio em seu coração.
+
+Ele descobriu a beleza presente nas coisas mais simples e também nas mais complexas. Percebeu a harmonia existente em toda a criação e compreendeu o lugar que cada criatura viva ocupava dentro dela.
+
+Também reconheceu o papel que os seres dotados de inteligência e consciência deveriam desempenhar no equilíbrio da existência.
+
+Com essa nova compreensão, Tha'kull decidiu retornar ao seu povo para compartilhar os conhecimentos que havia adquirido.
+
+Seu desejo era ensinar aos demais minotauros que existia um caminho além da violência, da destruição e da fúria.
+
+Entretanto, jamais um guerreiro daquela raça havia renunciado à própria ira.
+
+Mesmo agindo com cautela, Tha'kull encontrou uma resistência feroz. Os senhores da guerra, dominados pela fúria e pelo orgulho, recusavam-se a permitir que suas palavras fossem ouvidas pelo povo.
+
+Para aqueles líderes enfurecidos, os ensinamentos de Tha'kull representavam uma ameaça à própria natureza guerreira dos minotauros.
 ]],
 	},
 	[12] = {
@@ -176,7 +392,21 @@ He looked upon the world and for the first time in aeons a minotaurean warrior s
 		itemId = 2816,
 		--position = (Rookgaard Academy),
 		text = [[
-Orcs ARE intelligent. Though some dwarves mumble about a shared hivemind of the greenskins, there is no evidence for that. Orcs have speech and are capable to learn other humanoids language quite well ... if they want, what almost never is the case. They lack a written language though. Some of the more educated orcs use human letters to write down orcish texts. Its rumored that the orcs we encounter now and then are just barbarians of their own kind and that there is a more 'civilized' orcish culture somewhere. There are some clues that the orcs indeed had a written language, but the modern orcs is unable to read it as we are.
+OS ORCS SÃO INTELIGENTES
+
+Os orcs são, de fato, criaturas inteligentes. Embora alguns anões murmurem sobre a existência de uma consciência coletiva compartilhada entre os peles-verdes, não existem evidências que comprovem essa teoria.
+
+Os orcs possuem uma linguagem própria e são perfeitamente capazes de aprender os idiomas de outras raças humanoides, caso desejem. Entretanto, isso quase nunca acontece.
+
+Apesar de sua inteligência, os orcs não possuem um sistema de escrita atualmente utilizado por sua raça. Alguns dos mais instruídos utilizam letras humanas para registrar textos em seu próprio idioma.
+
+Existem rumores de que os orcs encontrados ocasionalmente pelos aventureiros sejam apenas os bárbaros de sua própria espécie, enquanto uma civilização orc muito mais desenvolvida e organizada poderia existir em algum lugar desconhecido.
+
+Alguns indícios sugerem que os orcs realmente possuíram uma linguagem escrita em tempos antigos.
+
+Entretanto, os orcs modernos parecem ser tão incapazes de decifrar esses registros ancestrais quanto nós.
+
+Assim, os mistérios sobre a verdadeira origem, a história e a civilização dos orcs permanecem sem resposta.
 ]],
 	},
 	[13] = {
@@ -184,8 +414,22 @@ Orcs ARE intelligent. Though some dwarves mumble about a shared hivemind of the 
 		itemId = 2847,
 		position = { x = 32062, y = 31889, z = 4 },
 		text = [[
-Orcs ARE intelligent. Though some dwarves mumble about a shared hivemind of the greenskins, there is no evidence for that. Orcs have speech and are capable to learn other humanoids language quite well ... if they want, what almost never is the case. They lack a written language though. Some of the more educated orcs use human letters to write down orcish texts. Its rumored that the orcs we encounter now and then are just barbarians of their own kind and that there is a more 'civilized' orcish culture somewhere. There are some clues that the orcs indeed had a written language, but the modern orcs is unable to read it as we are.
-		]],
+OS ORCS SÃO INTELIGENTES
+
+Os orcs são, de fato, criaturas inteligentes. Embora alguns anões murmurem sobre a existência de uma consciência coletiva compartilhada entre os peles-verdes, não existem evidências que comprovem essa teoria.
+
+Os orcs possuem uma linguagem própria e são perfeitamente capazes de aprender os idiomas de outras raças humanoides, caso desejem. Entretanto, isso quase nunca acontece.
+
+Apesar de sua inteligência, os orcs não possuem um sistema de escrita atualmente utilizado por sua raça. Alguns dos mais instruídos utilizam letras humanas para registrar textos em seu próprio idioma.
+
+Existem rumores de que os orcs encontrados ocasionalmente pelos aventureiros sejam apenas os bárbaros de sua própria espécie, enquanto uma civilização orc muito mais desenvolvida e organizada poderia existir em algum lugar desconhecido.
+
+Alguns indícios sugerem que os orcs realmente possuíram uma linguagem escrita em tempos antigos.
+
+Entretanto, os orcs modernos parecem ser tão incapazes de decifrar esses registros ancestrais quanto nós.
+
+Assim, os mistérios sobre a verdadeira origem, a história e a civilização dos orcs permanecem sem resposta.
+]],
 	},
 	[14] = {
 		containerId = 2435,

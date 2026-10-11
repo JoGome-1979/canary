@@ -9,6 +9,10 @@
 
 #pragma once
 
+#ifndef USE_PRECOMPILED_HEADERS
+	#include <string>
+#endif
+
 class Player;
 class Item;
 class DBResult;
@@ -20,6 +24,9 @@ using ItemBlockList = std::list<std::pair<int32_t, std::shared_ptr<Item>>>;
 
 class IOLoginData {
 public:
+	static std::string getDiscordAccessError(uint32_t accountId);
+    static bool requiresDiscordIdentity();
+    static bool authenticateDiscordLoginTicket(const std::string &ticket, const std::string &characterName, uint32_t &accountId, bool consume = false);
 	static bool gameWorldAuthentication(const std::string &accountDescriptor, const std::string &sessionOrPassword, std::string &characterName, uint32_t &accountId, bool oldProcotol, const uint32_t ip);
 	static uint8_t getAccountType(uint32_t accountId);
 	static bool loadPlayerById(const std::shared_ptr<Player> &player, uint32_t id, bool disableIrrelevantInfo = true);

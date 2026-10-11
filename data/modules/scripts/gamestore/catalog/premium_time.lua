@@ -7,7 +7,7 @@ if configManager.getBoolean(configKeys.VIP_SYSTEM_ENABLED) then
 end
 
 local premiumDescription =
-	"<i>Enhance your gaming experience by gaining additional abilities and advantages:</i>\n\n&#8226; access to Premium areas\n&#8226; use Tibia's transport system (ships, carpet)\n&#8226; more spells\n&#8226; rent houses\n&#8226; found guilds\n&#8226; offline training\n&#8226; larger depots\n&#8226; and many more\n\n{usablebyallicon} valid for all characters on this account\n{activated}"
+	"<i>Aproveite %d dias de Premium e desbloqueie novas possibilidades para sua aventura no Crystal!</i>\n\n&#8226; acesso às áreas Premium\n&#8226; viagens de navio e tapete mágico\n&#8226; acesso a mais magias\n&#8226; possibilidade de alugar casas\n&#8226; criação de guildas\n&#8226; treinamento offline\n&#8226; mais espaço nos depots\n&#8226; e muitas outras vantagens\n\n{usablebyallicon} válido para todos os personagens desta conta\n{activated} ativado imediatamente após a compra"
 
 if configManager.getBoolean(configKeys.VIP_SYSTEM_ENABLED) then
 	local vipBonusExp = configManager.getNumber(configKeys.VIP_BONUS_EXP)
@@ -39,38 +39,56 @@ return {
 	offers = {
 		{
 			icons = { "Premium_Time_30.png" },
-			name = string.format("30 Days of %s", premiumOfferName),
-			price = 250,
+			name = string.format("7 Dias de %s", premiumOfferName),
+			price = 150,
+			id = 3007,
+			validUntil = 7,
+			description = string.format(premiumDescription, 7),
+			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
+		},
+		{
+			icons = { "Premium_Time_30.png" },
+			name = string.format("15 Dias de %s", premiumOfferName),
+			price = 270,
+			id = 3015,
+			validUntil = 15,
+			description = string.format(premiumDescription, 15),
+			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
+		},
+		{
+			icons = { "Premium_Time_30.png" },
+			name = string.format("30 Dias de %s", premiumOfferName),
+			price = 500,
 			id = 3030,
 			validUntil = 30,
-			description = premiumDescription,
+			description = string.format(premiumDescription, 30),
 			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
 		},
 		{
 			icons = { "Premium_Time_90.png" },
-			name = string.format("90 Days of %s", premiumOfferName),
-			price = 750,
+			name = string.format("90 Dias de %s", premiumOfferName),
+			price = 1350,
 			id = 3090,
 			validUntil = 90,
-			description = premiumDescription,
+			description = string.format(premiumDescription, 90),
 			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
 		},
 		{
 			icons = { "Premium_Time_180.png" },
-			name = string.format("180 Days of %s", premiumOfferName),
-			price = 1500,
+			name = string.format("180 Dias de %s", premiumOfferName),
+			price = 2500,
 			id = 3180,
 			validUntil = 180,
-			description = premiumDescription,
+			description = string.format(premiumDescription, 180),
 			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
 		},
 		{
 			icons = { "Premium_Time_360.png" },
-			name = string.format("360 Days of %s", premiumOfferName),
-			price = 3000,
+			name = string.format("360 Dias de %s", premiumOfferName),
+			price = 4500,
 			id = 3360,
 			validUntil = 360,
-			description = premiumDescription,
+			description = string.format(premiumDescription, 360),
 			type = GameStore.OfferTypes.OFFER_TYPE_PREMIUM,
 		},
 	},
