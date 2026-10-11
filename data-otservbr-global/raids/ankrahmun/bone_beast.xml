@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <raid>
-	<announce delay="1000" type="event" message="Bonebeasts are rattling down in the Ankrahmun Dipthrah tombs." />
-	<announce delay="20000" type="event" message="Bonebeasts roaming around in the Ankrahmun Dipthrah tombs." />
+	<announce delay="1000" type="event" message="O som dos ossos dos Bonebeasts ecoa nas tumbas de Dipthrah, em Ankrahmun." />
+	<announce delay="20000" type="event" message="Bonebeasts estão vagando pelas tumbas de Dipthrah, em Ankrahmun." />
 	<areaspawn delay="20000" fromx="33129" fromy="32569" fromz="7" tox="33156" toy="32598" toz="7">
 		<monster name="Bonebeast" amount="15" />
 	</areaspawn>

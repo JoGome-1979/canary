@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="Event" message="The ancient volcano on Goroma slowly becomes active once again." />
-	<announce delay="30000" type="Event" message="There is an evil presence at the volcano of Goroma." />
-	<announce delay="60000" type="Event" message="Evil Cultists have called an ancient evil into the volcano on Goroma. Beware of its power mortals." />
+	<announce delay="1000" type="Event" message="O antigo vulcão de Goroma está despertando lentamente mais uma vez." />
+	<announce delay="30000" type="Event" message="Há uma presença maligna no vulcão de Goroma." />
+	<announce delay="60000" type="Event" message="Cultistas malignos invocaram um mal ancestral no vulcão de Goroma. Temam seu poder, mortais!" />
 	<!--Single Spawns-->
 	<singlespawn delay="60000" name="Morgaroth" x="32063" y="32612" z="14"/>
 </raid>

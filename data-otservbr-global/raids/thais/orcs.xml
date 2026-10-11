@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
-	<announce delay="1000" type="Event" message="Orc activity near Thais reported! Beware!" />
-	<announce delay="60000" type="Event" message="Thais is under attack!" />
+	<announce delay="1000" type="Event" message="Há relatos de atividade de orcs perto de Thais! Cuidado!" />
+	<announce delay="60000" type="Event" message="Thais está sob ataque!" />
 	<singlespawn delay="120000" name="Orc Helmet" x="32368" y="32162" z="7" />
 	<singlespawn delay="120000" name="Orc Shield" x="32344" y="32287" z="7" />
 	<singlespawn delay="120000" name="Orc Armor" x="32271" y="32282" z="7" />

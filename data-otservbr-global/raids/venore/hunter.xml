@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="event" message="Hunters on the hunt north of the Green Claw Swamp." />
+	<announce delay="1000" type="event" message="Caçadores estão à espreita ao norte do Green Claw Swamp." />
 	<!--Single Spawns-->
 	<areaspawn delay="1000" fromx="32692" fromy="31947" fromz="7" tox="32808" toy="32032" toz="7">
 		<monster name="Hunter" amount="15" />

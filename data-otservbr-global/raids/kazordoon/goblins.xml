@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="event" message="Goblins are preparing to attack Kazordoon from Femor Hills!" />
-	<announce delay="20000" type="event" message="Goblins attack from Femor Hills!" />
-	<announce delay="120000" type="event" message="Danger! Now the goblin leaders attack Kazordoon from Femor Hills!" />
+	<announce delay="1000" type="event" message="Goblins estão se preparando para atacar Kazordoon a partir de Femor Hills!" />
+	<announce delay="20000" type="event" message="Goblins estão atacando a partir de Femor Hills!" />
+	<announce delay="120000" type="event" message="Perigo! Agora os líderes goblins estão atacando Kazordoon a partir de Femor Hills!" />
 	<!--Single Spawns-->
 	<areaspawn delay="20000" fromx="32485" fromy="31835" fromz="7" tox="32621" toy="31911" toz="7">
 		<monster name="Goblin" amount="50" />

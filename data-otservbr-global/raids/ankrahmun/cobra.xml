@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <raid>
-	<announce delay="1000" type="event" message="There's something sizzling in the Ankrahmun Dipthrah tombs." />
-	<announce delay="20000" type="event" message="Even more sizzling in the Ankrahmun Dipthrah tombs." />
-	<announce delay="30000" type="event" message="Poison overflow in the Ankrahmun Dipthrah tombs!" />
+	<announce delay="1000" type="event" message="Um chiado estranho vem das tumbas de Dipthrah, em Ankrahmun." />
+	<announce delay="20000" type="event" message="Os chiados se intensificam nas tumbas de Dipthrah, em Ankrahmun." />
+	<announce delay="30000" type="event" message="O veneno está tomando conta das tumbas de Dipthrah, em Ankrahmun!" />
 	<areaspawn delay="40000" fromx="33129" fromy="32569" fromz="7" tox="33156" toy="32598" toz="7">
 		<monster name="Cobra" amount="25" />
 	</areaspawn>

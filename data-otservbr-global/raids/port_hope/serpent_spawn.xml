@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="event" message="Something bad is happening deep, deep down under Banuta." />
-	<announce delay="20000" type="event" message="Something is sizzling deep under many sheets of soil in Banuta." />
-	<announce delay="120000" type="event" message="Hordes of slippery spawns slither in Deeper Banuta!" />
+	<announce delay="1000" type="event" message="Algo terrível está acontecendo nas profundezas de Banuta." />
+	<announce delay="20000" type="event" message="Um chiado estranho vem das camadas mais profundas do solo de Banuta." />
+	<announce delay="120000" type="event" message="Hordas de criaturas serpentinas rastejam pelas profundezas de Banuta!" />
 	<!--Single Spawns-->
 	<areaspawn delay="20000" fromx="32748" fromy="32599" fromz="15" tox="32757" toy="32609" toz="15">
 		<monster name="Serpent Spawn" amount="15" />

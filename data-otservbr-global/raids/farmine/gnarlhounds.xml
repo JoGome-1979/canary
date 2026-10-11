@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="event" message="There seems to be a big gnarlhoud gang in Zao Steppe." />
-	<announce delay="20000" type="event" message="The gnarlhounds seem to multiply by the minute." />
-	<announce delay="120000" type="event" message="The gnarlhounds roam free in the Zao Steppe. Watch out!" />
+	<announce delay="1000" type="event" message="Parece haver um grande bando de Gnarlhounds na Zao Steppe." />
+	<announce delay="20000" type="event" message="Os Gnarlhounds parecem se multiplicar a cada minuto." />
+	<announce delay="120000" type="event" message="Os Gnarlhounds estão vagando livremente pela Zao Steppe. Cuidado!" />
 	<!--Single Spawns-->
 	<areaspawn delay="120000" fromx="33065" fromy="31411" fromz="7" tox="33149" toy="31474" toz="7">
 		<monster name="Gnarlhound" amount="20" />

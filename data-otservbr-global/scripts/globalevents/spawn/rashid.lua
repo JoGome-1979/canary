@@ -25,7 +25,7 @@ function rashid.onStartup()
 		end
 
 		logger.info("Rashid arrived at {}", config.city)
-		local message = string.format("Rashid arrived at %s today.", config.city) -- Declaring the message to send to webhook.
+		local message = string.format("Rashid chegou a %s hoje.", config.city) -- Declaring the message to send to webhook.
 		addEvent(rashidwebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
 	else
 		logger.warn("[rashid.onStartup] - Cannot create Rashid. Day: {}", os.date("%A"))
@@ -45,7 +45,7 @@ function rashidSpawnOnTime.onTime(interval)
 
 	if rashidTarget then
 		logger.info("Rashid is traveling to {}s location.", config.city)
-		local message = ("Rashid is traveling to " .. config.city .. "s location.")
+		local message = "Rashid está viajando para " .. config.city .. "."
 		rashidTarget:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		rashidTarget:teleportTo(config.position)
 		rashidTarget:setMasterPos(config.position)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
-	<announce delay="1000" type="event" message="Unusual frequent scarab sightings at the gates of Ankrahmun" />
-	<announce delay="60000" type="event" message="Ancient scarabs are leading an attack on Ankrahmun." />
+	<announce delay="1000" type="event" message="Escaravelhos estão sendo avistados com frequência incomum nos portões de Ankrahmun." />
+	<announce delay="60000" type="event" message="Escaravelhos ancestrais estão liderando um ataque contra Ankrahmun." />
 	<areaspawn delay="60000" fromx="33254" fromy="32752" fromz="7" tox="33073" toy="32765" toz="7">
 		<monster name="Larva" amount="50" />
 		<monster name="Scarab" amount="30" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="Event" message="An ancient evil is awakening in the mines beneath Hrodmir." />
-	<announce delay="30000" type="Event" message="Demonic entities are entering the mortal realm in the Hrodmir mines." />
-	<announce delay="60000" type="Event" message="The demonic master has revealed itself in the mines of Hrodmir." />
+	<announce delay="1000" type="Event" message="Um mal ancestral está despertando nas minas sob Hrodmir." />
+	<announce delay="30000" type="Event" message="Entidades demoníacas estão entrando no reino dos mortais pelas minas de Hrodmir." />
+	<announce delay="60000" type="Event" message="O mestre demoníaco revelou sua presença nas minas de Hrodmir." />
 	<!--Single Spawns-->
 	<singlespawn delay="60000" name="Ghazbaran" x="32228" y="31163" z="15"/>
 	<!--Area Spawns-->

@@ -38,7 +38,7 @@ end
 local orientalTrader = GlobalEvent("Oriental Trader")
 
 function orientalTrader.onStartup()
-	local message = "Yasir: not spawned today"
+	local message = "Yasir: não surgiu hoje."
 
 	if config.enableSpawn and math.random(100) <= config.spawnChance then
 		local randTown = config.towns[math.random(#config.towns)]
@@ -61,7 +61,7 @@ function orientalTrader.onStartup()
 		local mapName = string.removeAllSpaces(randTown.mapName):lower()
 		Game.loadMap(DATA_DIRECTORY .. "/world/world_changes/oriental_trader/" .. mapName .. ".otbm")
 
-		message = string.format("[World Change] Yasir has arrived in %s today!", randTown.mapName)
+		message = string.format("[Mudança em Crystal] Yasir chegou a %s hoje!", randTown.mapName)
 		addEvent(spawnYasir, 60000, randTown.yasirPosition)
 
 		logger.info(message)

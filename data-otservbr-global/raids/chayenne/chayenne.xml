@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	<!--Announcements-->
-	<announce delay="1000" type="Event" message="An immense force is approaching Draconia." />
-	<announce delay="50000" type="Event" message="Get prepare mortals, the visit of Chayenne is near." />
-	<announce delay="60000" type="Event" message="Chayenne has returned to his citadel once more. Be careful there." />
+	<announce delay="1000" type="Event" message="Uma força imensa está se aproximando de Draconia." />
+	<announce delay="50000" type="Event" message="Preparem-se, mortais! A chegada de Chayenne está próxima." />
+	<announce delay="60000" type="Event" message="Chayenne retornou à sua cidadela mais uma vez. Tenham cuidado por lá." />
 	<!--Single Spawns-->
 	<singlespawn delay="60000" name="Chayenne" x="32799" y="31604" z="7"/>
 </raid>

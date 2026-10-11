@@ -29,7 +29,7 @@ function furyGates.onStartup(interval)
 	Game.setStorageValue(GlobalStorage.FuryGates, gateId)
 
 	logger.info("[World Change] Fury Gate has arrived in {}!", selectedGate.city)
-	addEvent(furyWebhook, 60000, (string.format("Fury Gate will be active in %s today", selectedGate.city)))
+	addEvent(furyWebhook, 60000, (string.format("O Fury Gate estará ativo em %s hoje.", selectedGate.city)))
 	return true
 end
 

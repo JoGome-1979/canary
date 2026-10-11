@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
 	 <!--Announcements-->
-	<announce delay="1000" type="event" message="Minotaurs are preparing an attack in the Darashia Minotaur pyramid!" />
-	<announce delay="20000" type="event" message="Minotaurs are attacking Darashia from the north!" />
-	<announce delay="120000" type="event" message="Minotaurs are advancing to Darashia grom the north!" />
+	<announce delay="1000" type="event" message="Minotauros estão preparando um ataque na pirâmide dos minotauros de Darashia!" />
+	<announce delay="20000" type="event" message="Minotauros estão atacando Darashia pelo norte!" />
+	<announce delay="120000" type="event" message="Minotauros estão avançando em direção a Darashia pelo norte!" />
 	 <!--Single Spawns-->
 	 <areaspawn delay="20000" fromx="33253" fromy="32295" fromz="7" tox="33294" toy="32329" toz="7">
 		<monster name="Minotaur" amount="10" />

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <raid>
-	<announce delay="1000" type="event" message="Nomad scouts have been sighted close to the gates to Ankrahmun." />
-	<announce delay="35000" type="event" message="The desert nomads are launching a full scale attack on Ankrahmun.
-		Some might even have slipped through the defences!" />
+	<announce delay="1000" type="event" message="Batedores nômades foram avistados perto dos portões de Ankrahmun." />
+	<announce delay="35000" type="event" message="Os nômades do deserto estão lançando um grande ataque contra Ankrahmun. Alguns podem até ter atravessado as defesas!" />
 	<areaspawn delay="36000" fromx="33254" fromy="32752" fromz="7" tox="33073" toy="32765" toz="7">
 		<monster name="Nomad" amount="160" />
 	</areaspawn>

@@ -38,7 +38,26 @@ do projeto Canary.
   externos, responsáveis pelo vínculo, pela emissão de tickets e pela sincronização
   das autorizações conforme seu próprio fluxo.
 
-### Adicionado
+### Webhooks Discord — em implementação
+
+- Adicionada a configuração opcional `discordWebhookURL2`, com valor padrão
+  vazio, e sua constante `DISCORD_WEBHOOK_URL2` no gerenciador de configurações.
+- As duas versões C++ de `Webhook::sendMessage` recebem uma segunda URL
+  opcional, consultam a configuração quando o argumento está vazio e encaminham
+  ambos os destinos para `sendPayload`.
+- A declaração e a implementação de `sendPayload` passam a receber `url2`.
+  As chamadas existentes continuam válidas por meio dos argumentos padrão
+  declarados no cabeçalho.
+- O fluxo mantém a necessidade de um destino primário: uma chamada sem URL
+  explícita e sem `discordWebhookURL` preenchida retorna antes de entrar na fila.
+- **Pendente:** criar a segunda tarefa em `sendPayload` quando `url2` estiver
+  preenchida e for diferente da primeira URL. Na revisão dos fontes, a função
+  ainda enfileira apenas o destino original; o envio duplo não está concluído.
+- A finalidade da segunda URL é espelhar também os logs Lua que passam pelo
+  emissor C++ com um destino específico. A compilação e a confirmação dos dois
+  envios em execução ainda precisam ser realizadas após concluir a função.
+
+### Loot premium — adicionado
 
 - Bonificação por monstro configurável com `monster.lootpremium`, separada de
   `monster.loot`.

@@ -21,7 +21,7 @@ function nightmareIsleEvent.onStartup()
 
 	logger.info("[World Change] Nightmare Isle is active in " .. randomMap.displayName)
 
-	addEvent(Nightmarewebhook, 60000, string.format("Nightmare Isle will be active %s today", randomMap.displayName))
+	addEvent(Nightmarewebhook, 60000, string.format("Nightmare Isle estará ativa %s hoje.", randomMap.displayName))
 	return true
 end
 
