@@ -1,8 +1,8 @@
 {
   "name": "opentibiabr-canary",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/opentibiabr/canary.git"
+    "url": "git+https://github.com/JoGome-1979/canary.git"
   }
 }
