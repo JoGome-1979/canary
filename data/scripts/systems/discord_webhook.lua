@@ -4,11 +4,13 @@
 
 if not announcementChannels then
 	announcementChannels = {
-		["serverAnnouncements"] = "", -- Used for an announcement channel on your discord
+		["serverAnnouncements"] = "https://discord.com/api/webhooks/1556470729221087252/zGllNAFxj9kPP4HmquOyBGncj7C3Mok3SCqjYDwyIprwpN9h9MCl2g9AwCyzUFkaovWQ", -- Used for an announcement channel on your discord
 		["raids"] = "", -- Used to isolate raids on your discord
 		["player-kills"] = "", -- Self-explaining
 		["player-levels"] = "", -- Self-explaining
-		["reports"] = "",
+		["reports"] = "https://discord.com/api/webhooks/1558692692127518752/W2T-V9vLblX49SZvwW-o7epqzth2AfgxxnLzcOgIEhM7zGlTWktsa1C0iXxaFg7pUsXe",
+		["bans"] = "https://discord.com/api/webhooks/1556436478261854309/AfkLsBysNA-Fh-2o4QSQzuWe2I9eHMO_4ENFz5KNxqBEmgy-QcOftbJdGAhcgkw4IFzM", -- Used to isolate bans on your discord
+		["other"] = "" -- Used for other stuff that doesn't fit in the other channels
 	}
 end
 

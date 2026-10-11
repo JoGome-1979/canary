@@ -53,7 +53,7 @@ function ban.onSay(player, words, param)
 	local text = name .. " has been banned for " .. banDays .. " days."
 	if target then
 		player:sendTextMessage(MESSAGE_ADMINISTRATOR, text)
-		Webhook.sendMessage("Player Banned", text .. " Reason: " .. (reason or "Not provided") .. ". (by: " .. player:getName() .. ")", WEBHOOK_COLOR_YELLOW, announcementChannels["serverAnnouncements"])
+		Webhook.sendMessage("Player Banned", text .. " Reason: " .. (reason or "Not provided") .. ". (by: " .. player:getName() .. ")", WEBHOOK_COLOR_YELLOW, announcementChannels["bans"])
 		target:remove()
 		local banGlobalMessage = "Player " .. text .. " (by: " .. player:getName() .. "), Reason: " .. (reason or "Not provided")
 		logger.info(banGlobalMessage)
