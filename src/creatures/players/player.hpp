@@ -1545,7 +1545,7 @@ public:
 	WeaponProficiency &weaponProficiency();
 	const WeaponProficiency &weaponProficiency() const;
 
-	void sendLootMessage(const std::string &message) const;
+	void sendLootMessage(const std::string &message, MessageClasses type = MESSAGE_LOOT) const;
 
 	std::shared_ptr<Container> getLootPouch();
 

@@ -2681,6 +2681,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/monster/monster_type_functions.cpp`
 
+#### `MonsterType:addLootPremium(loot: Loot)`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/creatures/monster/monster_type_functions.cpp`
+
 #### `MonsterType:addReflect(type: any, percent: number)`
 
 - Returns: `boolean|nil`
@@ -2842,6 +2847,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Source: `src/lua/functions/creatures/monster/monster_type_functions.cpp`
 
 #### `MonsterType:getLoot()`
+
+- Returns: `nil`
+- Source: `src/lua/functions/creatures/monster/monster_type_functions.cpp`
+
+#### `MonsterType:getLootPremium()`
 
 - Returns: `nil`
 - Source: `src/lua/functions/creatures/monster/monster_type_functions.cpp`

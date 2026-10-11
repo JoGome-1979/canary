@@ -6115,7 +6115,8 @@ void ProtocolGame::sendTextMessage(const TextMessage &message) {
 	MessageClasses internalType = message.type;
 	if (oldProtocol && message.type > MESSAGE_LAST_OLDPROTOCOL) {
 		switch (internalType) {
-			case MESSAGE_REPORT: {
+			case MESSAGE_REPORT:
+			case MESSAGE_LOOT_PREMIUM: {
 				internalType = MESSAGE_LOOT;
 				break;
 			}

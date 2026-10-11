@@ -1,0 +1,27 @@
+[
+  {
+    "path": "data/scripts/eventcallbacks/monster/ondroploot__base.lua",
+    "before": "be831361f643e31e67ff27b75ed699448ed3225712f3bbd2a8cc83f4275b0134",
+    "after": "0587da81a33e5e370e03f90b6c8ba74164a55c0b3cb667c07b6398240e91f445"
+  },
+  {
+    "path": "src/lua/functions/core/game/lua_enums.cpp",
+    "before": "0adfd48f49e1a7acbb999784ed54a85d965526393aa14168f7805994649aac3e",
+    "after": "37b083f912a6eccec8c554fbb676e73f36e5e50f8a80bb2a7970b224dde99e91"
+  },
+  {
+    "path": "src/server/network/protocol/protocolgame.cpp",
+    "before": "e7d887484cedd8d5425f68f30389008b9ee66f8e0bda82a86c9758b04b29841b",
+    "after": "e6a408a46f1251598162e8124aa5f0bf16eb809db78c896adc614a78671091ad"
+  },
+  {
+    "path": "src/utils/utils_definitions.hpp",
+    "before": "bdd23ca8e86ab433bef04766f0c183d46fc2ca1796a81bab1d44db8d3fd685d1",
+    "after": "84ff79137d45ffc8008f18efb7cf0d18e4007a247905710d9bf9378b3c1f382b"
+  },
+  {
+    "path": "tests/lua/premium_loot.lua",
+    "before": "897c7e9854ca7e3da27caea655d869e0ae6fdffa0ee1497f4b872700eea56945",
+    "after": "2bb5c9d7e24b79be123a741116ed104f3d1cb6c086ceebae05de3b46421e082f"
+  }
+]

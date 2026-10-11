@@ -75,6 +75,11 @@ monster.loot = {
 	{ id = 3336, chance = 3510 }, -- studded club
 }
 
+monster.lootpremium = {
+	{ id = 3035, chance = 10000, maxCount = 2}, -- platinum coin
+	{ id = 7876, chance = 5000 }, -- small health potion
+}
+
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, skill = 10, attack = 9 },
 }

@@ -32,6 +32,13 @@ void MonsterType::loadLoot(const std::shared_ptr<MonsterType> &monsterType, Loot
 	}
 }
 
+void MonsterType::loadLootPremium(
+	const std::shared_ptr<MonsterType> &monsterType,
+	LootBlock lootBlock
+) const {
+	monsterType->info.lootPremiumItems.emplace_back(lootBlock);
+}
+
 bool MonsterType::canSpawn(const Position &pos) const {
 	bool canSpawn = true;
 	const bool isDay = g_game().gameIsDay();

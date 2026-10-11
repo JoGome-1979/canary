@@ -257,6 +257,10 @@ std::shared_ptr<Action> Actions::getAction(const std::shared_ptr<Item> &item) {
 }
 
 ReturnValue Actions::internalUseItem(const std::shared_ptr<Player> &player, const Position &pos, uint8_t index, const std::shared_ptr<Item> &item, bool isHotkey) {
+	if (!item || !item->canUsePremiumLoot(player)) {
+		return RETURNVALUE_ITEMISNOTYOURS;
+	}
+
 	if (const auto &door = item->getDoor()) {
 		if (!door->canUse(player)) {
 			return RETURNVALUE_CANNOTUSETHISOBJECT;
@@ -267,6 +271,10 @@ ReturnValue Actions::internalUseItem(const std::shared_ptr<Player> &player, cons
 	const ItemType &itemType = Item::items[itemId];
 	auto transformTo = itemType.m_transformOnUse;
 	const auto &action = getAction(item);
+	if ((action || transformTo > 0) && !item->canCollectPremiumLoot(player)) {
+		return RETURNVALUE_ITEMISNOTYOURS;
+	}
+
 	if (!action && transformTo > 0 && itemId != transformTo) {
 		if (g_game().transformItem(item, transformTo) == nullptr) {
 			g_logger().warn("[{}] item with id {} failed to transform to item {}", __FUNCTION__, itemId, transformTo);
@@ -431,6 +439,11 @@ bool Actions::useItem(const std::shared_ptr<Player> &player, const Position &pos
 }
 
 bool Actions::useItemEx(const std::shared_ptr<Player> &player, const Position &fromPos, const Position &toPos, uint8_t toStackPos, const std::shared_ptr<Item> &item, bool isHotkey, const std::shared_ptr<Creature> &creature /* = nullptr*/) {
+	if (!item || !item->canCollectPremiumLoot(player)) {
+		player->sendCancelMessage(RETURNVALUE_ITEMISNOTYOURS);
+		return false;
+	}
+
 	const ItemType &it = Item::items[item->getID()];
 	bool canTriggerExhaustion = it.triggerExhaustion();
 	if (canTriggerExhaustion) {
@@ -457,14 +470,23 @@ bool Actions::useItemEx(const std::shared_ptr<Player> &player, const Position &f
 		showUseHotkeyMessage(player, item, player->getItemTypeCount(item->getID(), subType != item->getItemCount() ? subType : -1));
 	}
 
+	const auto &target = action->getTarget(player, creature, toPos, toStackPos);
+	if (target) {
+		const auto &targetItem = target->getItem();
+		if (targetItem && !targetItem->canCollectPremiumLoot(player)) {
+			player->sendCancelMessage(RETURNVALUE_ITEMISNOTYOURS);
+			return false;
+		}
+	}
+
 	if (action->useFunction) {
-		if (action->useFunction(player, item, fromPos, action->getTarget(player, creature, toPos, toStackPos), toPos, isHotkey)) {
+		if (action->useFunction(player, item, fromPos, target, toPos, isHotkey)) {
 			return true;
 		}
 		return false;
 	}
 
-	if (!action->executeUse(player, item, fromPos, action->getTarget(player, creature, toPos, toStackPos), toPos, isHotkey)) {
+	if (!action->executeUse(player, item, fromPos, target, toPos, isHotkey)) {
 		if (!action->hasOwnErrorHandler()) {
 			player->sendCancelMessage(RETURNVALUE_CANNOTUSETHISOBJECT);
 		}

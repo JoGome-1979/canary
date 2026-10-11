@@ -277,6 +277,9 @@ public:
 	void setOwner(const std::shared_ptr<Creature> &owner);
 
 	virtual uint32_t getOwnerId() const;
+	uint32_t getPremiumLootOwner() const;
+	bool canUsePremiumLoot(const std::shared_ptr<Player> &player);
+	bool canCollectPremiumLoot(const std::shared_ptr<Player> &player);
 
 	bool isOwner(uint32_t ownerId) const;
 

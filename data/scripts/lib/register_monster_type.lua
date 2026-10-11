@@ -1,6 +1,5 @@
 local smallAreaRadius = 3
 local superDrunkDuration = 4000
-
 registerMonsterType = {}
 setmetatable(registerMonsterType, {
 	__call = function(self, mtype, mask)
@@ -380,7 +379,7 @@ local function configureLootAttributes(lootObject, lootProperties)
 	lootObject:setUnique(lootProperties.unique or false)
 end
 
-local function addChildrenLoot(parent, childrenLoot, monsterName)
+local function addChildrenLoot(parent, childrenLoot, monsterName, recursive)
 	SortLootByChance(childrenLoot)
 	for _, child in pairs(childrenLoot) do
 		local childLoot = Loot(monsterName or "")
@@ -395,6 +394,9 @@ local function addChildrenLoot(parent, childrenLoot, monsterName)
 			childLoot:setId(child.id)
 		end
 		configureLootAttributes(childLoot, child)
+		if recursive and child.child and addChildrenLoot(childLoot, child.child, monsterName, true) then
+			return true
+		end
 		parent:addChildLoot(childLoot)
 	end
 	return false
@@ -435,6 +437,49 @@ end
 registerMonsterType.loot = function(mtype, mask)
 	if type(mask.loot) == "table" then
 		mtype:createLoot(mask.loot)
+	end
+end
+
+function MonsterType:createLootPremium(lootTable)
+	if type(self.addLootPremium) ~= "function" then
+		logger.warn("[MonsterType:createLootPremium] - Monster: {} premium loot requires a rebuilt server binary; configuration skipped", self:name())
+		return
+	end
+
+	SortLootByChance(lootTable)
+	local lootError = false
+
+	local monsterName = self:name() or ""
+	for _, loot in pairs(lootTable) do
+		local parent = Loot(monsterName)
+		if loot.name then
+			if not parent:setIdFromName(loot.name) then
+				lootError = true
+			end
+		else
+			if not isInteger(loot.id) or loot.id < 1 then
+				lootError = true
+			end
+			parent:setId(loot.id)
+		end
+
+		configureLootAttributes(parent, loot)
+
+		if loot.child and addChildrenLoot(parent, loot.child, monsterName, true) then
+			lootError = true
+		end
+
+		self:addLootPremium(parent)
+	end
+
+	if lootError then
+		logger.warn("[MonsterType:createLootPremium] - Monster: {} loot could not be loaded correctly", monsterName)
+	end
+end
+
+registerMonsterType.lootpremium = function(mtype, mask)
+	if type(mask.lootpremium) == "table" then
+		mtype:createLootPremium(mask.lootpremium)
 	end
 end
 

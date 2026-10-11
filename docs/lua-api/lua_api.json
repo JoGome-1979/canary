@@ -3947,6 +3947,14 @@
         "source": "src/lua/functions/creatures/monster/monster_type_functions.cpp"
       },
       {
+        "name": "addLootPremium",
+        "params": [
+          "loot: Loot"
+        ],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/creatures/monster/monster_type_functions.cpp"
+      },
+      {
         "name": "addReflect",
         "params": [
           "type: any",
@@ -4202,6 +4210,12 @@
       },
       {
         "name": "getLoot",
+        "params": [],
+        "return": "nil",
+        "source": "src/lua/functions/creatures/monster/monster_type_functions.cpp"
+      },
+      {
+        "name": "getLootPremium",
         "params": [],
         "return": "nil",
         "source": "src/lua/functions/creatures/monster/monster_type_functions.cpp"

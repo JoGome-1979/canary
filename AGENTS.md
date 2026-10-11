@@ -20,6 +20,11 @@ The global Git, commit, PR, C++ header, exception, and documentation policies ap
 - Never rely on cross-translation-unit static destruction order for caches, registries, or other global owners of gameplay objects. Prefer runtime-owned state; when global ownership is unavoidable, provide an explicit idempotent drain during controlled shutdown.
 - Stop and join every producer and consumer before draining global ownership, and release retained objects while all services their destructors may access are still alive. Validate shutdown with retained entries and lifetime instrumentation where practical.
 
+## Reserved Loot Access
+
+- Reserved loot must be checked before movement/exchange, direct or targeted item actions, stash removal, and autobank conversion. Check descendants before moving or consuming containers, while allowing shared corpses to be opened.
+- Remove reservations only after successful collection into the recipient's inventory. Validate free players, other premium recipients, nested containers, stash/autoloot, and failed transfers; Lua mocks do not replace native and in-game validation.
+
 ## Canary build discipline
 
 - Before an authorized local build, read `docs/building/local-validation.md`; its maintained entry-point, environment, preset, cache, and MSVC Ninja workflow is mandatory.

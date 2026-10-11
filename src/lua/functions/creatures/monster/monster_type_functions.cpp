@@ -95,6 +95,9 @@ void MonsterTypeFunctions::init(lua_State* L) {
 	Lua::registerMethod(L, "MonsterType", "getLoot", MonsterTypeFunctions::luaMonsterTypeGetLoot);
 	Lua::registerMethod(L, "MonsterType", "addLoot", MonsterTypeFunctions::luaMonsterTypeAddLoot);
 
+	Lua::registerMethod(L, "MonsterType", "getLootPremium", MonsterTypeFunctions::luaMonsterTypeGetLootPremium);
+	Lua::registerMethod(L, "MonsterType", "addLootPremium", MonsterTypeFunctions::luaMonsterTypeAddLootPremium);
+
 	Lua::registerMethod(L, "MonsterType", "getCreatureEvents", MonsterTypeFunctions::luaMonsterTypeGetCreatureEvents);
 	Lua::registerMethod(L, "MonsterType", "registerEvent", MonsterTypeFunctions::luaMonsterTypeRegisterEvent);
 
@@ -1187,6 +1190,18 @@ int MonsterTypeFunctions::luaMonsterTypeGetLoot(lua_State* L) {
 	return 1;
 }
 
+int MonsterTypeFunctions::luaMonsterTypeGetLootPremium(lua_State* L) {
+	// monsterType:getLootPremium()
+	const auto &monsterType = Lua::getUserdataShared<MonsterType>(L, 1, "MonsterType");
+	if (!monsterType) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	createMonsterTypeLootLuaTable(L, monsterType->info.lootPremiumItems);
+	return 1;
+}
+
 int MonsterTypeFunctions::luaMonsterTypeAddLoot(lua_State* L) {
 	// monsterType:addLoot(loot)
 	const auto &monsterType = Lua::getUserdataShared<MonsterType>(L, 1, "MonsterType");
@@ -1194,6 +1209,23 @@ int MonsterTypeFunctions::luaMonsterTypeAddLoot(lua_State* L) {
 		const auto &loot = Lua::getUserdataShared<Loot>(L, 2, "Loot");
 		if (loot) {
 			monsterType->loadLoot(monsterType, loot->lootBlock);
+			Lua::pushBoolean(L, true);
+		} else {
+			lua_pushnil(L);
+		}
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int MonsterTypeFunctions::luaMonsterTypeAddLootPremium(lua_State* L) {
+	// monsterType:addLootPremium(loot)
+	const auto &monsterType = Lua::getUserdataShared<MonsterType>(L, 1, "MonsterType");
+	if (monsterType) {
+		const auto &loot = Lua::getUserdataShared<Loot>(L, 2, "Loot");
+		if (loot) {
+			monsterType->loadLootPremium(monsterType, loot->lootBlock);
 			Lua::pushBoolean(L, true);
 		} else {
 			lua_pushnil(L);

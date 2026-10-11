@@ -2435,6 +2435,38 @@ ReturnValue Game::checkMoveItemToCylinder(const std::shared_ptr<Player> &player,
 
 ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::shared_ptr<Cylinder> toCylinder, int32_t index, const std::shared_ptr<Item> &item, uint32_t count, std::shared_ptr<Item>* movedItem, uint32_t flags /*= 0*/, const std::shared_ptr<Creature> &actor /*=nullptr*/, const std::shared_ptr<Item> &tradeItem /* = nullptr*/, bool checkTile /* = true*/) {
 	metrics::method_latency measure(__METRICS_METHOD_NAME__);
+
+	if (!item) {
+		return RETURNVALUE_NOTPOSSIBLE;
+	}
+
+	const auto premiumLootPlayer = actor ? actor->getPlayer() : nullptr;
+
+	if (!item->canCollectPremiumLoot(premiumLootPlayer)) {
+		return RETURNVALUE_ITEMISNOTYOURS;
+	}
+
+	const auto clearCollectedPremiumLoot =
+		[&premiumLootPlayer](const std::shared_ptr<Item> &collectedItem) {
+			if (!premiumLootPlayer || !collectedItem || collectedItem->getHoldingPlayer() != premiumLootPlayer) {
+				return;
+			}
+
+			const auto ownerGuid = premiumLootPlayer->getGUID();
+
+			if (collectedItem->getPremiumLootOwner() == ownerGuid) {
+				collectedItem->removeCustomAttribute("premium_loot_owner");
+			}
+
+			if (const auto container = collectedItem->getContainer()) {
+				for (const auto &child : container->getItems(true)) {
+					if (child->getPremiumLootOwner() == ownerGuid) {
+						child->removeCustomAttribute("premium_loot_owner");
+					}
+				}
+			}
+		};
+
 	if (fromCylinder == nullptr) {
 		g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
 		return RETURNVALUE_NOTPOSSIBLE;
@@ -2492,6 +2524,10 @@ ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::
 	// check if we can add this item
 	ret = toCylinder->queryAdd(index, item, count, flags, actor);
 	if (ret == RETURNVALUE_NEEDEXCHANGE) {
+
+		if (!toItem || !toItem->canCollectPremiumLoot(premiumLootPlayer)) {
+			return RETURNVALUE_ITEMISNOTYOURS;
+		}
 		// check if we can add it to source cylinder
 		ret = fromCylinder->queryAdd(fromCylinder->getThingIndex(item), toItem, toItem->getItemCount(), 0);
 		if (ret == RETURNVALUE_NOERROR) {
@@ -2507,6 +2543,7 @@ ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::
 				int32_t oldToItemIndex = toCylinder->getThingIndex(toItem);
 				toCylinder->removeThing(toItem, toItem->getItemCount());
 				fromCylinder->addThing(toItem);
+				clearCollectedPremiumLoot(toItem);
 
 				if (oldToItemIndex != -1) {
 					toCylinder->postRemoveNotification(toItem, fromCylinder, oldToItemIndex);
@@ -2617,6 +2654,9 @@ ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::
 		}
 		updateItem->startDecaying();
 	}
+
+	clearCollectedPremiumLoot(moveItem);
+	clearCollectedPremiumLoot(updateItem);
 
 	if (movedItem) {
 		if (moveItem) {
@@ -3606,6 +3646,9 @@ void Game::playerQuickLootCorpse(const std::shared_ptr<Player> &player, const st
 
 	for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
 		const auto &item = *it;
+		if (!item || !item->canCollectPremiumLoot(player)) {
+			continue;
+		}
 		bool listed = player->isQuickLootListedItem(item);
 		if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
 			if (item->getWorth() != 0) {
@@ -3658,7 +3701,7 @@ void Game::playerQuickLootCorpse(const std::shared_ptr<Player> &player, const st
 	bool hasLootavaible = false;
 	for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
 		const auto &corpseItem = *it;
-		if (!corpseItem) {
+		if (!corpseItem || !corpseItem->canCollectPremiumLoot(player)) {
 			continue;
 		}
 
@@ -3850,6 +3893,10 @@ ReturnValue Game::processLootItems(const std::shared_ptr<Player> &player, std::s
 ReturnValue Game::internalCollectManagedItems(const std::shared_ptr<Player> &player, const std::shared_ptr<Item> &item, ObjectCategory_t category, bool isLootContainer /* = true*/) {
 	if (!player || !item) {
 		return RETURNVALUE_NOTPOSSIBLE;
+	}
+
+	if (!item->canCollectPremiumLoot(player)) {
+		return RETURNVALUE_ITEMISNOTYOURS;
 	}
 
 	// Send money to the bank
@@ -4514,7 +4561,7 @@ void Game::queuePlayerAutoWalkAfterItemPickup(
 			}
 
 			std::shared_ptr<Item> movedItem;
-			const auto ret = internalMoveItem(fromCylinder, player, INDEX_WHEREEVER, item, count, &movedItem);
+			const auto ret = internalMoveItem(fromCylinder, player, INDEX_WHEREEVER, item, count, &movedItem, 0, player);
 			if (ret != RETURNVALUE_NOERROR) {
 				player->sendCancelMessage(ret);
 				return;

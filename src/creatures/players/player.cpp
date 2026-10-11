@@ -5188,6 +5188,10 @@ bool Player::processStashItem(const std::shared_ptr<Item> &item, uint16_t itemCo
 	}
 
 	const auto &selfPlayer = static_self_cast<Player>();
+	if (!item->canCollectPremiumLoot(selfPlayer)) {
+		return false;
+	}
+
 	for (int i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
 		const auto &inventoryItem = inventory[i];
 		if (!inventoryItem) {
@@ -10314,6 +10318,11 @@ void Player::stowItem(const std::shared_ptr<Item> &item, uint32_t count, bool al
 		return;
 	}
 
+	if (!item->canUsePremiumLoot(static_self_cast<Player>())) {
+		sendCancelMessage(RETURNVALUE_ITEMISNOTYOURS);
+		return;
+	}
+
 	if (!item->isItemStorable() && item->getID() != ITEM_GOLD_POUCH) {
 		if (!item->getParent()) {
 			sendCancelMessage("This item cannot be stowed here.");
@@ -10363,6 +10372,10 @@ void Player::stowItem(const std::shared_ptr<Item> &item, uint32_t count, bool al
 		}
 	} else if (const auto &container = item->getContainer()) {
 		for (const auto &[stowableItem, stowableCount] : container->getStowableItems()) {
+			if (!stowableItem->canCollectPremiumLoot(static_self_cast<Player>())) {
+				continue;
+			}
+
 			if (totalItemsToStow >= maxItemsToStow) {
 				break;
 			}
@@ -12844,19 +12857,20 @@ const WeaponProficiency &Player::weaponProficiency() const {
 	return m_weaponProficiency;
 }
 
-void Player::sendLootMessage(const std::string &message) const {
+void Player::sendLootMessage(const std::string &message, MessageClasses type) const {
 	const auto &party = getParty();
-	if (!party) {
-		sendTextMessage(MESSAGE_LOOT, message);
+	// Premium descriptions contain only this recipient's reserved share.
+	if (type == MESSAGE_LOOT_PREMIUM || !party) {
+		sendTextMessage(type, message);
 		return;
 	}
 
 	if (const auto &partyLeader = party->getLeader()) {
-		partyLeader->sendTextMessage(MESSAGE_LOOT, message);
+		partyLeader->sendTextMessage(type, message);
 	}
 	for (const auto &partyMember : party->getMembers()) {
 		if (partyMember) {
-			partyMember->sendTextMessage(MESSAGE_LOOT, message);
+			partyMember->sendTextMessage(type, message);
 		}
 	}
 }

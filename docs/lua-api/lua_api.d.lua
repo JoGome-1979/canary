@@ -2108,6 +2108,10 @@ function MonsterType:addHealing(type, percent) end
 ---@return boolean|nil
 function MonsterType:addLoot(loot) end
 
+---@param loot Loot
+---@return boolean|nil
+function MonsterType:addLootPremium(loot) end
+
 ---@param type any
 ---@param percent number
 ---@return boolean|nil
@@ -2241,6 +2245,9 @@ function MonsterType:getElementList() end
 
 ---@return nil
 function MonsterType:getLoot() end
+
+---@return nil
+function MonsterType:getLootPremium() end
 
 ---@param stars any
 ---@return table

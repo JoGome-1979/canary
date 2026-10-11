@@ -407,6 +407,7 @@ enum MessageClasses : uint8_t {
 	MESSAGE_OFFLINE_TRAINING = 50, /* White message on the game window and in the console*/
 	MESSAGE_TRANSACTION = 51, /* White message on the game window and in the console*/
 	MESSAGE_POTION = 52, /* Orange creature say*/
+	MESSAGE_LOOT_PREMIUM = 59, /* Custom OTClient premium loot message */
 };
 
 enum Fluids_t : uint8_t {

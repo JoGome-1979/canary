@@ -292,13 +292,28 @@ uint32_t Container::getWeight() const {
 	return Item::getWeight() + totalWeight;
 }
 
-std::string Container::getContentDescription(bool sendColoredMessage) {
+std::string Container::getContentDescription(bool sendColoredMessage, bool excludePremiumLoot, uint32_t premiumLootOwner) {
 	std::vector<std::string> descriptions;
 
 	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
 		const auto &item = *it;
 		if (!item) {
 			continue;
+		}
+
+		if (excludePremiumLoot || premiumLootOwner != 0) {
+			auto ownerGuid = item->getPremiumLootOwner();
+			auto parent = item->getParent();
+			while (ownerGuid == 0 && parent) {
+				const auto parentContainer = parent->getContainer();
+				if (parentContainer) {
+					ownerGuid = parentContainer->getPremiumLootOwner();
+				}
+				parent = parent->getParent();
+			}
+			if (premiumLootOwner != 0 ? ownerGuid != premiumLootOwner : ownerGuid != 0) {
+				continue;
+			}
 		}
 
 		const auto &container = item->getContainer();
@@ -313,7 +328,10 @@ std::string Container::getContentDescription(bool sendColoredMessage) {
 		}
 	}
 
-	return descriptions.empty() ? "nothing" : fmt::format("{}", fmt::join(descriptions, ", "));
+	if (descriptions.empty()) {
+		return premiumLootOwner != 0 ? "" : "";
+	}
+	return fmt::format("{}", fmt::join(descriptions, ", "));
 }
 
 uint32_t Container::getMaxCapacity() const {

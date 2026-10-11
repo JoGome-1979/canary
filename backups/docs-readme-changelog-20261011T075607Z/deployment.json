@@ -1,0 +1,12 @@
+[
+  {
+    "path": "README.md",
+    "before": "25f03b4fe558ca53ecf2b375687b34039c1b1d53d328c435ceb0ffa39fc2038d",
+    "after": "d7020d6bbe580f96278052eabab01a10d5c5dee93fc2b137231104da9fb605ff"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "before": null,
+    "after": "1fd21cc2ba36364ba77fed1f7b56f47a49ff8d31e374f7aba8dff1d3e848b53d"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "path": "AGENTS.md",
+    "before": "421950a8a70aa4ec9998d8407af82d9a9a761e5dc37c67cfc7c28385e712a37b",
+    "after": "d8fb77fc6f476562c07e0272461ec906eeed913713fd43e850d37f77149d86cb"
+  },
+  {
+    "path": "data/libs/functions/monstertype.lua",
+    "before": "d682a6bca028c935ec6c71d5786c6027b79d72dd885cff67ab61d7d9ca9eee34",
+    "after": "30ad23fc872da8e1014e64ed6067653bb4e44a1d472c26a11ae1766f38c70704"
+  },
+  {
+    "path": "data/scripts/eventcallbacks/monster/ondroploot__base.lua",
+    "before": "6c609dc303af12524bd6846787e3b7e3fa566254e3a2fb5f36ac6bd6a503460f",
+    "after": "be831361f643e31e67ff27b75ed699448ed3225712f3bbd2a8cc83f4275b0134"
+  },
+  {
+    "path": "data/scripts/lib/register_monster_type.lua",
+    "before": "5c33774ff21a6e8a27e303493a204c1fc533ce63dc4edcd1f3d4f153ace2cbe0",
+    "after": "afc0dc0d9c9070ac0929e28a45ae9914f4a2763edd689a2e1b34fef787a9c816"
+  },
+  {
+    "path": "src/creatures/creature.cpp",
+    "before": "f77f2c811f0d05a315ddd316a5d61f309814bc477ca290281a2b09e80c403683",
+    "after": "ebef487bda9a54972f7e7ce51a80b4621a110582429c5ac59b91b3496bc04a8b"
+  },
+  {
+    "path": "src/creatures/players/player.cpp",
+    "before": "7c572074fd7625f6f3e89626ae4dda6b7acc9296896d7c9521db9becfe14aa4c",
+    "after": "39fb76536e565f735d164c251751d34391890516cc9b4df90c10275f00d87369"
+  },
+  {
+    "path": "src/game/game.cpp",
+    "before": "ca0551ead5c4b2bc695fd8926350a1921148e168cbc57149a3f1e7779d5e6b72",
+    "after": "885d1bc0b7ea431cfeda238bea718843a07caa249f8e88a20b591bfa9947dab9"
+  },
+  {
+    "path": "src/items/containers/container.cpp",
+    "before": "b988ef26ec847e6849240344d45c75daa8842826702a4c4a975fe07e2083883a",
+    "after": "164f51f7791bd9479b986feed7f7adb2564130009ab600475dee759a768f9f27"
+  },
+  {
+    "path": "src/items/containers/container.hpp",
+    "before": "17527f6f26620aef307b4eedd78d9151bd9475fc54640f4e537b3f8dce386e35",
+    "after": "fd6b584817e8fbbe892357cfaf22f4d8e2a641704e71a471af387ec0e9df4458"
+  },
+  {
+    "path": "src/items/item.cpp",
+    "before": "396785f8d00bc3ab4e398cdfd6042f4bbbec227b60cff9eff1ccae53aa4751cd",
+    "after": "2a59e3ba75442de6eb5ca4f96ff50b602eb2e8b92adbef480bce780af6d5e938"
+  },
+  {
+    "path": "src/items/item.hpp",
+    "before": "79db0d28cdce953a5c30c1f1467441f34afc3c7aaa63b1ab1dc47bbca23c9271",
+    "after": "10c2b61d8ea1f93093f22eb8cded786301e383099ba062c4aea10b3c938ca8f7"
+  },
+  {
+    "path": "src/lua/creature/actions.cpp",
+    "before": "0da71894afa171b0e2c013353d9cfbddea630b937fede43fbc07462966651f24",
+    "after": "6b887a093299c851cb307bd365870477381a560d109b280780ef70e9d6191116"
+  },
+  {
+    "path": "src/lua/functions/creatures/monster/loot_functions.cpp",
+    "before": "890e555fe6956201d4707779e396b900dfa2e198a23bea871cdb101616625ede",
+    "after": "2cb3bb8a006b188a2e8ca5069ec490bd41489f0f5be1de2194e709e03c03f4ab"
+  },
+  {
+    "path": "docs/systems/premium-loot.md",
+    "before": null,
+    "after": "f1758c7d0ac7cbe57f6b3d5a54e877aa578f62d4e6a7d27b1b41c8be25a58d61"
+  },
+  {
+    "path": "tests/lua/premium_loot.lua",
+    "before": null,
+    "after": "897c7e9854ca7e3da27caea655d869e0ae6fdffa0ee1497f4b872700eea56945"
+  },
+  {
+    "path": "tests/lua/run_premium_loot.py",
+    "before": null,
+    "after": "a13002565c00a3ba1ac24625c80bf68a93b7b0405b568fa521b6f82eece00075"
+  }
+]

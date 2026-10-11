@@ -758,6 +758,10 @@ bool Item::equals(const std::shared_ptr<Item> &compareItem) const {
 		return false;
 	}
 
+	if (getPremiumLootOwner() != compareItem->getPremiumLootOwner()) {
+		return false;
+	}
+
 	for (const auto &attribute : getAttributeVector()) {
 		if (attribute.getAttributeType() == ItemAttribute_t::STORE) {
 			continue;
@@ -1579,6 +1583,65 @@ uint32_t Item::getOwnerId() const {
 		return getAttribute<uint32_t>(ItemAttribute_t::OWNER);
 	}
 	return 0;
+}
+
+uint32_t Item::getPremiumLootOwner() const {
+	const auto* attribute = getCustomAttribute("premium_loot_owner");
+
+	if (!attribute) {
+		return 0;
+	}
+
+	return attribute->getAttribute<uint32_t>();
+}
+
+bool Item::canUsePremiumLoot(const std::shared_ptr<Player> &player) {
+	const auto canCollect = [&player](uint32_t ownerGuid) {
+		if (ownerGuid == 0) {
+			return true;
+		}
+
+		return player
+		    && player->isPremium()
+		    && player->getGUID() == ownerGuid;
+	};
+
+	// Verifica o próprio item.
+	if (!canCollect(getPremiumLootOwner())) {
+		return false;
+	}
+
+	// Verifica se ele está dentro de um recipiente protegido.
+	auto parent = getParent();
+	while (parent) {
+		const auto container = parent->getContainer();
+
+		if (container
+		    && !canCollect(container->getPremiumLootOwner())) {
+			return false;
+		}
+
+		parent = parent->getParent();
+	}
+
+	return true;
+}
+
+bool Item::canCollectPremiumLoot(const std::shared_ptr<Player> &player) {
+	if (!canUsePremiumLoot(player)) {
+		return false;
+	}
+
+	// Opening a shared corpse is allowed; moving it also checks its contents.
+	if (const auto container = getContainer()) {
+		for (const auto &child : container->getItems(true)) {
+			if (!child->canUsePremiumLoot(player)) {
+				return false;
+			}
+		}
+	}
+
+	return true;
 }
 
 std::string Item::getOwnerName() const {

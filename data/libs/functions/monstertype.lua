@@ -1,12 +1,12 @@
 -- return a dictionary of itemId => { count, gut }
 ---@param config { factor: number, gut: boolean, filter?: fun(itemType: ItemType, unique: boolean): boolean }
 ---@return LootItems
-function MonsterType:generateLootRoll(config, resultTable, player)
+function MonsterType:generateLootRoll(config, resultTable, player, lootSource)
 	if configManager.getNumber(configKeys.RATE_LOOT) <= 0 then
 		return resultTable or {}
 	end
 
-	local monsterLoot = self:getLoot() or {}
+	local monsterLoot = lootSource or self:getLoot() or {}
 	local uniqueItems = {}
 
 	local factor = config.factor or 1.0
@@ -84,4 +84,43 @@ function MonsterType:generateLootRoll(config, resultTable, player)
 	end
 
 	return result
+end
+
+-- Sorteia somente a lista premium; a distribuição acontece no callback.
+function MonsterType:generateLootPremiumRoll(config, player)
+	if not player or not player:isPremium() or not player:canReceiveLoot()
+		or type(self.getLootPremium) ~= "function" then
+		return {}
+	end
+
+	local premiumItems = self:getLootPremium() or {}
+	-- Uma lista preserva entradas do mesmo ID com atributos diferentes.
+	-- Cada recipiente recebe seu próprio sorteio dos itens filhos.
+	local function rollEntries(entries)
+		local result = {}
+		local uniqueItems = {}
+		for _, entry in ipairs(entries) do
+			if not uniqueItems[entry.itemId] then
+				local rolled = self:generateLootRoll(config, {}, player, { entry })[entry.itemId]
+				if rolled then
+					rolled.itemId = entry.itemId
+					local itemType = ItemType(entry.itemId)
+					if itemType:getCharges() > 0 then
+						rolled.subType = entry.subType and entry.subType >= 0 and entry.subType or rolled.count
+						rolled.count = 1
+					end
+					if itemType:isContainer() and entry.childLoot then
+						rolled.childLoot = rollEntries(entry.childLoot)
+					end
+					result[#result + 1] = rolled
+					if entry.unique then
+						uniqueItems[entry.itemId] = true
+					end
+				end
+			end
+		end
+		return result
+	end
+
+	return rollEntries(premiumItems)
 end

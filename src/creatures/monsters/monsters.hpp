@@ -57,6 +57,7 @@ class MonsterType {
 		std::vector<voiceBlock_t> voiceVector;
 
 		std::vector<LootBlock> lootItems;
+		std::vector<LootBlock> lootPremiumItems;
 		// We need to keep the order of scripts, so we use a set isntead of an unordered_set
 		std::set<std::string> scripts;
 		std::vector<spellBlock_t> attackSpells;
@@ -187,6 +188,8 @@ public:
 	bool isBoss() const;
 
 	void loadLoot(const std::shared_ptr<MonsterType> &monsterType, LootBlock lootblock) const;
+
+    void loadLootPremium(const std::shared_ptr<MonsterType> &monsterType, LootBlock lootBlock) const;
 
 	bool canSpawn(const Position &pos) const;
 };

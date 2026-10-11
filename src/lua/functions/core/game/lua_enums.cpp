@@ -560,6 +560,7 @@ void LuaEnums::initMessageEnums(lua_State* L) {
 	registerEnum(L, MESSAGE_EXPERIENCE_OTHERS);
 	registerEnum(L, MESSAGE_STATUS);
 	registerEnum(L, MESSAGE_LOOT);
+	registerEnum(L, MESSAGE_LOOT_PREMIUM);
 	registerEnum(L, MESSAGE_TRADE);
 	registerEnum(L, MESSAGE_GUILD);
 	registerEnum(L, MESSAGE_PARTY_MANAGEMENT);

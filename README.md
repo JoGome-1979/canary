@@ -2,39 +2,41 @@
 
 [![Discord](https://img.shields.io/discord/528117503952551936.svg?style=flat-square&logo=discord)](https://discord.gg/gvTj5sh9Mp)
 [![CI](https://github.com/opentibiabr/canary/actions/workflows/ci.yml/badge.svg)](https://github.com/opentibiabr/canary/actions/workflows/ci.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=opentibiabr_canary&metric=alert_status)](https://sonarcloud.io/dashboard?id=opentibiabr_canary)
-![Repository size](https://img.shields.io/github/repo-size/opentibiabr/canary)
-[![License](https://img.shields.io/github/license/opentibiabr/canary.svg)](https://github.com/opentibiabr/canary/blob/main/LICENSE)
+[![Status da análise de qualidade](https://sonarcloud.io/api/project_badges/measure?project=opentibiabr_canary&metric=alert_status)](https://sonarcloud.io/dashboard?id=opentibiabr_canary)
+![Tamanho do repositório](https://img.shields.io/github/repo-size/opentibiabr/canary)
+[![Licença](https://img.shields.io/github/license/opentibiabr/canary.svg)](https://github.com/opentibiabr/canary/blob/main/LICENSE)
 
-Canary is a free and open-source MMORPG server emulator for the OpenTibia community, written in C++20 and Lua. It is a fork of the [OTServBR-Global](https://github.com/opentibiabr/otservbr-global) project. The repository includes the server core, datapacks, Lua scripts, database schema, build presets, automated tests and development tooling used by the project.
+Canary é um emulador de servidor MMORPG gratuito e de código aberto para a comunidade OpenTibia, escrito em C++20 e Lua. O projeto deriva do [OTServBR-Global](https://github.com/opentibiabr/otservbr-global). O repositório inclui o núcleo do servidor, datapacks, scripts Lua, esquema do banco de dados, presets de compilação, testes automatizados e ferramentas de desenvolvimento usadas pelo projeto.
 
 ---
 
-## Getting Started
+## Primeiros passos
 
 - [Wiki](https://github.com/opentibiabr/canary/wiki).
+- [Histórico de alterações deste repositório](CHANGELOG.md).
 
 ---
 
-## Docker Quickstart
+## Início rápido com Docker
 
-Canary includes a lightweight Docker quickstart for running a local test server
-without compiling Canary locally. The stack starts MariaDB, the published Canary
-runtime image, MyAAC as the website/admin AAC, and `opentibiabr/login-server` as
-the client login webservice.
+Canary inclui uma configuração simplificada com Docker para executar um servidor
+de testes local sem precisar compilar o Canary na sua máquina. O ambiente inicia
+o MariaDB, a imagem publicada do Canary, o MyAAC como site e painel administrativo
+de contas (AAC) e o `opentibiabr/login-server` como serviço web de login do cliente.
 
-This quickstart is for local development, testing, and LAN demos. Do not expose
-it directly to the public Internet with the default test accounts and passwords.
+Essa configuração é destinada ao desenvolvimento local, aos testes e às
+demonstrações em rede local. Não a exponha diretamente à internet com as contas
+e senhas de teste padrão.
 
-Run from the `docker` directory:
+Execute a partir do diretório `docker`:
 
 ```bash
 cp .env.dist .env
 docker compose up -d --build
 ```
 
-The `docker` directory also provides guarded start scripts that start the stack
-and clean safe Docker leftovers without removing database volumes:
+O diretório `docker` também fornece scripts que iniciam o ambiente e limpam
+resíduos seguros do Docker sem remover os volumes do banco de dados:
 
 ```powershell
 .\up.ps1
@@ -44,61 +46,91 @@ and clean safe Docker leftovers without removing database volumes:
 sh ./up.sh
 ```
 
-Default local endpoints:
+Endereços e porta locais padrão:
 
-- Website/admin: `http://localhost:8080`
-- Client login webservice: `http://localhost:8088/login`
-- Game port: `7172`
+- Site e painel administrativo: `http://localhost:8080`
+- Serviço web de login do cliente: `http://localhost:8088/login`
+- Porta do jogo: `7172`
 
-MyAAC's `login.php` is intentionally removed from the quickstart image. Clients
-should use `login-server` only. See [docs/docker/quickstart-for-beginners.md](docs/docker/quickstart-for-beginners.md)
-for a beginner guide and [docker/DOCKER.md](docker/DOCKER.md) for the full setup,
-environment variables, test account, and troubleshooting guide.
-
----
-
-## Documentation
-
-- [Recompile on Linux with executable backups](docs/building/recompile.md).
-  Covers seven-day retention, crash analysis, optional restart and WSL tests.
-- [Hardware sizing and capacity planning](docs/hardware-sizing.md). Measure
-  RAM and CPU, compare training and hunting workloads, and review capacity.
-- [Shared build cache for worktrees and forks](docs/development/shared-build-cache.md).
-- [Docker beginner quickstart](docs/docker/quickstart-for-beginners.md).
-- [Multiprotocol runtime profiles](docs/systems/multiprotocol.md). Covers the
-  current, 11.00, and 8.60 runtime contracts, port layout, client preparation,
-  and validation checklist.
-- [System documentation](docs/systems/README.md).
-- [Lua API reference and VSCode IntelliSense stubs](docs/lua-api/lua_api.md). Canary generates these files from the C++ Lua bindings during startup when `generateLuaApiDocs` is enabled. The repository `.luarc.json` already adds `docs/lua-api` to the Lua Language Server workspace library; for VSCode workspace settings, run `tools/setup_vscode_lua_api.ps1`.
+O `login.php` do MyAAC foi removido intencionalmente da imagem de início rápido.
+Os clientes devem usar apenas o `login-server`. Consulte o
+[guia para iniciantes](docs/docker/quickstart-for-beginners.md) e a
+[documentação completa do Docker](docker/DOCKER.md) para conhecer a configuração,
+as variáveis de ambiente, a conta de teste e as orientações para resolver problemas.
 
 ---
 
-## Recommended Tools and Clients
+## Documentação
 
-- [Assets Editor](https://github.com/Arch-Mina/Assets-Editor). Use this as the
-  single asset source of truth, then export legacy-compatible `.dat`/`.spr`
-  packages for 8.60 clients from the same current asset set.
+- [Recompilação no Linux com backups do executável](docs/building/recompile.md).
+  Inclui retenção de sete dias, análise de falhas, reinício opcional e testes no WSL.
+- [Dimensionamento de hardware e planejamento de capacidade](docs/hardware-sizing.md).
+  Explica como medir RAM e CPU, comparar cargas de treino e caça e avaliar a capacidade.
+- [Cache de compilação compartilhado entre worktrees e forks](docs/development/shared-build-cache.md).
+- [Início rápido com Docker para iniciantes](docs/docker/quickstart-for-beginners.md).
+- [Perfis de execução multiprotocolo](docs/systems/multiprotocol.md).
+  Descreve os contratos de execução do protocolo atual, 11.00 e 8.60, a organização
+  das portas, a preparação dos clientes e as verificações de validação.
+- [Documentação dos sistemas](docs/systems/README.md).
+- [Loot premium por monstro](docs/systems/premium-loot.md).
+- [Referência da API Lua e definições para IntelliSense no VSCode](docs/lua-api/lua_api.md).
+  O Canary gera esses arquivos a partir dos vínculos Lua do C++ durante a
+  inicialização, quando `generateLuaApiDocs` está habilitado. O `.luarc.json` do
+  repositório já adiciona `docs/lua-api` à biblioteca do Lua Language Server.
+  Para configurar o workspace do VSCode, execute `tools/setup_vscode_lua_api.ps1`.
+
+---
+
+## Loot premium por monstro
+
+Configure `monster.lootpremium` no arquivo Lua do monstro para adicionar uma
+bonificação separada, mantendo `monster.loot` como loot normal:
+
+```lua
+monster.lootpremium = {
+    { name = "gold coin", chance = 100000, minCount = 5, maxCount = 10 },
+}
+```
+
+O sorteio premium acontece uma única vez. Em uma party, os itens são divididos
+entre os membros premium elegíveis, incluindo o líder. Os itens permanecem no
+corpo do monstro, reservados ao destinatário até a coleta. As mensagens normal e
+premium seguem o mesmo fluxo no C++, usando os tipos 31 e 59, respectivamente.
+O cliente precisa reconhecer o tipo 59 para apresentar o aviso premium separado.
+
+Consulte a [documentação do sistema](docs/systems/premium-loot.md) para conhecer
+as regras de distribuição, as verificações de acesso e os testes de validação.
+
+---
+
+## Ferramentas e clientes recomendados
+
+- [Assets Editor](https://github.com/Arch-Mina/Assets-Editor).
+  Use-o como fonte única dos assets e exporte pacotes `.dat`/`.spr` compatíveis
+  com clientes 8.60 a partir do mesmo conjunto atual de assets.
 - [Remere's Map Editor](https://github.com/opentibiabr/remeres-map-editor/).
 - [OTClient Redemption](https://github.com/opentibiabr/otclient).
 - [Tibia Extended Client Library](https://github.com/dudantas/Tibia-Extended-Client-Library).
-  Use this to prepare compatible 8.60/11.00 CipSoft clients with extended
-  limits, config-driven login redirect, and per-client local state.
-- [Game Client](https://github.com/dudantas/tibia-client/releases/latest).
+  Use-a para preparar clientes CipSoft 8.60/11.00 compatíveis, com limites
+  ampliados, redirecionamento de login por configuração e estado local por cliente.
+- [Cliente do jogo](https://github.com/dudantas/tibia-client/releases/latest).
 
 ---
 
-## Nightly Packages
+## Compilações de desenvolvimento
 
-Development builds can be downloaded from GitHub Actions artifacts. They are useful for testing recent changes from the `main` branch, but may include behavior that is not present in stable releases yet.
+As compilações de desenvolvimento podem ser baixadas nos artefatos do GitHub
+Actions. Elas ajudam a testar as mudanças recentes da branch `main`, mas podem
+incluir comportamentos ainda ausentes nas versões estáveis.
 
-- [Github Actions](https://github.com/opentibiabr/canary/actions/workflows/ci.yml?query=branch%3Amain).
+- [GitHub Actions](https://github.com/opentibiabr/canary/actions/workflows/ci.yml?query=branch%3Amain).
 
 ---
 
-## Running Tests
+## Execução dos testes
 
-Tests can be run from the repository root using the tool versions and tasks
-pinned in `.mise.toml`:
+Os testes podem ser executados a partir da raiz do repositório, usando as versões
+das ferramentas e as tarefas fixadas no `.mise.toml`:
 
 ```bash
 mise install
@@ -106,46 +138,65 @@ mise run configure linux-debug
 mise run build linux-debug
 mise run test linux-debug
 
-# Replace linux-debug with macos-debug or windows-debug as needed.
+# Substitua linux-debug por macos-debug ou windows-debug conforme necessário.
 ```
 
-For detailed testing information including adding tests and framework usage, see [tests/README.md](tests/README.md).
+Para informações sobre a criação de testes e o uso do framework, consulte a
+[documentação dos testes](tests/README.md).
+
+O teste Lua isolado do loot premium pode ser executado a partir da raiz com:
+
+```bash
+python3 tests/lua/run_premium_loot.py
+```
+
+Esse teste usa objetos simulados e não substitui a compilação do C++ nem a
+validação dentro do jogo.
 
 ---
 
-## Support & Community
+## Suporte e comunidade
 
-For real-time support, join the [OpenTibiaBR Discord](https://discord.gg/gvTj5sh9Mp).
+Para suporte em tempo real, participe do
+[Discord da OpenTibiaBR](https://discord.gg/gvTj5sh9Mp).
 
-The GitHub issue tracker should be used for bugs, improvements and technical project tasks. It is not a support forum.
-
----
-
-## Contributing
-
-Contributions are welcome. You can help in several ways:
-
-- Report bugs through the [Issue Tracker](https://github.com/opentibiabr/canary/issues/new/choose).
-- Submit improvements through [Pull Requests](https://github.com/opentibiabr/canary/pulls).
-- Improve tests, documentation, scripts, datapacks, or C++ code.
-- Validate releases, nightly builds and recent changes.
-
-Before contributing, read the [Code of Conduct](https://github.com/opentibiabr/canary/blob/main/CODE_OF_CONDUCT.md) and the project [Contributing](https://github.com/opentibiabr/canary/blob/main/CONTRIBUTING.md) guide.
+As issues do GitHub devem ser usadas para relatar bugs, propor melhorias e
+acompanhar tarefas técnicas do projeto. Elas não são um fórum de suporte.
 
 ---
 
-## Sponsorship
+## Como contribuir
 
-Canary is maintained by community contributors. To support development, visit the [OpenTibiaBR sponsors page](https://github.com/sponsors/opentibiabr).
+Contribuições são bem-vindas. Você pode ajudar de várias formas:
+
+- Relatar bugs pelo [rastreador de issues](https://github.com/opentibiabr/canary/issues/new/choose).
+- Enviar melhorias por [pull requests](https://github.com/opentibiabr/canary/pulls).
+- Melhorar testes, documentação, scripts, datapacks ou código C++.
+- Validar versões estáveis, compilações de desenvolvimento e alterações recentes.
+
+Antes de contribuir, leia o
+[Código de Conduta](https://github.com/opentibiabr/canary/blob/main/CODE_OF_CONDUCT.md)
+e o [guia de contribuição](https://github.com/opentibiabr/canary/blob/main/CONTRIBUTING.md).
 
 ---
 
-## Acknowledgements
+## Apoio ao projeto
 
-Thanks to all contributors of [Canary](https://github.com/opentibiabr/canary/graphs/contributors), [OTServBR-Global](https://github.com/opentibiabr/otservbr-global/graphs/contributors) and the OpenTibia community.
+Canary é mantido por colaboradores da comunidade. Para apoiar o desenvolvimento,
+visite a [página de patrocínio da OpenTibiaBR](https://github.com/sponsors/opentibiabr).
 
 ---
 
-## License
+## Agradecimentos
 
-This project is distributed under the [GPL-2.0 license](https://github.com/opentibiabr/canary/blob/main/LICENSE).
+Agradecemos a todos os colaboradores do
+[Canary](https://github.com/opentibiabr/canary/graphs/contributors), do
+[OTServBR-Global](https://github.com/opentibiabr/otservbr-global/graphs/contributors)
+e da comunidade OpenTibia.
+
+---
+
+## Licença
+
+Este projeto é distribuído sob a
+[licença GPL-2.0](https://github.com/opentibiabr/canary/blob/main/LICENSE).

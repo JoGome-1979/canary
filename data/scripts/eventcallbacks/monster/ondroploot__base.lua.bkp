@@ -1,0 +1,115 @@
+--[[ local callback = EventCallback("MonsterOnDropLootBaseEvent")
+
+local function getPremiumLootRecipients(owner)
+	local recipients = {}
+
+	if not owner then
+		return recipients
+	end
+
+	local party = owner:getParty()
+	local candidates
+
+	if party then
+		candidates = party:getMembers()
+		table.insert(candidates, party:getLeader())
+	else
+		candidates = { owner }
+	end
+
+	for _, player in ipairs(candidates) do
+		if player:isPremium() and player:canReceiveLoot() then
+			table.insert(recipients, player)
+		end
+	end
+
+	return recipients
+end
+
+local function splitPremiumLoot(lootTable, recipients)
+	local shares = {}
+	local totalPlayers = #recipients
+
+	if totalPlayers == 0 then
+		return shares
+	end
+
+	for index = 1, totalPlayers do
+		shares[index] = {}
+	end
+
+	local function addShare(index, itemId, loot, count)
+		if count <= 0 then
+			return
+		end
+
+		local entry = {}
+		for key, value in pairs(loot) do
+			entry[key] = value
+		end
+
+		entry.count = count
+		shares[index][itemId] = entry
+	end
+
+	for itemId, loot in pairs(lootTable) do
+		local itemType = ItemType(itemId)
+
+		if itemType:getCharges() > 0 then
+			-- As cargas pertencem a um único item.
+			local index = math.random(totalPlayers)
+			addShare(index, itemId, loot, loot.count)
+		else
+			local amountEach = math.floor(loot.count / totalPlayers)
+			local remainder = loot.count % totalPlayers
+			local startIndex = math.random(totalPlayers)
+
+			for offset = 0, totalPlayers - 1 do
+				local index = ((startIndex - 1 + offset) % totalPlayers) + 1
+				local count = amountEach
+
+				if offset < remainder then
+					count = count + 1
+				end
+
+				addShare(index, itemId, loot, count)
+			end
+		end
+	end
+
+	return shares
+end
+
+function callback.monsterOnDropLoot(monster, corpse)
+	local player = Player(corpse:getCorpseOwner())
+	local factor = 1.0
+	local msgSuffix = ""
+	if player and player:canReceiveLoot() then
+		local config = player:calculateLootFactor(monster)
+		factor = config.factor
+		msgSuffix = config.msgSuffix
+	end
+	local mType = monster:getType()
+	if not mType then
+		logger.warn("monsterOnDropLoot: monster '{}' has no type", monster:getName())
+		return
+	end
+
+	local mTypeCharm = player and player:getCharmMonsterType(CHARM_GUT)
+	local gut = mTypeCharm and mTypeCharm:raceId() == mType:raceId()
+
+	local lootTable = mType:generateLootRoll({ factor = factor, gut = gut }, {}, player)
+	corpse:addLoot(lootTable)
+	local charmMessage = false
+	local existingSuffix = corpse:getAttribute(ITEM_ATTRIBUTE_LOOTMESSAGE_SUFFIX) or ""
+	for _, item in pairs(lootTable) do
+		if item.gut and not charmMessage then
+			charmMessage = true
+			msgSuffix = msgSuffix .. (string.len(msgSuffix) > 0 and ", gut charm" or "gut charm")
+		end
+	end
+	corpse:setAttribute(ITEM_ATTRIBUTE_LOOTMESSAGE_SUFFIX, existingSuffix .. msgSuffix)
+end
+
+callback:register()
+ ]]

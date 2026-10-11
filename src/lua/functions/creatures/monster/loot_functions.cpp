@@ -203,7 +203,7 @@ int LootFunctions::luaLootAddChildLoot(lua_State* L) {
 	// loot:addChildLoot(loot)
 	const auto &loot = Lua::getUserdataShared<Loot>(L, 1, "Loot");
 	if (loot) {
-		const auto childLoot = Lua::getUserdata<Loot>(L, 2);
+		const auto &childLoot = Lua::getUserdataShared<Loot>(L, 2, "Loot");
 		if (childLoot) {
 			loot->lootBlock.childLoot.push_back(childLoot->lootBlock);
 			Lua::pushBoolean(L, true);

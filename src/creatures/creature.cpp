@@ -29,6 +29,7 @@
 	#include <cstddef>
 	#include <deque>
 	#include <mutex>
+	#include <unordered_set>
 #endif
 
 namespace {
@@ -788,11 +789,29 @@ bool Creature::dropCorpse(const std::shared_ptr<Creature> &lastHitCreature, cons
 				if (monster && !monster->isRewardBoss()) {
 					auto collorMessage = player->getProtocolVersion() > 1200;
 					auto suffix = corpseContainer->getAttribute<std::string>(ItemAttribute_t::LOOTMESSAGE_SUFFIX);
-					std::string lootMessage = fmt::format("Loot of {}: {}", getNameDescription(), corpseContainer->getContentDescription(collorMessage));
+					std::string lootMessage = fmt::format("{{Loot, #F0FF00}} de {{{}, #FFA000}}: {}.", getNameDescription(), corpseContainer->getContentDescription(collorMessage, true));
 					if (!suffix.empty()) {
 						lootMessage = fmt::format("{} ({})", lootMessage, suffix);
 					}
 					player->sendLootMessage(fmt::format("{}.", lootMessage));
+
+					// Read the actual inserted items, after Lua has completed both rolls.
+					std::unordered_set<uint32_t> premiumRecipients;
+					for (const auto &item : corpseContainer->getItems(true)) {
+						if (const auto ownerGuid = item->getPremiumLootOwner(); ownerGuid != 0) {
+							premiumRecipients.insert(ownerGuid);
+						}
+					}
+					for (const auto ownerGuid : premiumRecipients) {
+						const auto recipient = g_game().getPlayerByGUID(ownerGuid);
+						if (!recipient || !recipient->isPremium()) {
+							continue;
+						}
+						const auto description = corpseContainer->getContentDescription(recipient->getProtocolVersion() > 1200, false, ownerGuid);
+						if (!description.empty()) {
+							recipient->sendLootMessage(fmt::format("{{Premium Loot, #00FF00}} de {{{}, #FF0000}}: {}.", getName(), description), MESSAGE_LOOT_PREMIUM);
+						}
+					}
 				}
 
 				FindPathParams fpp;
