@@ -21,7 +21,7 @@ npcConfig.outfit = {
 
 npcConfig.flags = {
 	floorchange = false,
-	profession = "banker",
+	profession = "trader",
 }
 npcConfig.speechBubble = SPEECHBUBBLE_BANKER
 

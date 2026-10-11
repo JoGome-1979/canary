@@ -497,8 +497,8 @@ npcHandler:setMessage(
 	MESSAGE_GREET,
 	"Saudações, aventureiro! Escolhei {saldo}, {depositar}, {sacar}, {trocar ouro}, {trocar platina} ou {trocar cristal}."
 )
-npcHandler:setMessage(MESSAGE_FAREWELL, "Have a nice day.")
-npcHandler:setMessage(MESSAGE_WALKAWAY, "Have a nice day.")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Tenha um bom dia.")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Tenha um bom dia.")
 
 npcHandler:setCallback(CALLBACK_GREET, greetCallback)
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
