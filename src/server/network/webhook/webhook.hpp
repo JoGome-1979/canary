@@ -33,9 +33,9 @@ public:
 
 	void run();
 
-	void sendPayload(const std::string &payload, const std::string &url);
-	void sendMessage(const std::string &title, const std::string &message, int color, std::string url = "", bool embed = true);
-	void sendMessage(const std::string &message, std::string url = "");
+	void sendPayload(const std::string &payload, const std::string &url, const std::string &url2 = "");
+	void sendMessage(const std::string &title, const std::string &message, int color, std::string url = "", std::string url2 = "", bool embed = true);
+	void sendMessage(const std::string &message, std::string url = "", std::string url2 = "");
 
 private:
 	std::mutex taskLock;

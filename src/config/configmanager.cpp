@@ -395,6 +395,7 @@ bool ConfigManager::load() {
 	loadStringConfig(L, DATA_DIRECTORY, "dataPackDirectory", "data-otservbr-global");
 	loadStringConfig(L, DEFAULT_PRIORITY, "defaultPriority", "high");
 	loadStringConfig(L, DISCORD_WEBHOOK_URL, "discordWebhookURL", "");
+	loadStringConfig(L, DISCORD_WEBHOOK_URL2, "discordWebhookURL2", "");
 	loadStringConfig(L, FORGE_FIENDISH_INTERVAL_TIME, "forgeFiendishIntervalTime", "1");
 	loadStringConfig(L, FORGE_FIENDISH_INTERVAL_TYPE, "forgeFiendishIntervalType", "hour");
 	loadStringConfig(L, GLOBAL_SERVER_SAVE_TIME, "globalServerSaveTime", "06:00");

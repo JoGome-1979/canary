@@ -43,33 +43,46 @@ void Webhook::run() {
 	);
 }
 
-void Webhook::sendPayload(const std::string &payload, const std::string &url) {
+void Webhook::sendPayload(const std::string &payload, const std::string &url, const std::string &url2) {
 	std::scoped_lock lock { taskLock };
 	webhooks.emplace_back(std::make_shared<WebhookTask>(payload, url));
+	if (!url2.empty() && url2 != url) {
+		webhooks.emplace_back(
+			std::make_shared<WebhookTask>(payload, url2)
+		);
+	}
 }
 
-void Webhook::sendMessage(const std::string &title, const std::string &message, int color, std::string url, bool embed) {
+void Webhook::sendMessage(const std::string &title, const std::string &message, int color, std::string url, std::string url2, bool embed) {
 	if (url.empty()) {
 		url = g_configManager().getString(DISCORD_WEBHOOK_URL);
+	}
+
+	if (url2.empty()) {
+		url2 = g_configManager().getString(DISCORD_WEBHOOK_URL2);
 	}
 
 	if (url.empty() || title.empty() || message.empty()) {
 		return;
 	}
 
-	sendPayload(getPayload(title, message, color, embed), url);
+	sendPayload(getPayload(title, message, color, embed), url, url2);
 }
 
-void Webhook::sendMessage(const std::string &message, std::string url) {
+void Webhook::sendMessage(const std::string &message, std::string url, std::string url2) {
 	if (url.empty()) {
 		url = g_configManager().getString(DISCORD_WEBHOOK_URL);
+	}
+
+	if (url2.empty()) {
+		url2 = g_configManager().getString(DISCORD_WEBHOOK_URL2);
 	}
 
 	if (url.empty() || message.empty()) {
 		return;
 	}
 
-	sendPayload(getPayload("", message, -1, false), url);
+	sendPayload(getPayload("", message, -1, false), url, url2);
 }
 
 int Webhook::sendRequest(const char* url, const char* payload, std::string* response_body) const {

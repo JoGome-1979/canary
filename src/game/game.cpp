@@ -9543,7 +9543,7 @@ void Game::dieSafely(const std::string &errorMsg /* = "" */) {
 }
 
 void Game::shutdown() {
-	g_webhook().sendMessage(":red_circle: Server is shutting down...");
+	g_webhook().sendMessage(":red_circle: O servidor está sendo encerrado...");
 
 	g_logger().info("Shutting down...");
 	map.spawnsMonster.clear();

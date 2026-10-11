@@ -244,10 +244,10 @@ int CanaryServer::run() {
 				if (g_configManager().getBoolean(TOGGLE_MAINTAIN_MODE)) {
 					g_game().setGameState(GAME_STATE_CLOSED);
 					g_logger().warn("Initialized in maintain mode!");
-					g_webhook().sendMessage(":yellow_square: Server is now **online** _(access restricted to staff)_");
+					g_webhook().sendMessage(":yellow_square: O servidor está **em manutenção** agora");
 				} else {
 					g_game().setGameState(GAME_STATE_NORMAL);
-					g_webhook().sendMessage(":green_circle: Server is now **online**");
+					g_webhook().sendMessage(":green_circle: O servidor está **online** agora");
 				}
 
 				{
