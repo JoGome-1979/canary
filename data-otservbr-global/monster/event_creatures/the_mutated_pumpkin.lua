@@ -65,16 +65,16 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "I had the Halloween Hare for breakfast!", yell = false },
-	{ text = "Your soul will be mine...wait, wrong line", yell = false },
-	{ text = "Trick or treat? I saw death!", yell = false },
-	{ text = "No wait! Don't kill me! It's me, your friend!", yell = false },
-	{ text = "Bunnies, bah! I'm the real thing!", yell = false },
+	{ text = "Devorei a Lebre das Bruxas no desjejum!", yell = false },
+	{ text = "Vossa alma será minha... Esperai, essa fala não é minha!", yell = false },
+	{ text = "Gostosuras ou travessuras? Vi a própria Morte!", yell = false },
+	{ text = "Não, esperai! Não me mateis! Sou eu, vosso amigo!", yell = false },
+	{ text = "Coelhinhos, bah! Eu sou o verdadeiro terror!", yell = false },
 	{ text = "Muahahahaha!", yell = false },
-	{ text = "I've come to avenge all those mutilated pumpkins!", yell = false },
-	{ text = "Wait until I get you!", yell = false },
-	{ text = "Fear the spirit of Halloween!", yell = false },
-	{ text = "You, my little mouse, are doomed.", yell = false },
+	{ text = "Vim vingar todas aquelas abóboras mutiladas!", yell = false },
+	{ text = "Esperai só até eu vos apanhar!", yell = false },
+	{ text = "Temei o espírito da Noite das Bruxas!", yell = false },
+	{ text = "Vós, meu pequeno ratinho, estais condenado.", yell = false },
 }
 
 monster.loot = {

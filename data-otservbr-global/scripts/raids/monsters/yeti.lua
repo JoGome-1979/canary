@@ -11,9 +11,9 @@ local raid = Raid("folda.yeti", {
 	minGapBetween = "48h",
 })
 
-raid:addBroadcast("Something is moving to the icy grounds of Folda."):autoAdvance("30s")
-raid:addBroadcast("Many Yetis are emerging from the icy mountains of Folda."):autoAdvance("30s")
-raid:addBroadcast("Numerous Yetis are dominating Folda, beware!"):autoAdvance("60s")
+raid:addBroadcast("Algo está se movendo em direção às terras geladas de Folda."):autoAdvance("30s")
+raid:addBroadcast("Muitos yetis estão surgindo das montanhas geladas de Folda."):autoAdvance("30s")
+raid:addBroadcast("Inúmeros yetis estão tomando conta de Folda. Cuidado!"):autoAdvance("60s")
 
 for i = 1, 20 do
 	raid

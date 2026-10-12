@@ -85283,4 +85283,20 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="extra slot"/>
 		<attribute key="weight" value="75"/>
 	</item>
+	<item id="54267" article="um" name="corpo do guardião das abóboras">
+		<attribute key="containersize" value="20"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="weight" value="10000"/>
+	</item>
+	<item id="54268" article="uma" name="semente encantada de abóbora">
+		<attribute key="description" value="Uma semente rara que guarda o poder do Guardião das Abóboras."/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="54269" article="uma" name="cadaver caveira">
+    	<attribute key="containersize" value="20"/>
+    	<attribute key="duration" value="300"/>
+    	<attribute key="decayTo" value="0"/>
+    	<attribute key="weight" value="10000"/>
+	</item>
 </items>

@@ -19,7 +19,10 @@ local raidSchedule = {
 		["13:00"] = { raidName = "Orc Backpack" },
 	},
 	["31/10"] = {
-		["16:00"] = { raidName = "Halloween Hare" },
+		["00:01"] = { raidName = "halloween.guardiao" },
+		["07:00"] = { raidName = "halloween.guardiao" },
+		["13:00"] = { raidName = "halloween.guardiao" },
+		["19:00"] = { raidName = "halloween.guardiao" },
 	},
 }
 
@@ -41,7 +44,14 @@ function spawnRaidsEvent.onThink(interval, lastExecution, thinkInterval)
 		for i = 1, #raidsToSpawn do
 			local currentRaidSchedule = raidsToSpawn[i][getRealTime()]
 			if currentRaidSchedule and not currentRaidSchedule.alreadyExecuted then
-				Game.startRaid(currentRaidSchedule.raidName)
+				local raidName = currentRaidSchedule.raidName
+				local luaRaid = Raid.registry[raidName]
+
+				if luaRaid then
+    				luaRaid:tryStart(true)
+				else
+    				Game.startRaid(raidName)
+				end
 				currentRaidSchedule.alreadyExecuted = true
 			end
 		end
