@@ -108,4 +108,5 @@ monster.loot = {
     { id = 3049, chance = 10000, maxCount = 1 },
 }
 
+
 mType:register(monster)
