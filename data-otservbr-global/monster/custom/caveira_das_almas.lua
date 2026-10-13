@@ -105,7 +105,7 @@ monster.immunities = {
 }
 
 monster.loot = {
-    { id = 3049, chance = 10000, maxCount = 1 },
+    { id = 3049, chance = 25000, maxCount = 1 },
 }
 
 

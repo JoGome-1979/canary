@@ -100,7 +100,7 @@ monster.loot = {
 	{ name = "talon", chance = 3430 },
 	{ name = "platinum coin", chance = 90540, maxCount = 8 },
 	{ name = "might ring", chance = 1890 },
-	{ id = 3049, chance = 2170 }, -- stealth ring
+	{ id = 3049, chance = 2170 }, -- Anel da Invisibilidade
 	{ name = "platinum amulet", chance = 680 },
 	{ name = "orb", chance = 2854 },
 	{ name = "gold ring", chance = 1050 },

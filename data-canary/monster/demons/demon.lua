@@ -114,7 +114,7 @@ monster.loot = {
 	{ id = 3034, chance = 3430 }, -- talon
 	{ id = 3035, chance = 90540, maxCount = 8 }, -- platinum coin
 	{ id = 3048, chance = 1890 }, -- might ring
-	{ id = 3049, chance = 2170 }, -- stealth ring
+	{ id = 3049, chance = 2170 }, -- Anel da Invisibilidade
 	{ id = 3055, chance = 680 }, -- platinum amulet
 	{ id = 3060, chance = 2854 }, -- orb
 	{ id = 3063, chance = 1050 }, -- gold ring

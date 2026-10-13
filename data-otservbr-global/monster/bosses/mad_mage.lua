@@ -83,7 +83,7 @@ monster.loot = {
 	{ id = 237, chance = 21000, maxCount = 5 }, -- strong mana potion
 	{ id = 236, chance = 17000, maxCount = 5 }, -- strong health potion
 	{ id = 3062, chance = 9000 }, -- mind stone
-	{ id = 3049, chance = 6000 }, -- stealth ring
+	{ id = 3049, chance = 6000 }, -- Anel da Invisibilidade
 	{ id = 7368, chance = 4000, maxCount = 4 }, -- assassin star
 	{ id = 3728, chance = 4000, maxCount = 3 }, -- dark mushroom
 	{ id = 5911, chance = 5000 }, -- red piece of cloth

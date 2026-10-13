@@ -83,7 +83,7 @@ monster.loot = {
 	{ name = "demonic essence", chance = 14630 },
 	{ name = "talon", chance = 3430 },
 	{ name = "might ring", chance = 1890 },
-	{ id = 3049, chance = 2170 }, -- stealth ring
+	{ id = 3049, chance = 2170 }, -- Anel da Invisibilidade
 	{ name = "platinum amulet", chance = 680 },
 	{ name = "orb", chance = 2854 },
 	{ name = "gold ring", chance = 1050 },

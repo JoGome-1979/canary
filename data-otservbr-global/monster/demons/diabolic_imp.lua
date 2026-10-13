@@ -83,7 +83,7 @@ monster.loot = {
 	{ name = "gold coin", chance = 40000, maxCount = 97 },
 	{ name = "gold coin", chance = 3390, maxCount = 7 },
 	{ name = "small amethyst", chance = 2250, maxCount = 3 },
-	{ id = 3049, chance = 2702 }, -- stealth ring
+	{ id = 3049, chance = 2702 }, -- Anel da Invisibilidade
 	{ name = "necrotic rod", chance = 830 },
 	{ name = "blank rune", chance = 16666, maxCount = 2 },
 	{ name = "double axe", chance = 1994 },

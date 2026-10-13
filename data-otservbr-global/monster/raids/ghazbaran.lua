@@ -93,7 +93,7 @@ monster.loot = {
 	{ name = "green gem", chance = 20000 },
 	{ name = "blue gem", chance = 14285 },
 	{ name = "might ring", chance = 12500 },
-	{ id = 3049, chance = 12500 }, -- stealth ring
+	{ id = 3049, chance = 12500 }, -- Anel da Invisibilidade
 	{ name = "strange symbol", chance = 11111 },
 	{ name = "life crystal", chance = 12500 },
 	{ name = "mind stone", chance = 20000 },

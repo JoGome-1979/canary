@@ -79,7 +79,7 @@ monster.loot = {
 	{ name = "gold coin", chance = 50000, maxCount = 80 },
 	{ name = "small emerald", chance = 7000, maxCount = 3 },
 	{ name = "green gem", chance = 500 },
-	{ id = 3049, chance = 1500 }, -- stealth ring
+	{ id = 3049, chance = 1500 }, -- Anel da Invisibilidade
 	{ id = 3053, chance = 7000 }, -- time ring
 	{ name = "cobrafang dagger", chance = 100000 },
 	{ name = "serpent sword", chance = 500 },

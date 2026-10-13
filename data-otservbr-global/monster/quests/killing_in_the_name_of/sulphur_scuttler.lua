@@ -73,7 +73,7 @@ monster.loot = {
 	{ id = 11702, chance = 100000 }, -- brimstone fangs
 	{ id = 3032, chance = 65000, maxCount = 4 }, -- small emerald
 	{ id = 5904, chance = 81670 }, -- magic sulphur
-	{ id = 3049, chance = 46670 }, -- stealth ring
+	{ id = 3049, chance = 46670 }, -- Anel da Invisibilidade
 	{ id = 3055, chance = 20000 }, -- platinum amulet
 }
 

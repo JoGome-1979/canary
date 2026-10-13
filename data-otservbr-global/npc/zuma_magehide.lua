@@ -69,7 +69,7 @@ npcConfig.shop = {
 	{ itemName = "protection amulet", clientId = 3084, buy = 700, count = 250 },
 	{ itemName = "ring of healing", clientId = 3098, buy = 2000 },
 	{ itemName = "silver amulet", clientId = 3054, buy = 100, count = 200 },
-	{ itemName = "stealth ring", clientId = 3049, buy = 5000 },
+	{ itemName = "Anel da Invisibilidade", clientId = 3049, buy = 5000 },
 	{ itemName = "stone skin amulet", clientId = 3081, buy = 25000, count = 5 },
 	{ itemName = "strange talisman", clientId = 3045, buy = 100, count = 200 },
 	{ itemName = "sword ring", clientId = 3091, buy = 500 },

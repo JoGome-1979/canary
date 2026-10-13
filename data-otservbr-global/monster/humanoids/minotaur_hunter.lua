@@ -91,7 +91,7 @@ monster.loot = {
 	{ id = 11472, chance = 4720, maxCount = 2 }, -- minotaur horn
 	{ id = 3030, chance = 2640, maxCount = 3 }, -- small ruby
 	{ id = 3033, chance = 2580, maxCount = 3 }, -- small amethyst
-	{ id = 3049, chance = 2220 }, -- stealth ring
+	{ id = 3049, chance = 2220 }, -- Anel da Invisibilidade
 	{ id = 5912, chance = 1670 }, -- blue piece of cloth
 	{ id = 5910, chance = 1420 }, -- green piece of cloth
 	{ id = 5911, chance = 1360 }, -- red piece of cloth

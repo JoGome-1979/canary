@@ -90,7 +90,7 @@ monster.loot = {
 	{ id = 3062, chance = 9760 }, -- mind stone
 	{ id = 7443, chance = 6710, maxCount = 2 }, -- bullseye potion
 	{ id = 8043, chance = 4880 }, -- focus cape
-	{ id = 3049, chance = 4880 }, -- stealth ring
+	{ id = 3049, chance = 4880 }, -- Anel da Invisibilidade
 	{ id = 11454, chance = 4270 }, -- luminous orb
 	{ id = 3728, chance = 3600, maxCount = 4 }, -- dark mushroom
 	{ id = 7368, chance = 1830, maxCount = 7 }, -- assassin star

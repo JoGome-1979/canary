@@ -121,7 +121,7 @@ monster.loot = {
 	{ id = 3028, chance = 9500, maxCount = 5 },
 	{ id = 3032, chance = 15500, maxCount = 10 },
 	{ id = 3029, chance = 13500, maxCount = 10 },
-	{ id = 3049, chance = 9500 }, -- Stealth ring
+	{ id = 3049, chance = 9500 }, -- Anel da Invisibilidade
 	{ id = 3081, chance = 4000 },
 	{ id = 3058, chance = 2500 },
 	{ id = 3034, chance = 14000, maxCount = 7 },

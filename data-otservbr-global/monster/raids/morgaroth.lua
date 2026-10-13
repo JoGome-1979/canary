@@ -101,7 +101,7 @@ monster.loot = {
 	{ name = "magic plate armor", chance = 18000 },
 	{ name = "might ring", chance = 18000 },
 	{ name = "mind stone", chance = 18000 },
-	{ id = 3049, chance = 18000 }, -- stealth ring
+	{ id = 3049, chance = 18000 }, -- Anel da Invisibilidade
 	{ name = "fireborn giant armor", chance = 18000 },
 	{ name = "royal crossbow", chance = 18000 },
 	{ name = "teddy bear", chance = 18000 },

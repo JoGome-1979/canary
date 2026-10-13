@@ -57,8 +57,8 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Yes, flee from me!", yell = false },
-	{ text = "You can run but you can not hide!", yell = false },
+	{ text = "Sim, fuja de mim!", yell = false },
+	{ text = "Podeis correr, mas não vos podeis esconder!", yell = false },
 }
 
 monster.loot = {

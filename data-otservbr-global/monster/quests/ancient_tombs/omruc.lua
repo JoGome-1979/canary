@@ -83,7 +83,7 @@ monster.loot = {
 	{ name = "gold coin", chance = 50000, maxCount = 90 },
 	{ name = "gold coin", chance = 50000, maxCount = 70 },
 	{ name = "yellow gem", chance = 5000 },
-	{ id = 3049, chance = 5000 }, -- stealth ring
+	{ id = 3049, chance = 5000 }, -- Anel da Invisibilidade
 	{ name = "boots of haste", chance = 1500 },
 	{ name = "crystal arrow", chance = 100000 },
 	{ name = "arrow", chance = 10000, maxCount = 21 },

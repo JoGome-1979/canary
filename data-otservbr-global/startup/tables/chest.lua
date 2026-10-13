@@ -1660,7 +1660,7 @@ ChestUnique = {
 		reward = { { 3357, 1 } }, -- plate armor
 		questName = "platearmor",
 	},
-	-- Stealth Ring Quest
+	-- Anel da Invisibilidade Quest
 	[6174] = {
 		useKV = true,
 		itemId = 1983,
@@ -1672,7 +1672,7 @@ ChestUnique = {
 		useKV = true,
 		itemId = 1983,
 		itemPos = { x = 33315, y = 32282, z = 11 },
-		reward = { { 3049, 1 } }, -- stealth ring
+		reward = { { 3049, 1 } }, -- Anel da Invisibilidade
 		questName = "stealhring2",
 	},
 	-- Steel Helmet Quest

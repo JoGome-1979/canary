@@ -81,7 +81,7 @@ monster.loot = {
 	{ name = "mind stone", chance = 10370 },
 	{ name = "shrimp", chance = 3950, maxCount = 3 },
 	{ name = "small sapphire", chance = 3540, maxCount = 3 },
-	{ id = 3049, chance = 3290 }, -- stealth ring
+	{ id = 3049, chance = 3290 }, -- Anel da Invisibilidade
 	{ name = "ice rapier", chance = 2060 },
 	{ name = "blue crystal shard", chance = 1890 },
 	{ name = "strange helmet", chance = 1320 },

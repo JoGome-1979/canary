@@ -100,7 +100,7 @@ monster.loot = {
 	{ name = "fire axe", chance = 3520 },
 	{ name = "might ring", chance = 2250 },
 	{ name = "giant sword", chance = 1880 },
-	{ id = 3049, chance = 1790 }, -- stealth ring
+	{ id = 3049, chance = 1790 }, -- Anel da Invisibilidade
 	{ id = 3051, chance = 1790 }, -- energy ring
 	{ name = "rift lance", chance = 1360 },
 	{ id = 3098, chance = 1320 }, -- ring of healing

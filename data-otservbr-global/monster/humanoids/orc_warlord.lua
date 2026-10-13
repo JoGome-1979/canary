@@ -80,7 +80,7 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 18000, maxCount = 45 },
-	{ id = 3049, chance = 90 }, -- stealth ring
+	{ id = 3049, chance = 90 }, -- Anel da Invisibilidade
 	{ name = "gold ring", chance = 30 },
 	{ name = "protection amulet", chance = 2190 },
 	{ name = "two handed sword", chance = 1680 },

@@ -121,7 +121,7 @@ monster.loot = {
 	{ id = 3028, chance = 9500, maxCount = 5 }, -- small diamond
 	{ id = 3032, chance = 15500, maxCount = 10 }, -- small emerald
 	{ id = 3029, chance = 13500, maxCount = 10 }, -- small sapphire
-	{ id = 3049, chance = 9500 }, -- stealth ring
+	{ id = 3049, chance = 9500 }, -- Anel da Invisibilidade
 	{ id = 3081, chance = 4000 }, -- stone skin amulet
 	{ id = 3058, chance = 2500 }, -- strange symbol
 	{ id = 3034, chance = 14000, maxCount = 7 }, -- talon

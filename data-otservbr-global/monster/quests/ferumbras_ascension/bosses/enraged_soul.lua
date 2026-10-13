@@ -71,7 +71,7 @@ monster.loot = {
 	{ id = 5909, chance = 1940 }, -- white piece of cloth
 	{ id = 9690, chance = 1870 }, -- ghostly tissue
 	{ id = 3432, chance = 860 }, -- ancient shield
-	{ id = 3049, chance = 180 }, -- stealth ring
+	{ id = 3049, chance = 180 }, -- Anel da Invisibilidade
 }
 
 monster.attacks = {

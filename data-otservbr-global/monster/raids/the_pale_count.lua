@@ -92,7 +92,7 @@ monster.loot = {
 	{ id = 3035, chance = 100000, maxCount = 5 }, -- platinum coin
 	{ id = 237, chance = 50000, maxCount = 3 }, -- strong mana potion
 	{ id = 236, chance = 50000, maxCount = 3 }, -- strong health potion
-	{ id = 3049, chance = 10000 }, -- stealth ring
+	{ id = 3049, chance = 10000 }, -- Anel da Invisibilidade
 	{ id = 3098, chance = 10000 }, -- ring of healing
 	{ id = 5909, chance = 10000 }, -- white piece of cloth
 	{ id = 5911, chance = 10000 }, -- red piece of cloth

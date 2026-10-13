@@ -86,7 +86,7 @@ monster.loot = {
 	{ name = "necrotic rod", chance = 3000 },
 	{ name = "magma monocle", chance = 1500 },
 	{ id = 6299, chance = 1200 }, -- death ring
-	{ id = 3049, chance = 1800 }, -- stealth ring
+	{ id = 3049, chance = 1800 }, -- Anel da Invisibilidade
 	{ name = "shadow sceptre", chance = 8990 },
 }
 

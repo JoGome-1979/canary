@@ -79,7 +79,7 @@ monster.voices = {
 
 monster.loot = {
 	{ id = 2828, chance = 1310 }, -- book
-	{ id = 3049, chance = 180 }, -- stealth ring
+	{ id = 3049, chance = 180 }, -- Anel da Invisibilidade
 	{ name = "morning star", chance = 10610 },
 	{ name = "combat knife", chance = 7002 },
 	{ name = "ancient shield", chance = 860 },

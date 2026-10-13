@@ -161,7 +161,7 @@ npcConfig.shop = {
 	{ itemName = "mind stone", clientId = 3062, sell = 100 },
 	{ itemName = "orb", clientId = 3060, sell = 750 },
 	{ itemName = "power ring", clientId = 3050, buy = 100, sell = 50 },
-	{ itemName = "stealth ring", clientId = 3049, buy = 5000, sell = 200 },
+	{ itemName = "Anel da Invisibilidade", clientId = 3049, buy = 50000, sell = 2000 },
 	{ itemName = "stone skin amulet", clientId = 3081, buy = 25000, sell = 500, count = 5 },
 	{ itemName = "sword ring", clientId = 3091, buy = 500, sell = 100 },
 	{ itemName = "wand of cosmic energy", clientId = 3073, sell = 2000 },

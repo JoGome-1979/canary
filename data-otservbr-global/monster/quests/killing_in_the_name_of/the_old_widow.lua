@@ -75,7 +75,7 @@ monster.loot = {
 	{ id = 3351, chance = 100000 }, -- steel helmet
 	{ id = 239, chance = 100000, maxCount = 4 }, -- great health potion
 	{ id = 3370, chance = 50000 }, -- knight armor
-	{ id = 3049, chance = 33333 }, -- stealth ring
+	{ id = 3049, chance = 33333 }, -- Anel da Invisibilidade
 	{ id = 3051, chance = 33333 }, -- energy ring
 	{ id = 3053, chance = 33333 }, -- time ring
 	{ id = 12320, chance = 33333 }, -- sweet smelling bait

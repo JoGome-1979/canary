@@ -81,7 +81,7 @@ monster.loot = {
 	{ id = 3114, chance = 990 }, -- skull
 	{ name = "small sapphire", chance = 990 },
 	{ name = "two handed sword", chance = 810 },
-	{ id = 3049, chance = 710 }, -- stealth ring
+	{ id = 3049, chance = 710 }, -- Anel da Invisibilidade
 	{ name = "fish fin", chance = 360 },
 }
 

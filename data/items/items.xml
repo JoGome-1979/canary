@@ -6892,7 +6892,7 @@
 			<attribute key="slot" value="ring"/>
 		</attribute>
 	</item>
-	<item id="3049" article="a" name="stealth ring">
+	<item id="3049" article="a" name="Anel da Invisibilidade">
 		<attribute key="primarytype" value="rings"/>
 		<attribute key="stopduration" value="1"/>
 		<attribute key="showduration" value="1"/>
@@ -7302,12 +7302,12 @@
 			<attribute key="slot" value="necklace"/>
 		</attribute>
 	</item>
-	<item id="3086" article="a" name="stealth ring">
+	<item id="3086" article="a" name="Anel da Invisibilidade">
 		<attribute key="primarytype" value="rings"/>
 		<attribute key="invisible" value="1"/>
 		<attribute key="showduration" value="1"/>
 		<attribute key="showAttributes" value="1"/>
-		<attribute key="duration" value="600"/>
+		<attribute key="duration" value="3600"/>
 		<attribute key="transformdeequipto" value="3049"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="weight" value="100"/>

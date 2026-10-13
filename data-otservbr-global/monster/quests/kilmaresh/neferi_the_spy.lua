@@ -86,7 +86,7 @@ monster.loot = {
 	{ name = "violet crystal shard", chance = 187 },
 	{ name = "glacier mask", chance = 149 },
 	{ name = "sea horse figurine", chance = 149 },
-	{ id = 3049, chance = 149 }, -- stealth ring
+	{ id = 3049, chance = 149 }, -- Anel da Invisibilidade
 	{ name = "violet gem", chance = 149 },
 	{ name = "golden mask", chance = 75 },
 }

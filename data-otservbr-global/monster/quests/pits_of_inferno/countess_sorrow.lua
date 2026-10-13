@@ -90,7 +90,7 @@ monster.loot = {
 	{ id = 3312, chance = 4210 }, -- silver mace
 	{ id = 3557, chance = 8820 }, -- plate legs
 	{ id = 3084, chance = 23530 }, -- protection amulet
-	{ id = 3049, chance = 5880 }, -- stealth ring
+	{ id = 3049, chance = 5880 }, -- Anel da Invisibilidade
 	{ id = 3123, chance = 47060 }, -- worn leather boots
 }
 

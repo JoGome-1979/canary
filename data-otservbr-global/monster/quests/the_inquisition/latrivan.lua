@@ -103,7 +103,7 @@ monster.loot = {
 	{ id = 3290, chance = 5000 }, -- silver dagger
 	{ id = 3033, chance = 15000, maxCount = 12 }, -- small amethyst
 	{ id = 3066, chance = 5000 }, -- snakebite rod
-	{ id = 3049, chance = 5000 }, -- stealth ring
+	{ id = 3049, chance = 5000 }, -- Anel da Invisibilidade
 	{ id = 3081, chance = 5000 }, -- stone skin amulet
 }
 

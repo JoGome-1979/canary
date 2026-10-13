@@ -86,7 +86,7 @@ monster.loot = {
 	{ id = 3322, chance = 290 }, -- dragon hammer
 	{ id = 818, chance = 250 }, -- magma boots
 	{ id = 7395, chance = 80 }, -- orc trophy
-	{ id = 3049, chance = 80 }, -- stealth ring
+	{ id = 3049, chance = 80 }, -- Anel da Invisibilidade
 	{ id = 3394, chance = 5000 }, -- amazon armor
 }
 
