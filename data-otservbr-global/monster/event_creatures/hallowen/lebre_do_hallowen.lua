@@ -1,7 +1,7 @@
-local mType = Game.createMonsterType("The Halloween Hare")
+local mType = Game.createMonsterType("Lebre do Halloween")
 local monster = {}
 
-monster.description = "a The Halloween Hare"
+monster.description = "a Lebre do Halloween"
 monster.experience = 0
 monster.outfit = {
 	lookType = 74,
@@ -13,11 +13,11 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 2000
-monster.maxHealth = 2000
+monster.health = 20000
+monster.maxHealth = 20000
 monster.race = "blood"
 monster.corpse = 0
-monster.speed = 75
+monster.speed = 65535
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -44,7 +44,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 10,
 	targetDistance = 2,
-	runHealth = 0,
+	runHealth = 1000,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -65,7 +65,7 @@ monster.voices = {
 monster.loot = {}
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = 0 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -100, maxDamage = -1000 },
 	{ name = "outfit", interval = 2000, chance = 6, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "bat" },
 	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "Thornback tortoise" },
 	{ name = "outfit", interval = 2000, chance = 6, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "orc" },
@@ -80,7 +80,10 @@ monster.attacks = {
 	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "minotaur mage" },
 	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "green frog" },
 	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "parrot" },
-	{ name = "outfit", interval = 2000, chance = 15, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitItem = 2096 },
+	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "Caveira das Almas Guerreira" },
+	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "Guardiao das Aboboras" },
+	{ name = "outfit", interval = 2000, chance = 5, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitMonster = "Caveira das Almas"},
+	{ name = "outfit", interval = 2000, chance = 15, radius = 3, effect = CONST_ME_BLOCKHIT, target = false, duration = 6000, outfitItem = 2096 }
 }
 
 monster.defenses = {

@@ -19,10 +19,8 @@ local raidSchedule = {
 		["13:00"] = { raidName = "Orc Backpack" },
 	},
 	["31/10"] = {
-		["00:01"] = { raidName = "halloween.guardiao" },
-		["07:00"] = { raidName = "halloween.guardiao" },
-		["13:00"] = { raidName = "halloween.guardiao" },
-		["19:00"] = { raidName = "halloween.guardiao" },
+		["00:01"] = { raidName = "halloween" },
+		["12:00"] = { raidName = "halloween" }
 	},
 }
 
