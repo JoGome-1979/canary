@@ -1,25 +1,26 @@
 local mType = Game.createMonsterType("Caveira das Almas")
 local monster = {}
 
-monster.description = "uma caveira das almas"
-monster.experience = 250
+monster.description = "caveira das almas"
+monster.experience = 750
+monster.manaCost = 375
 
 monster.outfit = {
-	lookType = 1951,
+	lookType = 33,
 }
 
 monster.health = 5000
 monster.maxHealth = 5000
 monster.race = "undead"
 monster.speed = 100
-monster.corpse = 54269
+monster.corpse = 5972
 
 monster.flags = {
-    summonable = false,       -- Jogador pode invocar
+    summonable = true,       -- Jogador pode invocar
     attackable = true,        -- Pode receber ataques
     hostile = true,           -- Ataca jogadores
-    convinceable = false,     -- Pode ser convencido
-    illusionable = false,     -- Jogador pode copiar sua aparência
+    convinceable = true,     -- Pode ser convencido
+    illusionable = true,     -- Jogador pode copiar sua aparência
 
     pushable = false,         -- Pode ser empurrado
     canPushItems = true,      -- Pode afastar itens do caminho
@@ -33,10 +34,10 @@ monster.flags = {
     healthHidden = false,    -- Esconde a barra de vida
 
     canWalkOnEnergy = true, -- Aceita atravessar campos de energia
-    canWalkOnFire = false,   -- Aceita atravessar campos de fogo
+    canWalkOnFire = true,   -- Aceita atravessar campos de fogo
     canWalkOnPoison = true,  -- Aceita atravessar campos de veneno
 
-    isBlockable = true,      -- Pode ser bloqueado fisicamente no caminho
+    isBlockable = false,      -- Pode ser bloqueado fisicamente no caminho
     isPreyable = false,      -- Pode participar do sistema Prey
     isPreyExclusive = false, -- Marca como exclusivo de Prey
     isForgeCreature = false, -- Participa da seleção de criaturas da Forge

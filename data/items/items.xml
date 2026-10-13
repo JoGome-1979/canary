@@ -85299,4 +85299,29 @@ Granted by TibiaGoals.com"/>
     	<attribute key="decayTo" value="0"/>
     	<attribute key="weight" value="10000"/>
 	</item>
+	<!-- Anel da Eternidade: guardado -->
+	<item id="54270" article="um" name="Anel da Eternidade">
+    	<attribute key="description" value="Um artefato raríssimo que protege seu portador da morte por uma hora enquanto equipado."/>
+    	<attribute key="weight" value="100"/>
+    	<attribute key="slotType" value="ring"/>
+    	<attribute key="stopduration" value="1"/>
+    	<attribute key="showduration" value="1"/>
+    	<attribute key="transformequipto" value="54271"/>
+    	<attribute key="script" value="moveevent">
+        	<attribute key="slot" value="ring"/>
+    	</attribute>
+	</item>
+
+	<!-- Anel da Eternidade: equipado -->
+	<item id="54271" article="um" name="Anel da Eternidade">
+    	<attribute key="weight" value="100"/>
+    	<attribute key="slotType" value="ring"/>
+    	<attribute key="showduration" value="1"/>
+    	<attribute key="duration" value="3600"/>
+    	<attribute key="transformdeequipto" value="54270"/>
+    	<attribute key="decayTo" value="0"/>
+    	<attribute key="script" value="moveevent">
+        	<attribute key="slot" value="ring"/>
+    	</attribute>
+	</item>
 </items>
