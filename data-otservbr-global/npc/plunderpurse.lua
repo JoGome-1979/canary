@@ -225,11 +225,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		end
 	elseif npcHandler:getTopic(playerId) == 2 then
 		if dawnContains(message, "yes") then
-			if count[playerId] > 1500 or player:getBankBalance() >= 1500 then
-				npcHandler:say("Não posso aceitar esse valor de depósito.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-				return false
-			end
 			if player:depositMoney(count[playerId]) then
 				npcHandler:say("Acrescentamos " .. count[playerId] .. " moedas de ouro ao vosso {saldo}. Podeis {sacar} quando desejardes.", npc, creature)
 			else

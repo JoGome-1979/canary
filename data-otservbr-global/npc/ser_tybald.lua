@@ -41,6 +41,8 @@ local dawnAliases = {
     decided = { "decidido" }, distance = { "distancia", "distância" }, close = { "perto" },
     bow = { "arco" }, spear = { "lanca", "lança" }, magic = { "magia", "magias" }, death = { "morte" },
     doors = { "portas" }, temple = { "templo" }, spells = { "magias" },
+    support = { "suporte" }, attack = { "ataque" },
+    conjure = { "conjuracao", "conjuração" }, spell = { "magia", "magias" },
     ["healing spells"] = { "cura" }, ["support spells"] = { "suporte" },
     ["attack spells"] = { "ataque" }, ["conjure spells"] = { "conjuracao", "conjuração" },
     invitation = { "convite" }, seeker = { "buscador" }, pilgrimage = { "peregrinacao", "peregrinação" },
@@ -135,6 +137,7 @@ local woundNode = keywordHandler:addKeyword(dawnKeys({ "wound cleansing" }), Std
 })
 woundNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "wound cleansing",
 	vocation = { 4, 8 },
@@ -149,6 +152,7 @@ local brutalNode = keywordHandler:addKeyword(dawnKeys({ "brutal strike" }), StdM
 })
 brutalNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "brutal strike",
 	vocation = { 4, 8 },
@@ -163,6 +167,7 @@ local cureNode = keywordHandler:addKeyword(dawnKeys({ "cure poison" }), StdModul
 })
 cureNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "cure poison",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -177,6 +182,7 @@ local greatLightNode = keywordHandler:addKeyword(dawnKeys({ "great light" }), St
 })
 greatLightNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "great light",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -191,6 +197,7 @@ local findPersonNode = keywordHandler:addKeyword(dawnKeys({ "find person" }), St
 })
 findPersonNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "find person",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -205,6 +212,7 @@ local magicRopeNode = keywordHandler:addKeyword(dawnKeys({ "magic rope" }), StdM
 })
 magicRopeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "magic rope",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -219,6 +227,7 @@ local lightHealingNode = keywordHandler:addKeyword(dawnKeys({ "light healing" })
 })
 lightHealingNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "light healing",
 	vocation = { 1, 2, 3, 5, 6, 7, 9, 10 },
@@ -233,6 +242,7 @@ local conjureArrowNode = keywordHandler:addKeyword(dawnKeys({ "conjure arrow" })
 })
 conjureArrowNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "conjure arrow",
 	vocation = { 3, 7 },
@@ -247,6 +257,7 @@ local levitateNode = keywordHandler:addKeyword(dawnKeys({ "levitate" }), StdModu
 })
 levitateNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "levitate",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -261,6 +272,7 @@ local hasteNode = keywordHandler:addKeyword(dawnKeys({ "haste" }), StdModule.say
 })
 hasteNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "haste",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -275,6 +287,7 @@ local lightNode = keywordHandler:addKeyword(dawnKeys({ "light" }), StdModule.say
 })
 lightNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "light",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },

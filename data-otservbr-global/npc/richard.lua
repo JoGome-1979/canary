@@ -23,7 +23,7 @@ npcConfig.flags = {
 	floorchange = false,
 	profession = "trader",
 }
-npcConfig.speechBubble = SPEECHBUBBLE_BANKER
+npcConfig.speechBubble = SPEECHBUBBLE_TRADE
 
 npcConfig.voices = {
 	interval = 15000,

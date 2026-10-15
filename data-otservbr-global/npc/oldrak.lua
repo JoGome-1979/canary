@@ -21,9 +21,9 @@ npcConfig.outfit = {
 
 npcConfig.flags = {
 	floorchange = false,
-	profession = "banker",
+	profession = "normal",
 }
-npcConfig.speechBubble = SPEECHBUBBLE_BANKER
+npcConfig.speechBubble = SPEECHBUBBLE_NORMAL
 
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

@@ -20,9 +20,9 @@ npcConfig.outfit = {
 
 npcConfig.flags = {
 	floorchange = false,
-	profession = "banker",
+	profession = "sailor",
 }
-npcConfig.speechBubble = SPEECHBUBBLE_BANKER
+npcConfig.speechBubble = SPEECHBUBBLE_SAILOR
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
@@ -44,6 +44,10 @@ npcType.onMove = function(npc, creature, fromPosition, toPosition)
 end
 
 npcType.onSay = function(npc, creature, type, message)
+	-- O botão de viagem envia "sail"; usa o comando de transporte deste NPC.
+	if message:lower() == "sail" then
+		message = "transport"
+	end
 	npcHandler:onSay(npc, creature, type, message)
 end
 

@@ -41,6 +41,8 @@ local dawnAliases = {
     decided = { "decidido" }, distance = { "distancia", "distância" }, close = { "perto" },
     bow = { "arco" }, spear = { "lanca", "lança" }, magic = { "magia", "magias" }, death = { "morte" },
     doors = { "portas" }, temple = { "templo" }, spells = { "magias" },
+    support = { "suporte" }, attack = { "ataque" },
+    conjure = { "conjuracao", "conjuração" }, spell = { "magia", "magias" },
     ["healing spells"] = { "cura" }, ["support spells"] = { "suporte" },
     ["attack spells"] = { "ataque" }, ["conjure spells"] = { "conjuracao", "conjuração" },
     invitation = { "convite" }, seeker = { "buscador" }, pilgrimage = { "peregrinacao", "peregrinação" },
@@ -135,6 +137,7 @@ local lightMagicMissileNode = keywordHandler:addKeyword(dawnKeys({ "light magic 
 })
 lightMagicMissileNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Light Magic Missile Rune",
 	vocation = { 1, 2, 5, 6 },
@@ -149,6 +152,7 @@ local apprenticeStrikeNode = keywordHandler:addKeyword(dawnKeys({ "apprentice's 
 })
 apprenticeStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Apprentice's Strike",
 	vocation = { 1, 2, 5, 6 },
@@ -163,6 +167,7 @@ local physicalStrikeNode = keywordHandler:addKeyword(dawnKeys({ "physical strike
 })
 physicalStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Physical Strike",
 	vocation = { 2, 6 },
@@ -177,6 +182,7 @@ local deathStrikeNode = keywordHandler:addKeyword(dawnKeys({ "death strike" }), 
 })
 deathStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Death Strike",
 	vocation = { 1, 5 },
@@ -191,6 +197,7 @@ local energyStrikeNode = keywordHandler:addKeyword(dawnKeys({ "energy strike" })
 })
 energyStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Energy Strike",
 	vocation = { 1, 2, 5, 6 },
@@ -205,6 +212,7 @@ local terraStrikeNode = keywordHandler:addKeyword(dawnKeys({ "terra strike" }), 
 })
 terraStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Terra Strike",
 	vocation = { 1, 2, 5, 6 },
@@ -219,6 +227,7 @@ local flameStrikeNode = keywordHandler:addKeyword(dawnKeys({ "flame strike" }), 
 })
 flameStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Flame Strike",
 	vocation = { 1, 2, 5, 6 },
@@ -233,6 +242,7 @@ local iceStrikeNode = keywordHandler:addKeyword(dawnKeys({ "ice strike" }), StdM
 })
 iceStrikeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Ice Strike",
 	vocation = { 1, 2, 5, 6 },
@@ -247,6 +257,7 @@ local poisonFieldNode = keywordHandler:addKeyword(dawnKeys({ "poison field" }), 
 })
 poisonFieldNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Poison Field Rune",
 	vocation = { 1, 2, 5, 6 },
@@ -261,6 +272,7 @@ local fireFieldNode = keywordHandler:addKeyword(dawnKeys({ "fire field" }), StdM
 })
 fireFieldNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Fire Field Rune",
 	vocation = { 1, 2, 5, 6 },
@@ -275,6 +287,7 @@ local energyFieldNode = keywordHandler:addKeyword(dawnKeys({ "energy field" }), 
 })
 energyFieldNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Energy Field Rune",
 	vocation = { 1, 2, 5, 6 },
@@ -289,6 +302,7 @@ local iceWaveNode = keywordHandler:addKeyword(dawnKeys({ "ice wave" }), StdModul
 })
 iceWaveNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Ice Wave",
 	vocation = { 2, 6 },
@@ -303,6 +317,7 @@ local curePoisonNode = keywordHandler:addKeyword(dawnKeys({ "cure poison" }), St
 })
 curePoisonNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Cure Poison",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -317,6 +332,7 @@ local magicRopeNode = keywordHandler:addKeyword(dawnKeys({ "magic rope" }), StdM
 })
 magicRopeNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Magic Rope",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -331,6 +347,7 @@ local findPersonNode = keywordHandler:addKeyword(dawnKeys({ "find person" }), St
 })
 findPersonNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Find Person",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -345,6 +362,7 @@ local greatLightNode = keywordHandler:addKeyword(dawnKeys({ "great light" }), St
 })
 greatLightNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Great Light",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -359,6 +377,7 @@ local lightHealingNode = keywordHandler:addKeyword(dawnKeys({ "light healing" })
 })
 lightHealingNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Light Healing",
 	vocation = { 1, 2, 3, 5, 6, 7, 9, 10 },
@@ -373,6 +392,7 @@ local levitateNode = keywordHandler:addKeyword(dawnKeys({ "levitate" }), StdModu
 })
 levitateNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Levitate",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -387,6 +407,7 @@ local hasteNode = keywordHandler:addKeyword(dawnKeys({ "haste" }), StdModule.say
 })
 hasteNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Haste",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
@@ -401,6 +422,7 @@ local lightNode = keywordHandler:addKeyword(dawnKeys({ "light" }), StdModule.say
 })
 lightNode:addChildKeyword(dawnKeys({ "yes" }), StdModule.learnSpell, {
 	npcHandler = npcHandler,
+	keepDialogOpen = true,
 	premium = false,
 	spellName = "Light",
 	vocation = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },

@@ -150,7 +150,13 @@ if Modules == nil then
 			npcHandler:say(string.format("Precisais de uma conta premium para aprender '%s'.", parameters.spellName), npc, player)
 		end
 
-		npcHandler:resetNpc(npc, player)
+		if parameters.keepDialogOpen then
+            -- Teaching in Dawnport returns to the menu without closing the window.
+            npcHandler.keywordHandler:reset(player)
+            npcHandler:setTopic(player:getId(), 0)
+        else
+            npcHandler:resetNpc(npc, player)
+        end
 		return true
 	end
 

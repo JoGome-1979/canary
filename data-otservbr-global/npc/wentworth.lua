@@ -156,19 +156,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		end
 	elseif npcHandler:getTopic(playerId) == 2 then
 		if MsgContains(message, "yes") then
-			if player:getLevel() == 8 then
-				if count[playerId] > 1000 or player:getBankBalance() >= 1000 then
-					npcHandler:say("Sorry, but you can't deposit that much.", npc, creature)
-					npcHandler:setTopic(playerId, 0)
-					return false
-				end
-			elseif player:getLevel() > 9 then
-				if count[playerId] > 2000 or player:getBankBalance() >= 2000 then
-					npcHandler:say("Sorry, but you can't deposit that much.", npc, creature)
-					npcHandler:setTopic(playerId, 0)
-					return false
-				end
-			end
 			if player:depositMoney(count[playerId]) then
 				npcHandler:say("Alright, we have added the amount of " .. count[playerId] .. " gold to your {balance}. \z
 				You can {withdraw} your money anytime you want to.", npc, creature)
